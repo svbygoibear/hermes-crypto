@@ -4,3 +4,4 @@ env.d.ts
 node_modules
 *.js
 *.d.ts
+storybook-static/

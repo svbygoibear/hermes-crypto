@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "./../public/vite.svg";
+import hermesLogo from "./../public/hermes-crypto-logo.svg";
 import "./App.css";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         <React.Fragment>
             <div>
                 <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
+                    <img src={hermesLogo} className="logo" alt="Hermes Crypto logo" />
                 </a>
                 <a href="https://react.dev" target="_blank" rel="noreferrer">
                     <img src={reactLogo} className="logo react" alt="React logo" />

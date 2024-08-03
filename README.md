@@ -1,5 +1,5 @@
 <h1 align="center"> hermes-crypto</h1>
-<p align="center"><img alt="hermes-crypto" src="./public/hermes-crypto-logo.svg" width="500"></p>
+<p align="center"><img alt="hermes-crypto" src="./public/hermes-crypto-logo.svg" width="200"></p>
 
 Hermes (called Mercury in Roman mythology) was considered the messenger of the Olympic gods. He possesses the ability to influence outcomes and tip the scales in favor of those who seek his favor. As the god of luck, he brings both fortune and misfortune to those who dare to test their luck.
 
@@ -12,6 +12,8 @@ Under the hood, I am powered by;
 -   [Vite](https://vitejs.dev/): Why Vite? It is lightweight, fast and has a ton of plugins. There are many good options available, but Vite made sense to get a project up and running quickly without applying the constraints of a framework.
 -   [React](https://react.dev/): In 2024 it would be crazy to start up a new project and not use something like React/Vue/Angular when working in the JS ecosystem - unless you had a specific requirement to go that route.
 -   [Typescript](https://www.typescriptlang.org/): A typed language is a powerful language. Not because it makes you fast, but because it helps you define a contract in your code. This leads to better tooling, less type-related errors and overall more confidence in your work.
+-   [Storybook](https://storybook.js.org/): This is the perfect addition to any frontend to develop components in isolation, testing and documentation.
+-   [Vitest](https://vitest.dev/): To compliment Storybook, Vitest is a Vite-native testing framework that re-uses all of Vite's config and plugins to ensure consistency! Want to add Jest later on? Well that is supported too.
 
 ## Installation
 
