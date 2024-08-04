@@ -7,7 +7,7 @@ import "@testing-library/jest-dom";
 describe("Simple working test", () => {
     it("the title is visible", () => {
         render(<App />);
-        expect(screen.getByText("Vite + React")).toBeInTheDocument();
+        expect(screen.getByText("HermesCrypto + React")).toBeInTheDocument();
     });
 
     it("should increment count on click", async () => {
