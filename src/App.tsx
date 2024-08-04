@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import hermesLogo from "./../public/hermes-crypto-logo.svg";
+import reactLogo from "./assets/svg/react.svg";
+import hermesLogo from "./assets/svg/hermes-crypto-logo.svg";
 import "./App.css";
 
 function App() {

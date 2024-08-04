@@ -12,6 +12,12 @@ const config: StorybookConfig = {
     framework: {
         name: "@storybook/react-vite",
         options: {}
+    },
+    async viteFinal(config, { configType }) {
+        // Add SVGR support
+        config.plugins = config.plugins || [];
+        config.plugins.push(require("@svgr/rollup").default());
+        return config;
     }
 };
 export default config;

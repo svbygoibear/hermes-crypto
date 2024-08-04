@@ -1,10 +1,11 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import * as ue from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import App from "./App";
 import "@testing-library/jest-dom";
 
-describe("Simple working test", () => {
+describe("Simple App Render Test", () => {
     it("the title is visible", () => {
         render(<App />);
         expect(screen.getByText("HermesCrypto + React")).toBeInTheDocument();
@@ -14,7 +15,7 @@ describe("Simple working test", () => {
         render(<App />);
         const counter = screen.getByRole("button", { name: /count is/i });
         expect(counter.textContent).toBe("count is 0");
-        await userEvent.click(counter);
+        await ue.userEvent.click(counter);
         expect(counter.textContent).toBe("count is 1");
     });
 });
