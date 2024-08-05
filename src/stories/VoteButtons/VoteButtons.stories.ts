@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { VoteButtons, VoteButtonsProps } from "../../components/VoteButtons/VoteButtons";
+import { Vote } from "../../enums";
+import { delay } from "../../utils/general.utils";
 
 const meta: Meta<VoteButtonsProps> = {
     title: "Example/VoteButtons",
     component: VoteButtons,
     parameters: {
-        layout: "fullscreen"
+        layout: "centered"
     },
     tags: ["autodocs"],
     argTypes: {},
@@ -16,5 +18,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Available: Story = {
-    args: {}
+    args: {
+        onVote: async (currentVote: Vote) => {
+            await delay(1000);
+            alert(`Vote ${currentVote} submitted`);
+        }
+    }
 };

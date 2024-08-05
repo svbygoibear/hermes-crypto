@@ -18,16 +18,19 @@ const meta: Meta<GlobalErrorAlertProps> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Example1: Story = {
+export const CloseOnly: Story = {
     args: {
         title: "FAILED",
         message: "Failed to load data"
     }
 };
 
-export const Example2: Story = {
+export const RetryAvailable: Story = {
     args: {
         title: "ERROR OCCURRED",
-        message: "Failed to submit vote, please try again."
+        message: "Failed to submit vote, please try again.",
+        retryAction: () => {
+            alert("Retry action invoked");
+        }
     }
 };
