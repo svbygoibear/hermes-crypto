@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import reactLogo from "./assets/svg/react.svg";
-import hermesLogo from "./assets/svg/hermes-crypto-logo.svg";
+import ReactLogo from "./assets/svg/react.svg";
+import HermesLogo from "./assets/svg/hermes-crypto-logo.svg";
 import "./App.css";
 import ErrorBoundary, { useError } from "./components/ErrorBoundary/ErrorBoundary";
+import { AppHeader } from "./components/AppHeader/AppHeader";
+import { CustomIcon } from "./components/CustomIcon/CustomIcon";
 
 const FallbackComponent: React.FC = () => {
     const error = useError();
@@ -15,13 +17,10 @@ function App() {
     return (
         <ErrorBoundary fallback={<FallbackComponent />}>
             <React.Fragment>
+                <AppHeader isLoggedIn={false} />
                 <div>
-                    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                        <img src={hermesLogo} className="logo" alt="Hermes Crypto logo" />
-                    </a>
-                    <a href="https://react.dev" target="_blank" rel="noreferrer">
-                        <img src={reactLogo} className="logo react" alt="React logo" />
-                    </a>
+                    <CustomIcon svg={HermesLogo} className="logo" />
+                    <CustomIcon svg={ReactLogo} className="logo react spin" />
                 </div>
                 <h1>HermesCrypto + React</h1>
                 <div className="card">

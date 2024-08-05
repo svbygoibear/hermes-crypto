@@ -13,7 +13,8 @@ export default defineConfig({
             exclude: []
         }),
         svgr({
-            svgrOptions: { exportType: "default", ref: true, svgo: false, titleProp: true }
+            svgrOptions: { exportType: "default", ref: true, svgo: false, titleProp: true },
+            include: ["./src/**/*.svg"]
         })
     ]
 });

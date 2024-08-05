@@ -22,6 +22,7 @@ Under the hood, I am powered by;
 To properly run this project, assuming you already have git installed, you will also need to ensure that you have the following installed on your machine:
 
 -   [`node.js`](https://nodejs.org/en): Lowest possible version compatible with this project is `v18.14.0`. The current LTS is however recommended.
+-   [`npm`](https://www.npmjs.com/): For info on installation, go [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Minimum version required is `9.3.1`.
 
 ### Running
 
@@ -42,6 +43,10 @@ Finally, if you are making contributions, and you want to check if you are meeti
 ```bash
 npm run lint
 ```
+
+### Issues
+
+There is an issue with [`storybook`]() when running it, it does not cause any issues but it has been noted here: https://github.com/storybookjs/storybook/issues/28567
 
 ## Contributing
 

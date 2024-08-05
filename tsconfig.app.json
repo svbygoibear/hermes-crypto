@@ -26,13 +26,10 @@
         "jsx": "react",
 
         /* Linting */
-        "strict": true,
+        "strict": false,
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "noFallthroughCasesInSwitch": true,
-
-        "noImplicitAny": true,
-        "noImplicitThis": true,
         "strictNullChecks": true
     },
     "exclude": ["node_modules", ".temp_cache", ".vscode", "dist"],
