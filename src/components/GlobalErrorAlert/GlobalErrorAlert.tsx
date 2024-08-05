@@ -33,9 +33,11 @@ export const GlobalErrorAlert: React.FunctionComponent<GlobalErrorAlertProps> = 
                     <Typography level="title-md">{props.title}</Typography>
                     <Typography level="body-md">{props.message}</Typography>
                     <Box sx={{ mt: 2, display: "flex", justifyContent: "flex-end", gap: 1 }}>
-                        <Button variant="outlined" size="sm" onClick={props.retryAction}>
-                            Retry
-                        </Button>
+                        {props.retryAction && (
+                            <Button variant="outlined" size="sm" onClick={props.retryAction}>
+                                Retry
+                            </Button>
+                        )}
                         <Button variant="solid" size="sm" onClick={props.onClose}>
                             Close
                         </Button>
