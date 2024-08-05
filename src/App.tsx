@@ -2,20 +2,16 @@ import React, { useState } from "react";
 import ReactLogo from "./assets/svg/react.svg";
 import HermesLogo from "./assets/svg/hermes-crypto-logo.svg";
 import "./App.css";
-import ErrorBoundary, { useError } from "./components/ErrorBoundary/ErrorBoundary";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { AppHeader } from "./components/AppHeader/AppHeader";
 import { CustomIcon } from "./components/CustomIcon/CustomIcon";
-
-const FallbackComponent: React.FC = () => {
-    const error = useError();
-    return <div>An error occurred: {error?.message}</div>;
-};
+import { FallbackComponent } from "./components/FallbackComponent/FallbackComponent";
 
 function App() {
     const [count, setCount] = useState(0);
 
     return (
-        <ErrorBoundary fallback={<FallbackComponent />}>
+        <ErrorBoundary fallback={resetError => <FallbackComponent resetError={resetError} />}>
             <React.Fragment>
                 <AppHeader isLoggedIn={false} />
                 <div>

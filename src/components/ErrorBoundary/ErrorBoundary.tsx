@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useContext } from "react";
 
 interface ErrorBoundaryProps {
     children: ReactNode;
-    fallback: ReactNode;
+    fallback: (resetError: () => void) => ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -20,19 +20,23 @@ class ErrorBoundaryClass extends React.Component<ErrorBoundaryProps, ErrorBounda
         this.state = { hasError: false, error: null };
     }
 
-    static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    static getDerivedStateFromError = (error: Error): ErrorBoundaryState => {
         return { hasError: true, error };
-    }
+    };
 
-    componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    componentDidCatch = (error: Error, errorInfo: React.ErrorInfo): void => {
         console.error("Uncaught error:", error, errorInfo);
-    }
+    };
+
+    resetError = (): void => {
+        this.setState({ hasError: false, error: null });
+    };
 
     render() {
         if (this.state.hasError) {
             return (
                 <ErrorContext.Provider value={this.state.error}>
-                    {this.props.fallback}
+                    {this.props.fallback(this.resetError)}
                 </ErrorContext.Provider>
             );
         }
@@ -41,7 +45,7 @@ class ErrorBoundaryClass extends React.Component<ErrorBoundaryProps, ErrorBounda
     }
 }
 
-const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children, fallback }) => {
+const ErrorBoundary: React.FunctionComponent<ErrorBoundaryProps> = ({ children, fallback }) => {
     return <ErrorBoundaryClass fallback={fallback}>{children}</ErrorBoundaryClass>;
 };
 

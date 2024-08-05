@@ -16,7 +16,10 @@ interface CustomIconProps extends Omit<unknown, "component"> {
     className?: string;
 }
 
-export const CustomIcon: React.FC<CustomIconProps> = ({ svg: SvgComponent, ...props }) => (
+export const CustomIcon: React.FunctionComponent<CustomIconProps> = ({
+    svg: SvgComponent,
+    ...props
+}) => (
     <StyledSvgIcon {...props}>
         <SvgComponent />
     </StyledSvgIcon>
