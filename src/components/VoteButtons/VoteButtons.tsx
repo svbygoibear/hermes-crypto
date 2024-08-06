@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
-import SaveIcon from "@mui/icons-material/Save";
+import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import Stack from "@mui/material/Stack";
+import "./VoteButtons.css";
 import { Vote } from "../../enums";
 import useErrorHandler from "../../hooks/useErrorHandler";
 
@@ -42,19 +44,21 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
         <Stack direction="row" spacing={2}>
             <LoadingButton
                 loading={isVotingLoading}
-                loadingPosition="start"
-                startIcon={<SaveIcon />}
+                loadingPosition="end"
+                endIcon={<ArrowCircleUpIcon />}
                 variant="outlined"
-                onClick={onVoteUp}>
-                Vote UP
+                onClick={onVoteUp}
+                color="success">
+                <div className="vote-button-text">Vote UP</div>
             </LoadingButton>
             <LoadingButton
                 loading={isVotingLoading}
                 loadingPosition="start"
-                startIcon={<SaveIcon />}
+                startIcon={<ArrowCircleDownIcon />}
                 variant="outlined"
-                onClick={onVoteDown}>
-                Vote Down
+                onClick={onVoteDown}
+                color="warning">
+                <div className="vote-button-text">Vote DOWN</div>
             </LoadingButton>
         </Stack>
     );

@@ -14,6 +14,7 @@ Under the hood, I am powered by;
 -   [Typescript](https://www.typescriptlang.org/): A typed language is a powerful language. Not because it makes you fast, but because it helps you define a contract in your code. This leads to better tooling, less type-related errors and overall more confidence in your work.
 -   [Storybook](https://storybook.js.org/): This is the perfect addition to any frontend to develop components in isolation, testing and documentation.
 -   [Vitest](https://vitest.dev/): To compliment Storybook, Vitest is a Vite-native testing framework that re-uses all of Vite's config and plugins to ensure consistency! Want to add Jest later on? Well that is supported too.
+-   [React Router](https://reactrouter.com): For routing between pages > react router makes this all possible.
 
 ## Installation
 

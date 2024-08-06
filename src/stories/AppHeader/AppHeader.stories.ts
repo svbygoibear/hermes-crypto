@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AppHeader, AppHeaderProps } from "../../components/AppHeader/AppHeader";
 
 const meta: Meta<AppHeaderProps> = {
-    title: "Example/AppHeader",
+    title: "Global/AppHeader",
     component: AppHeader,
     parameters: {
         layout: "fullscreen"

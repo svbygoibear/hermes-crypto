@@ -5,7 +5,7 @@ import {
 } from "../../components/GlobalErrorAlert/GlobalErrorAlert";
 
 const meta: Meta<GlobalErrorAlertProps> = {
-    title: "Example/GlobalErrorAlert",
+    title: "Global/GlobalErrorAlert",
     component: GlobalErrorAlert,
     parameters: {
         layout: "centered"

@@ -4,7 +4,7 @@ import { Vote } from "../../enums";
 import { delay } from "../../utils/general.utils";
 
 const meta: Meta<VoteButtonsProps> = {
-    title: "Example/VoteButtons",
+    title: "Core/VoteButtons",
     component: VoteButtons,
     parameters: {
         layout: "centered"

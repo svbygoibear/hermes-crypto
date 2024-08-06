@@ -7,9 +7,17 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/inter";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import { FallbackComponent } from "./components/FallbackComponent/FallbackComponent";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+
+(() => {
+    root.render(
+        <React.StrictMode>
+            <ErrorBoundary fallback={resetError => <FallbackComponent resetError={resetError} />}>
+                <App />
+            </ErrorBoundary>
+        </React.StrictMode>
+    );
+})();

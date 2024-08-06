@@ -68,9 +68,9 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             color: "inherit",
                             textDecoration: "none"
                         }}>
-                        {APP_NAME} |
+                        {APP_NAME}
                     </Typography>
-
+                    |&nbsp;&nbsp;
                     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                         <IconButton
                             size="large"
@@ -111,7 +111,6 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             </Button>
                         ))}
                     </Box>
-
                     {props.isLoggedIn && (
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="View settings">
