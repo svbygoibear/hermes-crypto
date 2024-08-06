@@ -47,7 +47,14 @@ npm run lint
 
 ### Issues
 
-There is an issue with [`storybook`]() when running it, it does not cause any issues but it has been noted here: https://github.com/storybookjs/storybook/issues/28567
+There is an issue with [`storybook`](https://storybook.js.org/) when running it, it does not cause any issues but it has been noted here: https://github.com/storybookjs/storybook/issues/28567
+
+## A Deep Dive
+
+This readme is to get you started, up and running and give some light background context. If you want a little more information, feel free to check out:
+
+-   [What am I doing here?](./docs/choices.md): Want more background on the objectives of this app? This is the place.
+-   [Technical Decisions](./docs/choices.md): This is a demo, and therefore some decisions were made to accommodate the scope of this project. This includes considerations, assumptions, etc.
 
 ## Contributing
 
