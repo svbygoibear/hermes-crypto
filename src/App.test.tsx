@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import * as ue from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
-import App from "./App";
+import { App } from "./App";
 import "@testing-library/jest-dom";
 
 describe("Simple App Render Test", () => {
