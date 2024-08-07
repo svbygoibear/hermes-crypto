@@ -5,11 +5,12 @@ import { AppHeader } from "./components/AppHeader/AppHeader";
 import { Home } from "./views/Home/Home";
 import { LayoutBox } from "./layouts/LayoutBox/LayoutBox";
 import { GenericError } from "./views/GenericError/GenericError";
+import { HOME_ROUTE } from "./routes";
 
 export const App: React.FunctionComponent = () => {
     const router = createBrowserRouter([
         {
-            path: "/home",
+            path: HOME_ROUTE,
             element: <Home isLoggedIn={false} />,
             errorElement: <GenericError />
         }

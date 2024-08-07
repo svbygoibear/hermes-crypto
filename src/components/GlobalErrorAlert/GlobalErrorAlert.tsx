@@ -24,7 +24,7 @@ export const GlobalErrorAlert: React.FunctionComponent<GlobalErrorAlertProps> = 
                 color="danger"
                 invertedColors
                 startDecorator={
-                    <CircularProgress size="lg" color="danger">
+                    <CircularProgress size="lg" color="danger" variant="soft" value={100}>
                         <Warning />
                     </CircularProgress>
                 }
@@ -39,7 +39,7 @@ export const GlobalErrorAlert: React.FunctionComponent<GlobalErrorAlertProps> = 
                             </Button>
                         )}
                         <Button variant="solid" size="sm" onClick={props.onClose}>
-                            Close
+                            OK
                         </Button>
                     </Box>
                 </Box>

@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext, useContext } from "react";
-
+import { HOME_ROUTE } from "../../routes";
 interface ErrorBoundaryProps {
     children: ReactNode;
     fallback: (resetError: () => void) => ReactNode;
@@ -30,6 +30,7 @@ class ErrorBoundaryClass extends React.Component<ErrorBoundaryProps, ErrorBounda
 
     resetError = (): void => {
         this.setState({ hasError: false, error: null });
+        window.location.pathname = HOME_ROUTE;
     };
 
     render() {
