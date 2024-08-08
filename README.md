@@ -5,6 +5,10 @@ Hermes (called Mercury in Roman mythology) was considered the messenger of the O
 
 `hermes-crypto` is a fun page where you can ponder if the price of your coin will go up or down; place your bets, and see if the gods will be in your favour!
 
+## Status
+
+Current Release to Prod: https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml/badge.svg
+
 ## What makes me tick?
 
 Under the hood, I am powered by;

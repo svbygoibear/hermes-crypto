@@ -5,6 +5,13 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    test: {
+        coverage: {
+            provider: "v8",
+            reporter: ["text", "json", "json-summary", "html"],
+            reportOnFailure: true
+        }
+    },
     plugins: [
         react(),
         eslint({
