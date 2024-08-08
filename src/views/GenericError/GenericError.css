@@ -1,0 +1,40 @@
+.general-error-image {
+    margin-block-start: 1.83em;
+    > img {
+        height: 600px;
+    }
+}
+
+.general-error-dynamic-message {
+    font-family: "Space Mono", monospace;
+    line-height: 1.2;
+    font-size: 1.5em;
+    font-weight: bold;
+    unicode-bidi: isolate;
+    max-width: 780px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 50px;
+}
+
+.general-error-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.general-error-info {
+    font-size: 6rem;
+    line-height: 1.2;
+}
+
+.general-error-text {
+    margin-top: 1.5rem;
+    font-family: "Space Mono", monospace;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.7;
+    width: 40rem;
+    text-align: justify;
+}
