@@ -9,7 +9,12 @@ export default mergeConfig(
         test: {
             environment: "jsdom",
             setupFiles: ["./hermes-crypto/test/vitest.setup.ts"],
-            globals: true
+            globals: true,
+            coverage: {
+                provider: "v8",
+                reporter: ["text", "json", "json-summary", "html"],
+                reportOnFailure: true
+            }
         }
     })
 );
