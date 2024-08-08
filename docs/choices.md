@@ -1,5 +1,5 @@
 <h1 align="center"> hermes-crypto</h1>
-<p align="center"><img alt="hermes-crypto" src="./src/assets/svg/hermes-crypto-logo.svg" width="200"></p>
+<p align="center"><img alt="hermes-crypto" src="./../src/assets/svg/hermes-crypto-logo.svg" width="200"></p>
 
 # Technical Decisions
 
