@@ -50,7 +50,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     ];
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: "#f2b5c0" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AppLogoIcon />
