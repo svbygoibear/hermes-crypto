@@ -9,3 +9,4 @@ jobs:
     - uses: bradennapier/eslint-plus-action@v3.4.2
       with:
         issueSummaryType: full
+        npmInstall: true
