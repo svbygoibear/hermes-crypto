@@ -33,9 +33,23 @@ export const GenericError: React.FunctionComponent = () => {
         <LayoutBox>
             <React.Fragment>
                 <CssBaseline />
-                <Box sx={{ minHeight: "100%" }}>
-                    <Container sx={{ display: "flex", flexWrap: "wrap" }} maxWidth={false}>
-                        <div>
+                <Box
+                    sx={{
+                        minHeight: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        alignSelf: "center"
+                    }}>
+                    <Container
+                        sx={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            flexDirection: "row",
+                            alignContent: "center",
+                            alignSelf: "center"
+                        }}
+                        maxWidth={false}>
+                        <div className="general-error-error-wrapper">
                             <img
                                 className="general-error-image"
                                 src={NotFound}

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import "./CountdownTimer.css";
 import { FlipClock } from "./components/FlipClock/FlipClock";
@@ -58,7 +57,7 @@ export const Countdown: React.FunctionComponent<CountdownProps> = (props: Countd
     const minutes = totalSeconds === 60 ? 0 : Math.floor(totalSeconds / 60);
     const seconds = totalSeconds === 60 ? totalSeconds : totalSeconds % 60;
 
-    const isHalfway = timerTime > timerStart / 2 && timerTime > 1000;
+    const isHalfway = timerTime <= props.countdownTimeInSeconds * 500 && timerTime > 1000;
     const isTimesUp = timerStart !== 0 && timerTime <= 1000;
 
     return (
