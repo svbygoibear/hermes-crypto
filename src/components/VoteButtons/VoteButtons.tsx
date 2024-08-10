@@ -6,9 +6,11 @@ import Stack from "@mui/material/Stack";
 import "./VoteButtons.css";
 import { Vote } from "../../enums";
 import useErrorHandler from "../../hooks/useErrorHandler";
+import { Container } from "@mui/material";
 
 export interface VoteButtonsProps {
     onVote: (currentVote: Vote) => Promise<void>;
+    onVoteFinalized: () => void;
 }
 
 export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: VoteButtonsProps) => {
@@ -21,14 +23,21 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
         }
     }, [error]);
 
+    const onVoteDone = (): void => {
+        setIsVotingLoading(false);
+        props.onVoteFinalized();
+    };
+
     const onVoteClicked = async (currentVote: Vote): Promise<void> => {
         setIsVotingLoading(true);
         try {
             await props.onVote(currentVote);
+            setTimeout(() => {
+                onVoteDone();
+            }, 60000);
         } catch (error) {
+            onVoteDone();
             handleError(error as Error);
-        } finally {
-            setIsVotingLoading(false);
         }
     };
 
@@ -41,25 +50,29 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
     };
 
     return (
-        <Stack direction="row" spacing={2}>
-            <LoadingButton
-                loading={isVotingLoading}
-                loadingPosition="end"
-                endIcon={<ArrowCircleUpIcon />}
-                variant="outlined"
-                onClick={onVoteUp}
-                color="success">
-                <div className="vote-button-text">Vote UP</div>
-            </LoadingButton>
-            <LoadingButton
-                loading={isVotingLoading}
-                loadingPosition="start"
-                startIcon={<ArrowCircleDownIcon />}
-                variant="outlined"
-                onClick={onVoteDown}
-                color="warning">
-                <div className="vote-button-text">Vote DOWN</div>
-            </LoadingButton>
-        </Stack>
+        <Container maxWidth="sm" sx={{ paddingBottom: "20px" }}>
+            <Stack direction="row" alignItems="center" justifyContent="center" spacing={2}>
+                <LoadingButton
+                    loading={isVotingLoading}
+                    loadingPosition="end"
+                    endIcon={<ArrowCircleUpIcon />}
+                    variant="outlined"
+                    onClick={onVoteUp}
+                    color="success"
+                    sx={{ backgroundColor: "honeydew" }}>
+                    <div className="vote-button-text">Vote UP</div>
+                </LoadingButton>
+                <LoadingButton
+                    loading={isVotingLoading}
+                    loadingPosition="start"
+                    startIcon={<ArrowCircleDownIcon />}
+                    variant="outlined"
+                    onClick={onVoteDown}
+                    color="warning"
+                    sx={{ backgroundColor: "beige" }}>
+                    <div className="vote-button-text">Vote DOWN</div>
+                </LoadingButton>
+            </Stack>
+        </Container>
     );
 };

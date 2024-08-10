@@ -17,7 +17,7 @@
     background: #eadfb5;
 }
 
-.countdowntimer-clockSim:before {
+/* .countdowntimer-clockSim:before {
     position: absolute;
     right: 5vmin;
     bottom: -4vmin;
@@ -28,7 +28,7 @@
     border-top: 0.25em solid #e8f3e1;
     content: "";
     transform: perspective(200px) rotateX(10deg);
-}
+} */
 
 .countdowntimer-clockSim:after {
     position: absolute;

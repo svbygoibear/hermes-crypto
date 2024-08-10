@@ -4,7 +4,11 @@ import "./CountdownTimer.css";
 import { FlipClock } from "./components/FlipClock/FlipClock";
 import { Button, Container, Grid, TextField } from "@mui/material";
 
-// Define types for state
+export interface CountdownProps {
+    shouldCountDown: boolean;
+    countdownTimeInSeconds: number;
+}
+
 interface CountdownState {
     timerOn: boolean;
     timerStart: number;
@@ -13,7 +17,7 @@ interface CountdownState {
     speed: number;
 }
 
-export const Countdown: React.FunctionComponent = () => {
+export const Countdown: React.FunctionComponent<CountdownProps> = (props: CountdownProps) => {
     const [state, setState] = useState<CountdownState>({
         timerOn: false,
         timerStart: 0,
@@ -23,8 +27,13 @@ export const Countdown: React.FunctionComponent = () => {
     });
 
     useEffect(() => {
+        console.log("Countdown component mounted");
         return () => clearInterval(timer);
     }, []);
+
+    useEffect(() => {
+        console.log("value=", state.value);
+    }, [state.value]);
 
     let timer: NodeJS.Timeout | undefined;
 
@@ -84,7 +93,7 @@ export const Countdown: React.FunctionComponent = () => {
 
     return (
         <Container maxWidth="sm">
-            <Grid container spacing={0} alignItems="center" className="countdowntimer-timerInput">
+            {/* <Grid container spacing={0} alignItems="center" className="countdowntimer-timerInput">
                 <Grid item xs={12} sm={6}>
                     <TextField
                         id="outlined-number"
@@ -104,11 +113,11 @@ export const Countdown: React.FunctionComponent = () => {
                         Start
                     </Button>
                 </Grid>
-            </Grid>
+            </Grid> */}
 
             <div className="Countdown-time">
                 {timerTime <= (parseInt(value) * 60000) / 2 && timerTime > 1000 && (
-                    <h3 className="countdowntimer-countdownAlert">MORE THAN HALFWAY THERE!</h3>
+                    <h3 className="countdowntimer-countdownAlert">HALFWAY THERE!</h3>
                 )}
 
                 {timerStart !== 0 && timerTime <= 1000 && (
