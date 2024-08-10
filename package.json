@@ -10,6 +10,8 @@
         "preview": "vite preview",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
+        "storybook-test": "test-storybook",
+        "storybook-test-coverage": "test-storybook --coverage",
         "test": "vitest --config ./test/vitest.config.ts",
         "coverage": "npx vitest --coverage.enabled true --config ./test/vitest.config.ts"
     },
@@ -36,6 +38,7 @@
         "@storybook/react": "^8.2.7",
         "@storybook/react-vite": "^8.2.7",
         "@storybook/test": "^8.2.7",
+        "@storybook/test-runner": "^0.19.1",
         "@testing-library/jest-dom": "^6.4.8",
         "@testing-library/react": "^16.0.0",
         "@types/react": "^18.3.3",

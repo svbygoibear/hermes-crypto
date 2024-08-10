@@ -18,6 +18,10 @@ export const FlipClock: React.FunctionComponent<FlipClockProps> = (props: FlipCl
         return () => clearInterval(timerID);
     });
 
+    useEffect(() => {
+        console.log("Seconds changed=", secondsShuffle);
+    }, [secondsShuffle]);
+
     const updateTime = () => {
         if (props.countMinutes !== minutes) {
             setMinutes(props.countMinutes);
