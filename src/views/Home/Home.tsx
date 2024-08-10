@@ -15,6 +15,9 @@ export interface HomeProps {
 export const Home: React.FunctionComponent<HomeProps> = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
 
+    // TODO: on load - check if user has already voted/logged in > if so set isVoting to true
+    // update the current vote time to what the user has left
+
     const onVoteClicked = async (vote: Vote): Promise<void> => {
         setIsVoting(true);
         try {
