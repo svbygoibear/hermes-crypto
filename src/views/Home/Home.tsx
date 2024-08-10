@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
 import "./Home.css";
 import HermesLogo from "./../../assets/svg/hermes-crypto-logo.svg";
 import { CustomIcon } from "./../../components/CustomIcon/CustomIcon";
-import { Countdown } from "../../components/CountdownTimer/CountdownTimer";
+import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
 import { Vote } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
@@ -38,10 +37,12 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
                 <CustomIcon svg={HermesLogo} className="logo spin" />
             </div>
             <h1>Hermes-Crypto</h1>
-            <h2>Welcome back, [your-name-here]</h2>
+            <h2>
+                Welcome back, <code>[your-name-here]</code>
+            </h2>
             <div className="card">
                 <VoteButtons onVote={onVoteClicked} isVoting={isVoting} />
-                <Countdown
+                <CountdownTimer
                     shouldCountDown={isVoting}
                     countdownTimeInSeconds={VOTE_TIME_IN_SECONDS}
                     onCountdownComplete={onVoteDone}

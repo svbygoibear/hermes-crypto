@@ -1,3 +1,8 @@
+.countdowntimer-time > h3.status-message {
+    text-align: center;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 .countdowntimer-countdown-alert {
     color: green;
 }

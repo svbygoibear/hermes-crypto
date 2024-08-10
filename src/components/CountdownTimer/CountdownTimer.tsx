@@ -3,13 +3,15 @@ import "./CountdownTimer.css";
 import { FlipClock } from "./components/FlipClock/FlipClock";
 import { Container } from "@mui/material";
 
-export interface CountdownProps {
+export interface CountdownTimerProps {
     shouldCountDown: boolean;
     countdownTimeInSeconds: number;
     onCountdownComplete: () => void;
 }
 
-export const Countdown: React.FunctionComponent<CountdownProps> = (props: CountdownProps) => {
+export const CountdownTimer: React.FunctionComponent<CountdownTimerProps> = (
+    props: CountdownTimerProps
+) => {
     const [timerStart, setTimerStart] = useState<number>(0);
     const [timerTime, setTimerTime] = useState<number>(props.countdownTimeInSeconds * 1000);
 
@@ -57,18 +59,20 @@ export const Countdown: React.FunctionComponent<CountdownProps> = (props: Countd
     const minutes = totalSeconds === 60 ? 0 : Math.floor(totalSeconds / 60);
     const seconds = totalSeconds === 60 ? totalSeconds : totalSeconds % 60;
 
-    const isHalfway = timerTime <= props.countdownTimeInSeconds * 500 && timerTime > 1000;
-    const isTimesUp = timerStart !== 0 && timerTime <= 1000;
-
     const currentTimerMessage = (): JSX.Element => {
+        const isHalfway = timerTime <= props.countdownTimeInSeconds * 500 && timerTime > 1000;
+        const isTimesUp = timerStart !== 0 && timerTime <= 1000;
+
         if (isHalfway) {
-            return <h3 className="countdowntimer-countdown-alert">HALFWAY THERE!</h3>;
+            return (
+                <h3 className="countdowntimer-countdown-alert status-message">HALFWAY THERE!</h3>
+            );
         } else if (isTimesUp) {
-            return <h3 className="countdowntimer-times-up">TIME&apos;S UP!</h3>;
+            return <h3 className="countdowntimer-times-up status-message">TIME&apos;S UP!</h3>;
         } else if (!props.shouldCountDown) {
-            return <h3>Ready to get started? Vote!</h3>;
+            return <h3 className="status-message">Ready to get started? Vote!</h3>;
         } else {
-            return <h3>Time remaining:</h3>;
+            return <h3 className="status-message">Time remaining:</h3>;
         }
     };
 
