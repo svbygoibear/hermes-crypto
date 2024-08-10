@@ -14,17 +14,23 @@ interface CountdownState {
     timerStart: number;
     timerTime: number;
     value: string;
-    speed: number;
 }
 
 export const Countdown: React.FunctionComponent<CountdownProps> = (props: CountdownProps) => {
     const [state, setState] = useState<CountdownState>({
         timerOn: false,
         timerStart: 0,
-        timerTime: 0,
-        value: "",
-        speed: 1
+        timerTime: props.countdownTimeInSeconds * 1000,
+        value: ""
     });
+
+    useEffect(() => {
+        if (props.shouldCountDown) {
+            countDownStart(1);
+        } else {
+            countDownStop();
+        }
+    }, [props.shouldCountDown]);
 
     useEffect(() => {
         console.log("Countdown component mounted");
@@ -54,13 +60,12 @@ export const Countdown: React.FunctionComponent<CountdownProps> = (props: Countd
         setState(prevState => ({
             ...prevState,
             timerOn: true,
-            timerStart: prevState.timerTime,
-            speed: timerS
+            timerStart: prevState.timerTime
         }));
 
         timer = setInterval(() => {
             setState(prevState => {
-                const newTime = prevState.timerTime - 10 * prevState.speed;
+                const newTime = prevState.timerTime - 10;
 
                 if (newTime >= 0) {
                     return { ...prevState, timerTime: newTime };
@@ -87,7 +92,7 @@ export const Countdown: React.FunctionComponent<CountdownProps> = (props: Countd
         }
     };
 
-    const { timerTime, timerStart, timerOn, value, speed } = state;
+    const { timerTime, timerStart, timerOn, value } = state;
     const seconds = parseInt(("0" + (Math.floor((timerTime / 1000) % 60) % 60)).slice(-2));
     const minutes = Math.floor(timerTime / 60000);
 
