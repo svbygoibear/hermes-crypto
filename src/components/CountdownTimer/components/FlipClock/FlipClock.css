@@ -1,0 +1,11 @@
+.flipClock-wrapper {
+    display: -webkit-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.flipClock-timeColumn {
+    font-size: 3em;
+}
