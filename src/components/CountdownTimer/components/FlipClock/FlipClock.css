@@ -1,4 +1,4 @@
-.flipClock-wrapper {
+.flipclock-wrapper {
     display: -webkit-box;
     display: flex;
     justify-content: space-between;
@@ -6,6 +6,6 @@
     margin-bottom: 5px;
 }
 
-.flipClock-timeColumn {
+.flipclock-time-column {
     font-size: 3em;
 }

@@ -1,12 +1,12 @@
-.countdowntimer-countdownAlert {
+.countdowntimer-countdown-alert {
     color: green;
 }
 
-.countdowntimer-timesUp {
+.countdowntimer-times-up {
     color: red;
 }
 
-.countdowntimer-clockSim {
+.countdowntimer-clock-sim {
     position: relative;
     border-radius: 2em;
     padding: 4%;

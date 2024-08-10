@@ -60,14 +60,24 @@ export const Countdown: React.FunctionComponent<CountdownProps> = (props: Countd
     const isHalfway = timerTime <= props.countdownTimeInSeconds * 500 && timerTime > 1000;
     const isTimesUp = timerStart !== 0 && timerTime <= 1000;
 
+    const currentTimerMessage = (): JSX.Element => {
+        if (isHalfway) {
+            return <h3 className="countdowntimer-countdown-alert">HALFWAY THERE!</h3>;
+        } else if (isTimesUp) {
+            return <h3 className="countdowntimer-times-up">TIME&apos;S UP!</h3>;
+        } else if (!props.shouldCountDown) {
+            return <h3>Ready to get started? Vote!</h3>;
+        } else {
+            return <h3>Time remaining:</h3>;
+        }
+    };
+
     return (
         <Container maxWidth="sm">
-            <div className="Countdown-time">
-                {isHalfway && <h3 className="countdowntimer-countdownAlert">HALFWAY THERE!</h3>}
+            <div className="countdowntimer-time">
+                {currentTimerMessage()}
 
-                {isTimesUp && <h3 className="countdowntimer-timesUp">TIME&apos;S UP!</h3>}
-
-                <div className="countdowntimer-clockSim">
+                <div className="countdowntimer-clock-sim">
                     <FlipClock countMinutes={minutes} countSeconds={seconds} />
                 </div>
             </div>

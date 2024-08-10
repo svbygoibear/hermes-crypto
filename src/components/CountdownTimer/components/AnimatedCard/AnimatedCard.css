@@ -1,4 +1,4 @@
-.animatedcard-flipCard {
+.animatedcard-flip-card {
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: center;
@@ -12,14 +12,14 @@
     backface-visibility: hidden;
 }
 
-.animatedcard-flipCard span {
+.animatedcard-flip-card span {
     font-family: "Droid Sans Mono", monospace;
     font-size: 3em;
     font-weight: lighter;
     color: #333333;
 }
 
-.animatedcard-flipCard.unfold {
+.animatedcard-flip-card.unfold {
     top: 50%;
     -webkit-box-align: start;
     align-items: flex-start;
@@ -34,12 +34,12 @@
     border-top: 0.5px solid whitesmoke;
 }
 
-.animatedcard-flipCard.unfold span {
+.animatedcard-flip-card.unfold span {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
-.animatedcard-flipCard.fold {
+.animatedcard-flip-card.fold {
     top: 0%;
     -webkit-box-align: end;
     align-items: flex-end;
@@ -54,7 +54,7 @@
     border-bottom: 0.5px solid whitesmoke;
 }
 
-.animatedcard-flipCard.fold span {
+.animatedcard-flip-card.fold span {
     -webkit-transform: translateY(50%);
     transform: translateY(50%);
 }

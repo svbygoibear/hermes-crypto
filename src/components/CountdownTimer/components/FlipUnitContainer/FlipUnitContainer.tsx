@@ -32,9 +32,9 @@ export const FlipUnitContainer: React.FunctionComponent<FlipUnitContainerProps> 
     const animation2 = !props.shuffle ? "fold" : "unfold";
 
     return (
-        <div className="flipUnitContainer-wrapper">
-            <StaticCard position="upperCard" digit={currentDigit} />
-            <StaticCard position="lowerCard" digit={previousDigit} />
+        <div className="flipunitcontainer-wrapper">
+            <StaticCard position="uppercard" digit={currentDigit} />
+            <StaticCard position="lowercard" digit={previousDigit} />
             <AnimatedCard digit={digit1} animation={animation1} />
             <AnimatedCard digit={digit2} animation={animation2} />
         </div>

@@ -10,7 +10,7 @@ export const AnimatedCard: React.FunctionComponent<AnimatedCardProps> = (
     props: AnimatedCardProps
 ) => {
     return (
-        <div className={`animatedcard-flipCard ${props.animation}`}>
+        <div className={`animatedcard-flip-card ${props.animation}`}>
             <span>{props.digit}</span>
         </div>
     );
