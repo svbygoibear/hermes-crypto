@@ -1,149 +1,77 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./CountdownTimer.css";
 import { FlipClock } from "./components/FlipClock/FlipClock";
-import { Button, Container, Grid, TextField } from "@mui/material";
+import { Container } from "@mui/material";
 
 export interface CountdownProps {
     shouldCountDown: boolean;
     countdownTimeInSeconds: number;
-}
-
-interface CountdownState {
-    timerOn: boolean;
-    timerStart: number;
-    timerTime: number;
-    value: string;
+    onCountdownComplete: () => void;
 }
 
 export const Countdown: React.FunctionComponent<CountdownProps> = (props: CountdownProps) => {
-    const [state, setState] = useState<CountdownState>({
-        timerOn: false,
-        timerStart: 0,
-        timerTime: props.countdownTimeInSeconds * 1000,
-        value: ""
-    });
+    const [timerStartTime, setTimerStartTime] = useState<number>(0);
+    const [timerTime, setTimerTime] = useState<number>(props.countdownTimeInSeconds * 1000);
+
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         if (props.shouldCountDown) {
-            countDownStart(1);
-        } else {
-            countDownStop();
+            setTimerTime(props.countdownTimeInSeconds * 1000);
+            countDownStart();
         }
+
+        // Clean up the interval on component unmount
+        return () => {
+            if (timerRef.current) {
+                clearInterval(timerRef.current);
+            }
+        };
     }, [props.shouldCountDown]);
 
-    useEffect(() => {
-        console.log("Countdown component mounted");
-        return () => clearInterval(timer);
-    }, []);
-
-    useEffect(() => {
-        console.log("value=", state.value);
-    }, [state.value]);
-
-    let timer: NodeJS.Timeout | undefined;
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        const re = /^[0-9\b]+$/;
-
-        if (e.target.value === "" || re.test(e.target.value)) {
-            setState(prevState => ({
-                ...prevState,
-                value: e.target.value,
-                timerTime: parseInt(e.target.value) * 60000 || 0
-            }));
+    const countDownStart = (): void => {
+        if (timerRef.current) {
+            clearInterval(timerRef.current);
         }
-    };
+        setTimerStartTime(timerTime);
 
-    const countDownStart = (timerS: number = 1): void => {
-        clearInterval(timer);
-        setState(prevState => ({
-            ...prevState,
-            timerOn: true,
-            timerStart: prevState.timerTime
-        }));
-
-        timer = setInterval(() => {
-            setState(prevState => {
-                const newTime = prevState.timerTime - 10;
-
+        timerRef.current = setInterval(() => {
+            setTimerTime(prevTime => {
+                const newTime = prevTime - 10;
                 if (newTime >= 0) {
-                    return { ...prevState, timerTime: newTime };
+                    return newTime;
                 } else {
-                    clearInterval(timer);
-                    return { ...prevState, timerOn: false, timerTime: 0 };
+                    if (timerRef.current) {
+                        clearInterval(timerRef.current);
+                    }
+                    // Alert the parent component that the countdown is complete
+                    props.onCountdownComplete();
+                    setTimerStartTime(0);
+                    return props.countdownTimeInSeconds * 1000;
                 }
             });
         }, 10);
     };
 
-    const countDownStop = (): void => {
-        clearInterval(timer);
-        setState(prevState => ({ ...prevState, timerOn: false }));
-    };
-
-    const resetTimer = (): void => {
-        if (!state.timerOn) {
-            setState(prevState => ({
-                ...prevState,
-                speed: 1,
-                timerTime: parseInt(prevState.value) * 60000 || 0
-            }));
-        }
-    };
-
-    const { timerTime, timerStart, timerOn, value } = state;
     const seconds = parseInt(("0" + (Math.floor((timerTime / 1000) % 60) % 60)).slice(-2));
+    console.log("These are the seconds=", seconds);
     const minutes = Math.floor(timerTime / 60000);
+    console.log("These are the minutes=", minutes);
 
     return (
         <Container maxWidth="sm">
-            {/* <Grid container spacing={0} alignItems="center" className="countdowntimer-timerInput">
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        id="outlined-number"
-                        label="Countdown Time"
-                        variant="outlined"
-                        value={value}
-                        onChange={handleChange}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={4}>
-                    <Button
-                        disabled={!value}
-                        onClick={() => countDownStart(1)}
-                        variant="contained"
-                        color="secondary"
-                        size="large">
-                        Start
-                    </Button>
-                </Grid>
-            </Grid> */}
-
             <div className="Countdown-time">
-                {timerTime <= (parseInt(value) * 60000) / 2 && timerTime > 1000 && (
+                {timerTime > timerStartTime / 2 && timerTime > 1000 && (
                     <h3 className="countdowntimer-countdownAlert">HALFWAY THERE!</h3>
                 )}
 
-                {timerStart !== 0 && timerTime <= 1000 && (
+                {timerStartTime !== 0 && timerTime <= 1000 && (
                     <h3 className="countdowntimer-timesUp">TIME&apos;S UP!</h3>
                 )}
 
                 <div className="countdowntimer-clockSim">
                     <FlipClock countMinutes={minutes} countSeconds={seconds} />
-
-                    {/* <CountDownControls
-                        timerStop={countDownStop}
-                        timerStart={countDownStart}
-                        timerReset={resetTimer}
-                        timerisOn={timerOn}
-                        timerT={timerTime}
-                        timerS={timerStart}
-                        speedSet={speed}
-                    /> */}
-                    {/* TODO: add buttons here to start the coutndown timer */}
-
-                    {/* remove timer speed controls here */}
                 </div>
             </div>
         </Container>

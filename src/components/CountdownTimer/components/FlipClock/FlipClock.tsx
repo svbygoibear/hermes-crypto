@@ -32,9 +32,9 @@ export const FlipClock: React.FunctionComponent<FlipClockProps> = (props: FlipCl
 
     return (
         <div className="flipClock-wrapper">
-            <FlipUnitContainer unit="minutes" digit={minutes} shuffle={minutesShuffle} />
+            <FlipUnitContainer unit="minutes" digit={props.countMinutes} shuffle={minutesShuffle} />
             <span className="flipClock-timeColumn">:</span>
-            <FlipUnitContainer unit="seconds" digit={seconds} shuffle={secondsShuffle} />
+            <FlipUnitContainer unit="seconds" digit={props.countSeconds} shuffle={secondsShuffle} />
         </div>
     );
 };

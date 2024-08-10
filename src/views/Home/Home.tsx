@@ -40,10 +40,11 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
             <h1>Hermes-Crypto</h1>
             <h2>Welcome back, [your-name-here]</h2>
             <div className="card">
-                <VoteButtons onVote={onVoteClicked} onVoteFinalized={onVoteDone} />
+                <VoteButtons onVote={onVoteClicked} isVoting={isVoting} />
                 <Countdown
                     shouldCountDown={isVoting}
                     countdownTimeInSeconds={VOTE_TIME_IN_SECONDS}
+                    onCountdownComplete={onVoteDone}
                 />
                 <p>
                     Edit <code>src/App.tsx</code> and save to test HMR

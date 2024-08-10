@@ -20,6 +20,9 @@ export const FlipUnitContainer: React.FunctionComponent<FlipUnitContainerProps> 
     }
     if (previousDigit < 10) {
         previousDigit = `0${previousDigit}`;
+        if (props.unit === "seconds") {
+            console.log("previousDigit=", previousDigit);
+        }
     }
 
     const digit1 = props.shuffle ? previousDigit : currentDigit;

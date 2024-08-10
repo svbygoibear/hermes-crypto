@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
@@ -10,7 +11,7 @@ import { Container } from "@mui/material";
 
 export interface VoteButtonsProps {
     onVote: (currentVote: Vote) => Promise<void>;
-    onVoteFinalized: () => void;
+    isVoting: boolean;
 }
 
 export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: VoteButtonsProps) => {
@@ -25,7 +26,6 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
 
     const onVoteDone = (): void => {
         setIsVotingLoading(false);
-        props.onVoteFinalized();
     };
 
     const onVoteClicked = async (currentVote: Vote): Promise<void> => {
@@ -53,7 +53,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
         <Container maxWidth="sm" sx={{ paddingBottom: "20px" }}>
             <Stack direction="row" alignItems="center" justifyContent="center" spacing={2}>
                 <LoadingButton
-                    loading={isVotingLoading}
+                    loading={props.isVoting}
                     loadingPosition="end"
                     endIcon={<ArrowCircleUpIcon />}
                     variant="outlined"
@@ -63,7 +63,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
                     <div className="vote-button-text">Vote UP</div>
                 </LoadingButton>
                 <LoadingButton
-                    loading={isVotingLoading}
+                    loading={props.isVoting}
                     loadingPosition="start"
                     startIcon={<ArrowCircleDownIcon />}
                     variant="outlined"
