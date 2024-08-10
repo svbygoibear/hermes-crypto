@@ -36,9 +36,11 @@ export const GenericError: React.FunctionComponent = () => {
                 <Box sx={{ minHeight: "100%" }}>
                     <Container sx={{ display: "flex", flexWrap: "wrap" }} maxWidth={false}>
                         <div>
-                            <div className="general-error-image">
-                                <img src={NotFound} alt="Page-Not-Found-Dude" />
-                            </div>
+                            <img
+                                className="general-error-image"
+                                src={NotFound}
+                                alt="Page-Not-Found-Dude"
+                            />
                             <div
                                 title={`Error message: ${errorMessage}`}
                                 className="general-error-dynamic-message">

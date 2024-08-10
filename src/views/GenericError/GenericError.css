@@ -1,8 +1,10 @@
 .general-error-image {
     margin-block-start: 1.83em;
-    > img {
+    width: 30%;
+    height: auto;
+    /* > img {
         height: 600px;
-    }
+    } */
 }
 
 .general-error-dynamic-message {
