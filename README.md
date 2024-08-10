@@ -7,7 +7,7 @@ Hermes (called Mercury in Roman mythology) was considered the messenger of the O
 
 ## Status
 
-[![Build Status](https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml/badge.svg?branch=main)]() [![Code Coverage](https://github.com/svbygoibear/hermes-crypto/actions/workflows/test-suite.yml/badge.svg?branch=main)]()
+[![Build Status](https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml/badge.svg?branch=main)]() [![Code Coverage](https://github.com/svbygoibear/hermes-crypto/actions/workflows/test-suite.yml/badge.svg?branch=main)]() [![Storybook Deploy](https://github.com/svbygoibear/hermes-crypto/actions/workflows/storybook-deploy.yml/badge.svg)](https://66b7998d30a1b8b8fa5d2380-cddhabsmcx.chromatic.com/)
 
 ## What makes me tick?
 
