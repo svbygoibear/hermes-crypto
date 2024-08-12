@@ -20,6 +20,7 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
     });
 
     const testGetUser = async () => {
+        console.log("ANOTHER TEST");
         const user = await getUserById("272b6ba2-528d-41af-86b2-b366eaa55a38");
         const votes = await getUserVotesById("272b6ba2-528d-41af-86b2-b366eaa55a38");
         console.log(user);

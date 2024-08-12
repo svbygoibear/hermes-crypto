@@ -9,11 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 const axiosInstance = axios.create({
     timeout: 10000,
     withCredentials: false,
-    baseURL: API_BASE_URL,
-    headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
+    baseURL: API_BASE_URL
 });
 
 // Create the API service
