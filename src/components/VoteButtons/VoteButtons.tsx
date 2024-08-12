@@ -5,12 +5,12 @@ import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import Stack from "@mui/material/Stack";
 import "./VoteButtons.css";
-import { Vote } from "../../enums";
+import { VoteDirection } from "../../enums";
 import useErrorHandler from "../../hooks/useErrorHandler";
 import { Container } from "@mui/material";
 
 export interface VoteButtonsProps {
-    onVote: (currentVote: Vote) => Promise<void>;
+    onVote: (currentVote: VoteDirection) => Promise<void>;
     isVoting: boolean;
 }
 
@@ -28,7 +28,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
         setIsVotingLoading(false);
     };
 
-    const onVoteClicked = async (currentVote: Vote): Promise<void> => {
+    const onVoteClicked = async (currentVote: VoteDirection): Promise<void> => {
         setIsVotingLoading(true);
         try {
             await props.onVote(currentVote);
@@ -42,11 +42,11 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
     };
 
     const onVoteUp = async (): Promise<void> => {
-        onVoteClicked(Vote.Up);
+        onVoteClicked(VoteDirection.Up);
     };
 
     const onVoteDown = async (): Promise<void> => {
-        onVoteClicked(Vote.Down);
+        onVoteClicked(VoteDirection.Down);
     };
 
     return (

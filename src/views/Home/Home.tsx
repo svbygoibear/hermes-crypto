@@ -4,7 +4,7 @@ import HermesLogo from "./../../assets/svg/hermes-crypto-logo.svg";
 import { CustomIcon } from "./../../components/CustomIcon/CustomIcon";
 import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
-import { Vote } from "../../enums";
+import { VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
 
 export interface HomeProps {
@@ -17,7 +17,7 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
     // TODO: on load - check if user has already voted/logged in > if so set isVoting to true
     // update the current vote time to what the user has left
 
-    const onVoteClicked = async (vote: Vote): Promise<void> => {
+    const onVoteClicked = async (vote: VoteDirection): Promise<void> => {
         setIsVoting(true);
         try {
             console.log(`Voting ${vote}`);
