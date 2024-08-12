@@ -25,6 +25,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
     }, [error]);
 
     const onVoteDone = (): void => {
+        console.log("Vote done, isVotingLoading=", isVotingLoading);
         setIsVotingLoading(false);
     };
 
