@@ -1,8 +1,14 @@
+.general-error-error-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
 .general-error-image {
     margin-block-start: 1.83em;
-    > img {
-        height: 600px;
-    }
+    width: 100%;
+    height: auto;
 }
 
 .general-error-dynamic-message {
@@ -15,7 +21,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    padding-left: 50px;
 }
 
 .general-error-content {
@@ -37,4 +42,15 @@
     line-height: 1.7;
     width: 40rem;
     text-align: justify;
+}
+
+@media (max-width: 600px) {
+    .general-error-info {
+        font-size: 24px;
+    }
+
+    .general-error-text {
+        font-size: 16px;
+        width: 80%;
+    }
 }

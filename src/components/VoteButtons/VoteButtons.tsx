@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import Stack from "@mui/material/Stack";
 import "./VoteButtons.css";
-import { Vote } from "../../enums";
+import { VoteDirection } from "../../enums";
 import useErrorHandler from "../../hooks/useErrorHandler";
+import { Container } from "@mui/material";
 
 export interface VoteButtonsProps {
-    onVote: (currentVote: Vote) => Promise<void>;
+    onVote: (currentVote: VoteDirection) => Promise<void>;
+    isVoting: boolean;
 }
 
 export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: VoteButtonsProps) => {
@@ -21,45 +24,55 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
         }
     }, [error]);
 
-    const onVoteClicked = async (currentVote: Vote): Promise<void> => {
+    const onVoteDone = (): void => {
+        setIsVotingLoading(false);
+    };
+
+    const onVoteClicked = async (currentVote: VoteDirection): Promise<void> => {
         setIsVotingLoading(true);
         try {
             await props.onVote(currentVote);
+            setTimeout(() => {
+                onVoteDone();
+            }, 60000);
         } catch (error) {
+            onVoteDone();
             handleError(error as Error);
-        } finally {
-            setIsVotingLoading(false);
         }
     };
 
     const onVoteUp = async (): Promise<void> => {
-        onVoteClicked(Vote.Up);
+        onVoteClicked(VoteDirection.Up);
     };
 
     const onVoteDown = async (): Promise<void> => {
-        onVoteClicked(Vote.Down);
+        onVoteClicked(VoteDirection.Down);
     };
 
     return (
-        <Stack direction="row" spacing={2}>
-            <LoadingButton
-                loading={isVotingLoading}
-                loadingPosition="end"
-                endIcon={<ArrowCircleUpIcon />}
-                variant="outlined"
-                onClick={onVoteUp}
-                color="success">
-                <div className="vote-button-text">Vote UP</div>
-            </LoadingButton>
-            <LoadingButton
-                loading={isVotingLoading}
-                loadingPosition="start"
-                startIcon={<ArrowCircleDownIcon />}
-                variant="outlined"
-                onClick={onVoteDown}
-                color="warning">
-                <div className="vote-button-text">Vote DOWN</div>
-            </LoadingButton>
-        </Stack>
+        <Container maxWidth="sm" sx={{ paddingBottom: "20px" }}>
+            <Stack direction="row" alignItems="center" justifyContent="center" spacing={2}>
+                <LoadingButton
+                    loading={props.isVoting}
+                    loadingPosition="end"
+                    endIcon={<ArrowCircleUpIcon />}
+                    variant="outlined"
+                    onClick={onVoteUp}
+                    color="success"
+                    sx={{ backgroundColor: "honeydew" }}>
+                    <div className="vote-button-text">Vote UP</div>
+                </LoadingButton>
+                <LoadingButton
+                    loading={props.isVoting}
+                    loadingPosition="start"
+                    startIcon={<ArrowCircleDownIcon />}
+                    variant="outlined"
+                    onClick={onVoteDown}
+                    color="warning"
+                    sx={{ backgroundColor: "beige" }}>
+                    <div className="vote-button-text">Vote DOWN</div>
+                </LoadingButton>
+            </Stack>
+        </Container>
     );
 };

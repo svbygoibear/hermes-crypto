@@ -5,11 +5,13 @@ Hermes (called Mercury in Roman mythology) was considered the messenger of the O
 
 `hermes-crypto` is a fun page where you can ponder if the price of your coin will go up or down; place your bets, and see if the gods will be in your favour!
 
+## This REPO
+
+This repo contains the whole F/E for `hermes-crypto` as a whole. This includes all components, visual library and actual web-app itself.
+
 ## Status
 
-[![Build Status](https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml/badge.svg?branch=main)]()
-
-[![Code Coverage](https://github.com/svbygoibear/hermes-crypto/actions/workflows/test-suite.yml/badge.svg?branch=main)]()
+[![Build Status](https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml/badge.svg?branch=main)]() [![Code Coverage](https://github.com/svbygoibear/hermes-crypto/actions/workflows/test-suite.yml/badge.svg?branch=main)]() [![Storybook Deploy](https://github.com/svbygoibear/hermes-crypto/actions/workflows/storybook-deploy.yml/badge.svg)](https://66b7998d30a1b8b8fa5d2380-cddhabsmcx.chromatic.com/)
 
 ## What makes me tick?
 
@@ -30,6 +32,7 @@ To properly run this project, assuming you already have git installed, you will 
 
 -   [`node.js`](https://nodejs.org/en): Lowest possible version compatible with this project is `v18.14.0`. The current LTS is however recommended.
 -   [`npm`](https://www.npmjs.com/): For info on installation, go [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Minimum version required is `9.3.1`.
+-   [`playwright`](https://playwright.dev/): If you want to run tests via storybook - you will have to install playwright. Simply run `npx install playwright` in the project terminal.
 
 ### Running
 
@@ -45,11 +48,7 @@ Next, start up the project! If you are running this locally, fire it off in dev 
 npm run dev
 ```
 
-Finally, if you are making contributions, and you want to check if you are meeting the project linting rules, then just stop on by and run the lint command in terminal. This is not a required step to get the project running on your machine.
-
-```bash
-npm run lint
-```
+And that is it!
 
 ### Issues
 

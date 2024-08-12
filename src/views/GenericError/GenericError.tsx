@@ -1,7 +1,5 @@
 import * as React from "react";
 import { isRouteErrorResponse, useRouteError, useNavigate } from "react-router-dom";
-import { LayoutBox } from "../../layouts/LayoutBox/LayoutBox";
-import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -30,36 +28,49 @@ export const GenericError: React.FunctionComponent = () => {
     };
 
     return (
-        <LayoutBox>
-            <React.Fragment>
-                <CssBaseline />
-                <Box sx={{ minHeight: "100%" }}>
-                    <Container sx={{ display: "flex", flexWrap: "wrap" }} maxWidth={false}>
-                        <div>
-                            <div className="general-error-image">
-                                <img src={NotFound} alt="Page-Not-Found-Dude" />
-                            </div>
-                            <div
-                                title={`Error message: ${errorMessage}`}
-                                className="general-error-dynamic-message">
-                                {errorMessage}
-                            </div>
+        <React.Fragment>
+            <Box
+                sx={{
+                    minHeight: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    alignSelf: "center"
+                }}>
+                <Container
+                    sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        flexDirection: "row",
+                        alignContent: "center",
+                        alignSelf: "center"
+                    }}
+                    maxWidth={false}>
+                    <div className="general-error-error-wrapper">
+                        <img
+                            className="general-error-image"
+                            src={NotFound}
+                            alt="Page-Not-Found-Dude"
+                        />
+                        <div
+                            title={`Error message: ${errorMessage}`}
+                            className="general-error-dynamic-message">
+                            {errorMessage}
                         </div>
+                    </div>
 
-                        <div className="general-error-content">
-                            <h2 className="general-error-info">I have bad news...</h2>
-                            <p className="general-error-text">
-                                Something went wrong! Which isn&apos;t great... but it could also be
-                                worse? It is probably the server gremlins going at it again. Try
-                                refreshing the page, or go back to the homepage.
-                            </p>
-                            <Button onClick={onBackHomeClick} sx={{ marginBlockEnd: "50px" }}>
-                                Back to homepage
-                            </Button>
-                        </div>
-                    </Container>
-                </Box>
-            </React.Fragment>
-        </LayoutBox>
+                    <div className="general-error-content">
+                        <h2 className="general-error-info">I have bad news...</h2>
+                        <p className="general-error-text">
+                            Something went wrong! Which isn&apos;t great... but it could also be
+                            worse? It is probably the server gremlins going at it again. Try
+                            refreshing the page, or go back to the homepage.
+                        </p>
+                        <Button onClick={onBackHomeClick} sx={{ marginBlockEnd: "50px" }}>
+                            Back to homepage
+                        </Button>
+                    </div>
+                </Container>
+            </Box>
+        </React.Fragment>
     );
 };

@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import AdbIcon from "@mui/icons-material/Adb";
+
 import { UserMenu, UserMenuSetting } from "./components/UserMenu/UserMenu";
 import { PageMenu, PageMenuItem } from "./components/PageMenu/PageMenu";
 import { AppLogoIcon } from "../../assets/AppLogoIcon";
@@ -83,7 +83,6 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         </IconButton>
                         <PageMenu items={pages} anchor={anchorElNav} onClose={handleCloseNavMenu} />
                     </Box>
-                    <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -99,7 +98,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             color: "inherit",
                             textDecoration: "none"
                         }}>
-                        {APP_NAME} |
+                        {APP_NAME}
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                         {pages.map(page => (
@@ -115,6 +114,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="View settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    {/* TODO: replace this avatar with something else */}
                                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                                 </IconButton>
                             </Tooltip>

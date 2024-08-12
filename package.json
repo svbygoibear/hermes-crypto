@@ -10,6 +10,8 @@
         "preview": "vite preview",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
+        "storybook-test": "test-storybook",
+        "storybook-test-coverage": "test-storybook --coverage",
         "test": "vitest --config ./test/vitest.config.ts",
         "coverage": "npx vitest --coverage.enabled true --config ./test/vitest.config.ts"
     },
@@ -22,6 +24,8 @@
         "@mui/joy": "^5.0.0-beta.48",
         "@mui/lab": "^5.0.0-alpha.173",
         "@mui/material": "^5.16.6",
+        "@types/axios": "^0.14.0",
+        "axios": "^1.7.3",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-router-dom": "^6.26.0"
@@ -36,6 +40,7 @@
         "@storybook/react": "^8.2.7",
         "@storybook/react-vite": "^8.2.7",
         "@storybook/test": "^8.2.7",
+        "@storybook/test-runner": "^0.19.1",
         "@testing-library/jest-dom": "^6.4.8",
         "@testing-library/react": "^16.0.0",
         "@types/react": "^18.3.3",

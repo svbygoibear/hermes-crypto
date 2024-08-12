@@ -7,7 +7,7 @@ export interface LayoutBoxProps {
 
 export const LayoutBox: React.FunctionComponent<LayoutBoxProps> = (props: LayoutBoxProps) => {
     return (
-        <Box height="100vh" display="flex" flexDirection="column" sx={{ bgcolor: "#e5f1fc" }}>
+        <Box minHeight="100vh" display="flex" flexDirection="column" sx={{ bgcolor: "#e5f1fc" }}>
             {props.children}
         </Box>
     );
