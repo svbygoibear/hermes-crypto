@@ -5,9 +5,9 @@ import "./Home.css";
 import HermesLogo from "./../../assets/svg/hermes-crypto-logo.svg";
 import { CustomIcon } from "./../../components/CustomIcon/CustomIcon";
 import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
+import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
-import { CoinType, Currency, VoteDirection } from "../../enums";
-import { VOTE_TIME_IN_SECONDS } from "../../constants";
+import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
 import {
     getCurrentBtcPrice,
     getUserById,
@@ -16,15 +16,16 @@ import {
     addUserVote,
     getUserVoteResultById
 } from "../../data/user.data";
-import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
+
 import { CoinResult } from "../../types/coinResult";
-import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
-import { useAppSelector } from "../../hooks/useAppSelector";
 import { User, UserCreate } from "../../types/user";
+import { VoteCreate } from "../../types/vote";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoggedIn, setUser } from "../../store/userSlice";
 import { createFakeUser } from "../../utils/fake.utils";
-import { VoteCreate } from "../../types/vote";
+import { CoinType, Currency, VoteDirection } from "../../enums";
+import { VOTE_TIME_IN_SECONDS } from "../../constants";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -80,6 +81,9 @@ export const Home: React.FunctionComponent = () => {
                     const voteResult = await getUserVoteResultById(user.currentUser?.id ?? "");
                     console.log("THIS IS THE VOTE RESULT ON LOAD=", voteResult);
                     if (voteResult?.coin_value !== 0) {
+                        // TODO: add a pop-up or something to show the user the result of their vote
+                        const previousScore = user.currentUser?.score ?? 0;
+
                         const updatedUser = await getUserById(user.currentUser?.id ?? "");
                         // Update the user in the store
                         if (updatedUser !== null) {
@@ -110,9 +114,6 @@ export const Home: React.FunctionComponent = () => {
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
-
-    // TODO: on load - check if user has already voted/logged in > if so set isVoting to true
-    // update the current vote time to what the user has left
 
     const onVoteClicked = async (currVoteDirection: VoteDirection): Promise<void> => {
         setIsCheckingVote(true);
@@ -159,6 +160,9 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const onVoteDone = (): void => {
+        // Add a small delay here > and then fetch the vote results
+        // TODO: add a pop-up or something to show the user the result of their vote
+        const previousScore = user.currentUser?.score ?? 0;
         setIsVoting(false);
     };
 
