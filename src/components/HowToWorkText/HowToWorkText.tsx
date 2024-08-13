@@ -77,7 +77,7 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
                 )}
             </p>
             <p className="read-the-docs">
-                Price was last queries on:{" "}
+                Price was last queried on:{" "}
                 <code>{getFormattedDateTime(props.currentCoinResult?.query_time ?? null)}</code>
             </p>
         </div>

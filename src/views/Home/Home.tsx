@@ -45,7 +45,7 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
 
     const getBTC = async () => {
         // TODO: add call to the API back
-        const currentBtcPrice = await getCurrentBtcPrice();
+        const currentBtcPrice = null; //await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
@@ -100,9 +100,13 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                         countdownTimeInSeconds={VOTE_TIME_IN_SECONDS}
                         onCountdownComplete={onVoteDone}
                     />
-                    <p>
-                        Your current score is: <code>-1</code>
-                    </p>
+                    <div className="score-text-wrapper">
+                        <p className="score-text">
+                            <b>
+                                Your current score is: <code>-1</code>
+                            </b>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div id="about" className="about-game-wrapper">
