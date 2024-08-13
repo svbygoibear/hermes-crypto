@@ -67,18 +67,15 @@ export const Home: React.FunctionComponent = () => {
         if (user.currentUser !== null) {
             const latestVotes = await getUserVotesById(user.currentUser?.id ?? "");
             const unResolvedVote = latestVotes?.find(vote => vote.coin_value === 0);
-            console.log("UNRESOLVED VOTE=", unResolvedVote);
             if (unResolvedVote) {
                 setIsVoting(true);
                 const voteCastTime = new Date(unResolvedVote.vote_date_time).getTime();
                 const currentTime = new Date().getTime();
                 const isMoreThanSixtySecondsAgo =
                     currentTime - voteCastTime >= VOTE_TIME_IN_SECONDS * 1000;
-                console.log("IS MORE THAN SIXTY SECONDS AGO=", isMoreThanSixtySecondsAgo);
                 // if the vote was cast more than 60 seconds ago, we need to get the results
                 if (isMoreThanSixtySecondsAgo) {
                     const voteResult = await getUserVoteResultById(user.currentUser?.id ?? "");
-                    console.log("THIS IS THE VOTE RESULT ON LOAD=", voteResult);
                     if (voteResult?.coin_value !== 0) {
                         // TODO: add a pop-up or something to show the user the result of their vote
                         const previousScore = user.currentUser?.score ?? 0;
@@ -147,7 +144,6 @@ export const Home: React.FunctionComponent = () => {
             setIsCreatingUser(true);
             // if user is not logged in, create a user
             const userToCreate = createFakeUser();
-            console.log("FAKER USER=", userToCreate);
             const newUser = await createNewUser(userToCreate, true);
             currUser = newUser;
         }
@@ -158,7 +154,6 @@ export const Home: React.FunctionComponent = () => {
                 vote_coin: CoinType.Bitcoin,
                 coin_value_currency: Currency.USD
             };
-            console.log("NEW VOTE=", newVote);
             const vote = await addUserVote(newVote, currUser?.id ?? "");
             if (vote === null) {
                 const voteResult = await getDelayedVoteResult(currUser?.id ?? "");
@@ -176,8 +171,6 @@ export const Home: React.FunctionComponent = () => {
                 setIsCheckingVote(false);
                 setIsVoting(true);
             }
-
-            console.log("NEW VOTE FROM API=", vote);
         } catch (error) {
             console.error("Error from the home=", error);
             throw error;
@@ -205,7 +198,6 @@ export const Home: React.FunctionComponent = () => {
     ): Promise<User | null> => {
         try {
             const newUser = await addUser(userToCreate);
-            console.log(newUser);
 
             if (newUser !== null) {
                 // Update the user in the store
@@ -231,7 +223,7 @@ export const Home: React.FunctionComponent = () => {
         if (user.isLoggedIn === false && isCheckingVote === false) {
             setIsCreatingUser(true);
             const userToCreate: UserCreate = {
-                email: email,
+                email: email.toLocaleLowerCase(),
                 name: name
             };
             createNewUser(userToCreate, true);

@@ -9,7 +9,7 @@ import { HOME_ROUTE } from "./routes";
 import { useSetError } from "./components/ErrorBoundary/ErrorBoundary";
 import { useAppSelector } from "./hooks/useAppSelector";
 import { useAppDispatch } from "./hooks/useAppDispatch";
-import { setLoggedOut } from "./store/userSlice";
+import { clearUser, setLoggedOut } from "./store/userSlice";
 
 export const App: React.FunctionComponent = () => {
     const user = useAppSelector(state => state.user);
@@ -31,7 +31,8 @@ export const App: React.FunctionComponent = () => {
     // Check if user is logged in
     const isUserLoggedIn = user !== null && user?.currentUser !== null && user.isLoggedIn;
 
-    const handleLogout = () => {
+    const handleLogout = (): void => {
+        dispatch(clearUser());
         dispatch(setLoggedOut());
     };
 

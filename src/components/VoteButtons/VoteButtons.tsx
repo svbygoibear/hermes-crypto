@@ -19,7 +19,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
 
     useEffect(() => {
         if (error) {
-            console.log(error.message);
+            console.error(error.message);
         }
     }, [error]);
 

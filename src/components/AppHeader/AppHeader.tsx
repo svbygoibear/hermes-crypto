@@ -60,7 +60,12 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     };
 
     const settings: UserMenuSetting[] = [
-        { id: "user-logout", displayName: "Logout", icon: null, onClick: () => props.onLogout }
+        {
+            id: "user-logout",
+            displayName: "Logout",
+            icon: null,
+            onClick: props.onLogout ? props.onLogout : () => {}
+        }
     ];
 
     const pages: PageMenuItem[] = [
