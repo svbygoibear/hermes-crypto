@@ -8,22 +8,26 @@ import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
 import { VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
-import { getCurrentBtcPrice, getUserById, getUserVotesById } from "../../data/user.data";
+import { getCurrentBtcPrice, getUserById, getUserVotesById, addUser } from "../../data/user.data";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 import { CoinResult } from "../../types/coinResult";
 import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { UserCreate } from "../../types/user";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { setLoggedIn, setUser } from "../../store/userSlice";
 
-export interface HomeProps {
-    isLoggedIn: boolean;
-}
-
-export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
+export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
+    const [isCreatingUser, setIsCreatingUser] = useState<boolean>(false);
     const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
 
-    const location = useLocation(); // If using React Router
+    const user = useAppSelector(state => state.user);
+    const dispatch = useAppDispatch();
 
+    // Used for navigation scrolling of the global app header
+    const location = useLocation();
     useEffect(() => {
         // Handle scrolling when component mounts or updates
         if (location.hash) {
@@ -52,10 +56,10 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
 
     const testGetUser = async () => {
         console.log("ANOTHER TEST");
-        const user = await getUserById("272b6ba2-528d-41af-86b2-b366eaa55a38");
-        const votes = await getUserVotesById("272b6ba2-528d-41af-86b2-b366eaa55a38");
-        console.log(user);
-        console.log(votes);
+        //const user = await getUserById("272b6ba2-528d-41af-86b2-b366eaa55a38");
+        //const votes = await getUserVotesById("272b6ba2-528d-41af-86b2-b366eaa55a38");
+        //console.log(user);
+        //console.log(votes);
     };
 
     // TODO: on load - check if user has already voted/logged in > if so set isVoting to true
@@ -75,8 +79,23 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
         setIsVoting(false);
     };
 
-    const onSignIn = async (): Promise<void> => {
-        // TODO: Add sign in logic
+    const onSignIn = async (name: string, email: string): Promise<void> => {
+        if (user.isLoggedIn === false) {
+            setIsCreatingUser(true);
+            const userToCreate: UserCreate = {
+                email: email,
+                name: name
+            };
+            const newUser = await addUser(userToCreate);
+            console.log(newUser);
+
+            if (newUser !== null) {
+                // Update the user in the store
+                dispatch(setUser(newUser));
+                // Set the user as logged in
+                dispatch(setLoggedIn(true));
+            }
+        }
     };
 
     return (
@@ -87,14 +106,14 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                 </div>
                 <h1>Hermes-Crypto</h1>
                 <WelcomeSignNote
-                    isLoggedIn={props.isLoggedIn}
-                    userEmail=""
-                    userName=""
+                    isLoggedIn={user.currentUser !== null}
+                    userEmail={user.currentUser?.email ?? ""}
+                    userName={user.currentUser?.name ?? ""}
                     onSignIn={onSignIn}
                 />
                 <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
                 <div className="card">
-                    <VoteButtons onVote={onVoteClicked} isVoting={isVoting} />
+                    <VoteButtons onVote={onVoteClicked} isVoting={isVoting && isCreatingUser} />
                     <CountdownTimer
                         shouldCountDown={isVoting}
                         countdownTimeInSeconds={VOTE_TIME_IN_SECONDS}
@@ -103,7 +122,7 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                     <div className="score-text-wrapper">
                         <p className="score-text">
                             <b>
-                                Your current score is: <code>-1</code>
+                                Your current score is: <code>{user?.currentUser?.score ?? 0}</code>
                             </b>
                         </p>
                     </div>

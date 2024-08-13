@@ -39,7 +39,7 @@ export const App: React.FunctionComponent = () => {
     const router = createBrowserRouter([
         {
             path: HOME_ROUTE,
-            element: <Home isLoggedIn={false} />,
+            element: <Home />,
             errorElement: <GenericError />
         }
     ]);

@@ -7,7 +7,7 @@ export interface WelcomeSignNoteProps {
     isLoggedIn: boolean;
     userName: string;
     userEmail: string;
-    onSignIn: () => Promise<void>;
+    onSignIn: (name: string, email: string) => Promise<void>;
 }
 
 export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
@@ -28,9 +28,14 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
     };
 
     const onSignInClick = async (): Promise<void> => {
+        // Check if the user has entered a name and email, if not, return
+        if (userName?.trimEnd() === "" || userEmail?.trimEnd() === "") {
+            return;
+        }
+        // Otherwise, set the signing in state to true and attempt to sign in
         setIsSigningIn(true);
         try {
-            await props.onSignIn();
+            await props.onSignIn(userName, userEmail);
         } catch (error) {
             console.log(error);
             throw new Error("Failed to sign in");
