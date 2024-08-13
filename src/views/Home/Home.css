@@ -35,6 +35,25 @@
     color: #888;
 }
 
+.about-game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about-game-header {
+    margin-bottom: 0;
+}
+.about-game-text {
+    color: #888;
+    width: 700px;
+    padding-bottom: 10px;
+}
+
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .contact-info-header {
     margin-bottom: 0;
 }
@@ -42,11 +61,6 @@
     color: #888;
     width: 700px;
     padding-bottom: 10px;
-}
-.contact-info-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 .contact-info-repo-cards-wrapper {
     display: flex;

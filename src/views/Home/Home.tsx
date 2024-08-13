@@ -109,8 +109,26 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                     Click on the HermesCrypto and React logos to learn more
                 </p>
             </div>
-            <div id="about">
-                <h2>About this game</h2>
+            <div id="about" className="about-game-wrapper">
+                <h2 className="about-game-header">About this game</h2>
+                <p className="about-game-text">
+                    Once you&apos;ve thrown down your speculation in your vote; you won&apos;t be
+                    able to vote for 60 seconds. Those are the rules. I don&apos;t make them, I just
+                    enforce them.
+                </p>
+                <p className="about-game-text">
+                    You don&apos;t have to sign up to play, but that limits how we can keep track of
+                    your score. If you feel worried about entering your email, don&apos;t worry, you
+                    can make up any information you like. Do not that we do store it, however we are
+                    working on functionality where you can delete your profile if you so wish to do
+                    so.
+                </p>
+                <p className="about-game-text">
+                    However, if you do not feel like dealing with the hassle of signing up, you can
+                    just vote and we will create a &quot;fake&quot; profile for you. This will allow
+                    you to vote, and it will allow us to keep track of your score; albeit only for
+                    the current session.
+                </p>
             </div>
             <div id="contact" className="contact-info-wrapper">
                 <h2 className="contact-info-header">Contact</h2>
@@ -118,7 +136,8 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                     This is an open-source project, with 2 key repositories. One being what you see
                     in front of you, powered by <code>React</code>, and then of course the back-end
                     running behind the scenes on <code>Go</code>. Take the time to check out either
-                    repositories and report any issues if you find them!
+                    repositories and report any issues if you find them! Feel free to contact me on
+                    Github if you have any suggestions.
                 </p>
                 <div className="contact-info-repo-cards-wrapper">
                     <div className="contact-info-repo-cards-item">
