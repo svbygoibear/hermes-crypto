@@ -16,6 +16,7 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import { UserCreate } from "../../types/user";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoggedIn, setUser } from "../../store/userSlice";
+import { createFakeUser } from "../../utils/fake.utils";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -68,7 +69,11 @@ export const Home: React.FunctionComponent = () => {
     const onVoteClicked = async (vote: VoteDirection): Promise<void> => {
         setIsVoting(true);
         if (user.isLoggedIn === false) {
+            setIsCreatingUser(true);
             // if user is not logged in, create a user
+            const userToCreate = createFakeUser();
+            console.log("FAKER USER=", userToCreate);
+            createNewUser(userToCreate, true);
         }
         try {
             console.log(`Voting ${vote}`);
@@ -82,28 +87,37 @@ export const Home: React.FunctionComponent = () => {
         setIsVoting(false);
     };
 
-    const onSignIn = async (name: string, email: string): Promise<void> => {
+    const createNewUser = async (
+        userToCreate: UserCreate,
+        shouldSetLoggedIn: boolean
+    ): Promise<void> => {
+        try {
+            const newUser = await addUser(userToCreate);
+            console.log(newUser);
+
+            if (newUser !== null) {
+                // Update the user in the store
+                dispatch(setUser(newUser));
+                // Set the user as logged in
+                if (shouldSetLoggedIn) {
+                    dispatch(setLoggedIn(true));
+                }
+            }
+        } catch (error) {
+            throw new Error("Failed to sign in");
+        } finally {
+            setIsCreatingUser(false);
+        }
+    };
+
+    const onSignInOrOn = async (name: string, email: string): Promise<void> => {
         if (user.isLoggedIn === false) {
             setIsCreatingUser(true);
             const userToCreate: UserCreate = {
                 email: email,
                 name: name
             };
-            try {
-                const newUser = await addUser(userToCreate);
-                console.log(newUser);
-
-                if (newUser !== null) {
-                    // Update the user in the store
-                    dispatch(setUser(newUser));
-                    // Set the user as logged in
-                    dispatch(setLoggedIn(true));
-                }
-            } catch (error) {
-                throw new Error("Failed to sign in");
-            } finally {
-                setIsCreatingUser(false);
-            }
+            createNewUser(userToCreate, true);
         }
     };
 
@@ -118,7 +132,7 @@ export const Home: React.FunctionComponent = () => {
                     doesUserExist={user.currentUser !== null}
                     userEmail={user.currentUser?.email ?? ""}
                     userName={user.currentUser?.name ?? ""}
-                    onSignIn={onSignIn}
+                    onSignIn={onSignInOrOn}
                 />
                 <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
                 <div className="card">
