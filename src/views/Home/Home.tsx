@@ -12,7 +12,6 @@ import { getCurrentBtcPrice, getUserById, getUserVotesById } from "../../data/us
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 import { CoinResult } from "../../types/coin-result";
 import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
-import RepoCard from "react-repo-card";
 
 export interface HomeProps {
     isLoggedIn: boolean;
@@ -46,7 +45,7 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
 
     const getBTC = async () => {
         // TODO: add call to the API back
-        const currentBtcPrice = null; //await getCurrentBtcPrice();
+        const currentBtcPrice = await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
@@ -102,15 +101,12 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                         onCountdownComplete={onVoteDone}
                     />
                     <p>
-                        Edit <code>src/App.tsx</code> and save to test HMR
+                        Your current score is: <code>-1</code>
                     </p>
                 </div>
-                <p className="read-the-docs">
-                    Click on the HermesCrypto and React logos to learn more
-                </p>
             </div>
             <div id="about" className="about-game-wrapper">
-                <h2 className="about-game-header">About this game</h2>
+                <h2 className="about-game-header">About This Game</h2>
                 <p className="about-game-text">
                     Once you&apos;ve thrown down your speculation in your vote; you won&apos;t be
                     able to vote for 60 seconds. Those are the rules. I don&apos;t make them, I just
@@ -140,12 +136,18 @@ export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
                     Github if you have any suggestions.
                 </p>
                 <div className="contact-info-repo-cards-wrapper">
-                    <div className="contact-info-repo-cards-item">
-                        <RepoCard username="dawsonbooth" repository="react-repo-card" />
-                    </div>
-                    <div className="contact-info-repo-cards-item">
-                        <RepoCard username="dawsonbooth" repository="react-repo-card" />
-                    </div>
+                    <a href="https://github.com/svbygoibear/hermes-crypto">
+                        <img
+                            src="https://github-readme-stats.vercel.app/api/pin/?username=dawsonbooth&repo=react-repo-card&show_owner=true"
+                            alt="hermes-crypto GitHub Stats"
+                        />
+                    </a>
+                    <a href="https://github.com/svbygoibear/hermes-crypto-core">
+                        <img
+                            src="https://github-readme-stats.vercel.app/api/pin/?username=dawsonbooth&repo=react-repo-card&show_owner=true"
+                            alt="hermes-crypto-core GitHub Stats"
+                        />
+                    </a>
                 </div>
             </div>
         </div>

@@ -69,4 +69,5 @@
 }
 .contact-info-repo-cards-item {
     width: 405px;
+    max-width: 405px;
 }
