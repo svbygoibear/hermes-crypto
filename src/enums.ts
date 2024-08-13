@@ -3,7 +3,7 @@ export enum VoteDirection {
     Down = "down"
 }
 
-export enum VoteCoin {
+export enum CoinType {
     Bitcoin = "bitcoin",
     Ethereum = "ethereum",
     Litecoin = "litecoin",
