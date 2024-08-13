@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 export interface WelcomeSignNoteProps {
-    isLoggedIn: boolean;
+    doesUserExist: boolean;
     userName: string;
     userEmail: string;
     onSignIn: (name: string, email: string) => Promise<void>;
@@ -46,12 +46,12 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
 
     return (
         <div className="welcome-sign-note-wrapper">
-            {props.isLoggedIn && (
+            {props.doesUserExist && (
                 <h2 className="welcome-sign-note-text">
                     Welcome back, <code title={props.userEmail}>[{props.userName}]</code>
                 </h2>
             )}
-            {!props.isLoggedIn && (
+            {!props.doesUserExist && (
                 <React.Fragment>
                     <div className="welcome-sign-note-text-wrapper">
                         <h2 className="welcome-sign-note-text-header">

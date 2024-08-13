@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 export const SignedIn: Story = {
     args: {
-        isLoggedIn: true,
+        doesUserExist: true,
         userName: "John Doe",
         userEmail: "john@doe.com",
         onSignIn: async () => {

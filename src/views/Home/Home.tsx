@@ -67,6 +67,9 @@ export const Home: React.FunctionComponent = () => {
 
     const onVoteClicked = async (vote: VoteDirection): Promise<void> => {
         setIsVoting(true);
+        if (user.isLoggedIn === false) {
+            // if user is not logged in, create a user
+        }
         try {
             console.log(`Voting ${vote}`);
             // TODO: Call the API to vote
@@ -86,14 +89,20 @@ export const Home: React.FunctionComponent = () => {
                 email: email,
                 name: name
             };
-            const newUser = await addUser(userToCreate);
-            console.log(newUser);
+            try {
+                const newUser = await addUser(userToCreate);
+                console.log(newUser);
 
-            if (newUser !== null) {
-                // Update the user in the store
-                dispatch(setUser(newUser));
-                // Set the user as logged in
-                dispatch(setLoggedIn(true));
+                if (newUser !== null) {
+                    // Update the user in the store
+                    dispatch(setUser(newUser));
+                    // Set the user as logged in
+                    dispatch(setLoggedIn(true));
+                }
+            } catch (error) {
+                throw new Error("Failed to sign in");
+            } finally {
+                setIsCreatingUser(false);
             }
         }
     };
@@ -106,7 +115,7 @@ export const Home: React.FunctionComponent = () => {
                 </div>
                 <h1>Hermes-Crypto</h1>
                 <WelcomeSignNote
-                    isLoggedIn={user.currentUser !== null}
+                    doesUserExist={user.currentUser !== null}
                     userEmail={user.currentUser?.email ?? ""}
                     userName={user.currentUser?.name ?? ""}
                     onSignIn={onSignIn}
