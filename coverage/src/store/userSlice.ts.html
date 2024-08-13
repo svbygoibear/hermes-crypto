@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/stories/Page/Page.stories.ts</title>
+    <title>Code coverage report for src/store/userSlice.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/stories/Page</a> Page.stories.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/store</a> userSlice.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>0/25</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>0/25</span>
             </div>
         
             
@@ -94,30 +94,11 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -127,38 +108,54 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import type { Meta, StoryObj } from "@storybook/react";</span></span></span>
-<span class="cstat-no" title="statement not covered" >import { within, userEvent, expect } from "@storybook/test";</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { createSlice } from "@reduxjs/toolkit";<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { UserState } from "../types/userState";
+import { User } from "../types/user";
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import { Page } from "./Page";</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >const meta = {</span>
-<span class="cstat-no" title="statement not covered" >    title: "Example/Page",</span>
-<span class="cstat-no" title="statement not covered" >    component: Page,</span>
-<span class="cstat-no" title="statement not covered" >    parameters: {</span>
-        // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-<span class="cstat-no" title="statement not covered" >        layout: "fullscreen"</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >} satisfies Meta&lt;typeof Page&gt;;</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export default meta;</span>
-type Story = StoryObj&lt;typeof meta&gt;;
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export const LoggedOut: Story = {};</span>
-&nbsp;
-// More on interaction testing: https://storybook.js.org/docs/writing-tests/interaction-testing
-<span class="cstat-no" title="statement not covered" >export const LoggedIn: Story = {</span>
-<span class="cstat-no" title="statement not covered" >    play: async ({ canvasElement }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        const canvas = within(canvasElement);</span>
-<span class="cstat-no" title="statement not covered" >        const loginButton = canvas.getByRole("button", { name: /Log in/i });</span>
-<span class="cstat-no" title="statement not covered" >        await expect(loginButton).toBeInTheDocument();</span>
-<span class="cstat-no" title="statement not covered" >        await userEvent.click(loginButton);</span>
-<span class="cstat-no" title="statement not covered" >        await expect(loginButton).not.toBeInTheDocument();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        const logoutButton = canvas.getByRole("button", { name: /Log out/i });</span>
-<span class="cstat-no" title="statement not covered" >        await expect(logoutButton).toBeInTheDocument();</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >const initialState: UserState = {</span>
+<span class="cstat-no" title="statement not covered" >    currentUser: null,</span>
+<span class="cstat-no" title="statement not covered" >    isLoggedIn: false</span>
 <span class="cstat-no" title="statement not covered" >};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >const userSlice = createSlice({</span>
+<span class="cstat-no" title="statement not covered" >    name: "user",</span>
+<span class="cstat-no" title="statement not covered" >    initialState,</span>
+<span class="cstat-no" title="statement not covered" >    reducers: {</span>
+<span class="cstat-no" title="statement not covered" >        setUser: (state, action: PayloadAction&lt;User&gt;) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            state.currentUser = action.payload;</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        clearUser: state =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            state.currentUser = null;</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        setLoggedIn: (state, action: PayloadAction&lt;boolean&gt;) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            state.isLoggedIn = action.payload;</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        setLoggedOut: state =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            state.isLoggedIn = false;</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >});</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >export const { setUser, clearUser, setLoggedIn, setLoggedOut } = userSlice.actions;</span>
+<span class="cstat-no" title="statement not covered" >export default userSlice.reducer;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -166,16 +163,16 @@ type Story = StoryObj&lt;typeof meta&gt;;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-08T21:34:11.208Z
+                at 2024-08-13T23:14:11.629Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

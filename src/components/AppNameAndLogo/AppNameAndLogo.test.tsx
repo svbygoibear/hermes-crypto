@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Home } from "./Home";
+import { AppNameAndLogo } from "./AppNameAndLogo";
 import "@testing-library/jest-dom";
 
-describe("Simple Home Render Test", () => {
+describe("Simple AppNameAndLogo Render Test", () => {
     it("the title is visible", () => {
-        render(<Home isLoggedIn />);
+        render(<AppNameAndLogo />);
         expect(screen.getByText("Hermes-Crypto")).toBeInTheDocument();
     });
 });

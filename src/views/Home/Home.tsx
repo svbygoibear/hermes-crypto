@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Home.css";
-import HermesLogo from "./../../assets/svg/hermes-crypto-logo.svg";
-import { CustomIcon } from "./../../components/CustomIcon/CustomIcon";
+import { AppNameAndLogo } from "../../components/AppNameAndLogo/AppNameAndLogo";
 import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
@@ -208,10 +207,7 @@ export const Home: React.FunctionComponent = () => {
     return (
         <div className="home-wrapper">
             <div id="my-game">
-                <div>
-                    <CustomIcon svg={HermesLogo} className="logo spin" />
-                </div>
-                <h1>Hermes-Crypto</h1>
+                <AppNameAndLogo />
                 <WelcomeSignNote
                     doesUserExist={user.currentUser !== null}
                     userEmail={user.currentUser?.email ?? ""}
