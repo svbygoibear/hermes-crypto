@@ -1,8 +1,8 @@
 import type { AxiosInstance } from "axios";
 import { User, UserCreate } from "../../types/user";
 import { Vote, VoteCreate } from "../../types/vote";
-import { ApiResponse } from "../../types/api-response";
-import { CoinResult } from "../../types/coin-result";
+import { ApiResponse } from "../../types/apiResponse";
+import { CoinResult } from "../../types/coinResult";
 
 type UsersApiService = {
     fetchCurrentBtcPrice: () => Promise<ApiResponse<CoinResult>>;

@@ -77,7 +77,15 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                         loadingPosition="start"
                         variant="outlined"
                         onClick={onSignInClick}
-                        sx={{ marginLeft: "10px" }}>
+                        sx={{
+                            marginLeft: "10px",
+                            backgroundColor: "#ffffff",
+                            color: "#f2b4bf",
+                            ":hover": {
+                                bgcolor: "#f2b4bf",
+                                color: "#ffffff"
+                            }
+                        }}>
                         Log In/ Signup
                     </LoadingButton>
                 </React.Fragment>

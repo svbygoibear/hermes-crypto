@@ -1,6 +1,6 @@
 import React from "react";
 import "./HowToWorkText.css";
-import { CoinResult } from "../../types/coin-result";
+import { CoinResult } from "../../types/coinResult";
 
 export interface HowToWorkTextProps {
     isFetchingBtc: boolean;
@@ -19,7 +19,6 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
     );
 
     const getTextElement = (value: string | null): JSX.Element => {
-        console.log("VALUE=", value);
         if (props.isFetchingBtc) {
             return loadingElement;
         }
@@ -58,7 +57,7 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
 
     return (
         <div className="how-to-work-text-wrapper">
-            <p className="read-the-docs">
+            <p className="how-to-work-text-general-text">
                 So how does this work?{" "}
                 <b>
                     <code>Hermes-Crypto</code>
@@ -69,14 +68,14 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
                 going to go down. If you guess correctly - you will get <b>+1</b> point! Guess
                 wrong... That will be <b>-1</b> on your total.
             </p>
-            <p className="read-the-docs">
+            <p className="how-to-work-text-general-text">
                 The current price of {getTextElement(props.currentCoinResult?.vote_coin ?? null)} is{" "}
                 {getPriceText(
                     props.currentCoinResult?.coin_value_currency ?? null,
                     props.currentCoinResult?.coin_value ?? null
                 )}
             </p>
-            <p className="read-the-docs">
+            <p className="how-to-work-text-general-text">
                 Price was last queried on:{" "}
                 <code>{getFormattedDateTime(props.currentCoinResult?.query_time ?? null)}</code>
             </p>

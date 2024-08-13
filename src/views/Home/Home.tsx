@@ -10,7 +10,7 @@ import { VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
 import { getCurrentBtcPrice, getUserById, getUserVotesById } from "../../data/user.data";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
-import { CoinResult } from "../../types/coin-result";
+import { CoinResult } from "../../types/coinResult";
 import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
 
 export interface HomeProps {

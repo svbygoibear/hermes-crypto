@@ -2,7 +2,7 @@ import axios from "axios";
 import { User, UserCreate } from "../types/user";
 import { Vote, VoteCreate } from "../types/vote";
 import { createUsersApiService } from "./services/users.service";
-import { CoinResult } from "../types/coin-result";
+import { CoinResult } from "../types/coinResult";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
