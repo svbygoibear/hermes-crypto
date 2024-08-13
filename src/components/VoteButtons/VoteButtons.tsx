@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";

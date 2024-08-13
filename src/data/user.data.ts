@@ -1,4 +1,5 @@
 import axios from "axios";
+import { AxiosError } from "axios";
 import { User, UserCreate } from "../types/user";
 import { Vote, VoteCreate } from "../types/vote";
 import { createUsersApiService } from "./services/users.service";
@@ -71,7 +72,12 @@ export const addUserVote = async (vote: VoteCreate, userId: string): Promise<Vot
         const response = await apiService.createVote(vote, userId);
         return response.data;
     } catch (error) {
-        // Handle error...
-        return null;
+        // We can expect a 409 error if the user has already voted and the
+        // result has not yet been calculated. We can return null in this case.
+        if ((error as AxiosError).response?.status === 409) {
+            return null;
+        }
+
+        throw error;
     }
 };

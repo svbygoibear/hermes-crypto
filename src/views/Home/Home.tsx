@@ -6,23 +6,35 @@ import HermesLogo from "./../../assets/svg/hermes-crypto-logo.svg";
 import { CustomIcon } from "./../../components/CustomIcon/CustomIcon";
 import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
-import { VoteDirection } from "../../enums";
+import { CoinType, Currency, VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
-import { getCurrentBtcPrice, getUserById, getUserVotesById, addUser } from "../../data/user.data";
+import {
+    getCurrentBtcPrice,
+    getUserById,
+    getUserVotesById,
+    addUser,
+    addUserVote,
+    getUserVoteResultById
+} from "../../data/user.data";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 import { CoinResult } from "../../types/coinResult";
 import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { UserCreate } from "../../types/user";
+import { User, UserCreate } from "../../types/user";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoggedIn, setUser } from "../../store/userSlice";
 import { createFakeUser } from "../../utils/fake.utils";
+import { VoteCreate } from "../../types/vote";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
+    const [isCheckingVote, setIsCheckingVote] = useState<boolean>(true);
     const [isCreatingUser, setIsCreatingUser] = useState<boolean>(false);
     const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
+
+    // We start off with a default of 60 seconds for the countdown timer
+    const timerStartTime = React.useRef<number>(VOTE_TIME_IN_SECONDS);
 
     const user = useAppSelector(state => state.user);
     const dispatch = useAppDispatch();
@@ -44,9 +56,53 @@ export const Home: React.FunctionComponent = () => {
 
     // On mount > setup the home page
     useEffect(() => {
-        void testGetUser();
+        // Get & set the current bitcoin data
         void getBTC();
+        // Perform page setup based on the user
+        void setupPageData();
     }, []);
+
+    const setupPageData = async (): Promise<void> => {
+        // We have a user in redux, so we need to fetch their latest data
+        if (user.currentUser !== null) {
+            const latestVotes = await getUserVotesById(user.currentUser?.id ?? "");
+            const unResolvedVote = latestVotes?.find(vote => vote.coin_value === 0);
+            console.log("UNRESOLVED VOTE=", unResolvedVote);
+            if (unResolvedVote) {
+                setIsVoting(true);
+                const voteCastTime = new Date(unResolvedVote.vote_date_time).getTime();
+                const currentTime = new Date().getTime();
+                const isMoreThanSixtySecondsAgo =
+                    currentTime - voteCastTime >= VOTE_TIME_IN_SECONDS * 1000;
+                console.log("IS MORE THAN SIXTY SECONDS AGO=", isMoreThanSixtySecondsAgo);
+                // if the vote was cast more than 60 seconds ago, we need to get the results
+                if (isMoreThanSixtySecondsAgo) {
+                    const voteResult = await getUserVoteResultById(user.currentUser?.id ?? "");
+                    console.log("THIS IS THE VOTE RESULT ON LOAD=", voteResult);
+                    if (voteResult?.coin_value !== 0) {
+                        const updatedUser = await getUserById(user.currentUser?.id ?? "");
+                        // Update the user in the store
+                        if (updatedUser !== null) {
+                            dispatch(setUser(updatedUser));
+                        }
+                    }
+                    setIsVoting(false);
+                } else {
+                    const timeLeft = Math.floor(
+                        (VOTE_TIME_IN_SECONDS * 1000 - (currentTime - voteCastTime)) / 1000
+                    );
+                    timerStartTime.current = timeLeft;
+                }
+            } else {
+                const latestUserData = await getUserById(user.currentUser?.id ?? "");
+                if (latestUserData !== null) {
+                    dispatch(setUser(latestUserData));
+                }
+            }
+        }
+
+        setIsCheckingVote(false);
+    };
 
     const getBTC = async () => {
         // TODO: add call to the API back
@@ -55,31 +111,50 @@ export const Home: React.FunctionComponent = () => {
         setIsFetchingBtc(false);
     };
 
-    const testGetUser = async () => {
-        console.log("ANOTHER TEST");
-        //const user = await getUserById("272b6ba2-528d-41af-86b2-b366eaa55a38");
-        //const votes = await getUserVotesById("272b6ba2-528d-41af-86b2-b366eaa55a38");
-        //console.log(user);
-        //console.log(votes);
-    };
-
     // TODO: on load - check if user has already voted/logged in > if so set isVoting to true
     // update the current vote time to what the user has left
 
-    const onVoteClicked = async (vote: VoteDirection): Promise<void> => {
-        setIsVoting(true);
+    const onVoteClicked = async (currVoteDirection: VoteDirection): Promise<void> => {
+        setIsCheckingVote(true);
+        let currUser = user.currentUser;
+        // FIrst, determine if we need to make a "dummy" user for someone who is not logged in.
         if (user.isLoggedIn === false) {
             setIsCreatingUser(true);
             // if user is not logged in, create a user
             const userToCreate = createFakeUser();
             console.log("FAKER USER=", userToCreate);
-            createNewUser(userToCreate, true);
+            const newUser = await createNewUser(userToCreate, true);
+            currUser = newUser;
         }
+        // Now carry out the voting process
         try {
-            console.log(`Voting ${vote}`);
-            // TODO: Call the API to vote
+            const newVote: VoteCreate = {
+                vote_direction: currVoteDirection,
+                vote_coin: CoinType.Bitcoin,
+                coin_value_currency: Currency.USD
+            };
+            console.log("NEW VOTE=", newVote);
+            const vote = await addUserVote(newVote, currUser?.id ?? "");
+            if (vote === null) {
+                const voteResult = await getUserVoteResultById(currUser?.id ?? "");
+
+                if (voteResult?.coin_value !== 0) {
+                    const updatedUser = await getUserById(currUser?.id ?? "");
+                    // Update the user in the store
+                    if (updatedUser !== null) {
+                        dispatch(setUser(updatedUser));
+                    }
+                }
+                setIsCheckingVote(false);
+            } else {
+                setIsCheckingVote(false);
+                setIsVoting(true);
+            }
+
+            console.log("NEW VOTE FROM API=", vote);
         } catch (error) {
-            console.error(error);
+            console.error("Error from the home=", error);
+            throw error;
         }
     };
 
@@ -90,7 +165,7 @@ export const Home: React.FunctionComponent = () => {
     const createNewUser = async (
         userToCreate: UserCreate,
         shouldSetLoggedIn: boolean
-    ): Promise<void> => {
+    ): Promise<User | null> => {
         try {
             const newUser = await addUser(userToCreate);
             console.log(newUser);
@@ -102,16 +177,21 @@ export const Home: React.FunctionComponent = () => {
                 if (shouldSetLoggedIn) {
                     dispatch(setLoggedIn(true));
                 }
+
+                return newUser;
             }
+            return null;
         } catch (error) {
-            throw new Error("Failed to sign in");
+            throw new Error("Failed to sign in.");
         } finally {
             setIsCreatingUser(false);
         }
     };
 
     const onSignInOrOn = async (name: string, email: string): Promise<void> => {
-        if (user.isLoggedIn === false) {
+        // No user should be logged in & we should not be actively checking the current user vote
+        // before allowing a user to sign in/sign up
+        if (user.isLoggedIn === false && isCheckingVote === false) {
             setIsCreatingUser(true);
             const userToCreate: UserCreate = {
                 email: email,
@@ -136,10 +216,13 @@ export const Home: React.FunctionComponent = () => {
                 />
                 <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
                 <div className="card">
-                    <VoteButtons onVote={onVoteClicked} isVoting={isVoting && isCreatingUser} />
+                    <VoteButtons
+                        onVote={onVoteClicked}
+                        isVoting={isVoting || isCreatingUser || isCheckingVote}
+                    />
                     <CountdownTimer
                         shouldCountDown={isVoting}
-                        countdownTimeInSeconds={VOTE_TIME_IN_SECONDS}
+                        countdownTimeInSeconds={timerStartTime.current}
                         onCountdownComplete={onVoteDone}
                     />
                     <div className="score-text-wrapper">

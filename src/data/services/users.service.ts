@@ -80,7 +80,7 @@ export const createUsersApiService = (
         createVote: async (vote: VoteCreate, id: string): Promise<ApiResponse<Vote>> => {
             try {
                 const response = await axiosInstance.post<Vote>(
-                    `${baseUrl}/users/${id}/vote`,
+                    `${baseUrl}/users/${id}/votes`,
                     vote
                 );
                 return response;
