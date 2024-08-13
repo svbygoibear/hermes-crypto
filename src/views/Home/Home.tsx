@@ -17,7 +17,12 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
 
     useEffect(() => {
         void testGetUser();
+        void setupHomePage();
     });
+
+    const setupHomePage = async () => {
+        // TODO: code here
+    };
 
     const testGetUser = async () => {
         console.log("ANOTHER TEST");

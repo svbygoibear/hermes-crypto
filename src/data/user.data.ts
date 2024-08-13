@@ -2,6 +2,7 @@ import axios from "axios";
 import { User, UserCreate } from "../types/user";
 import { Vote, VoteCreate } from "../types/vote";
 import { createUsersApiService } from "./services/users.service";
+import { CoinResult } from "../types/coin-result";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
@@ -14,6 +15,16 @@ const axiosInstance = axios.create({
 
 // Create the API service
 const apiService = createUsersApiService(axiosInstance, API_BASE_URL);
+
+export const getUserByIdCurrentBtcPrice = async (): Promise<CoinResult | null> => {
+    try {
+        const response = await apiService.fetchCurrentBtcPrice();
+        return response.data;
+    } catch (error) {
+        // Handle error...
+        return null;
+    }
+};
 
 export const getUserById = async (id: string): Promise<User | null> => {
     try {
