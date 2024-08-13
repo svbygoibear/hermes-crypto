@@ -6,8 +6,22 @@ import { Home } from "./views/Home/Home";
 import { LayoutBox } from "./layouts/LayoutBox/LayoutBox";
 import { GenericError } from "./views/GenericError/GenericError";
 import { HOME_ROUTE } from "./routes";
+import { useSetError } from "./components/ErrorBoundary/ErrorBoundary";
 
 export const App: React.FunctionComponent = () => {
+    const setError = useSetError();
+    // Global error handling for unhandled promise rejections
+    React.useEffect(() => {
+        const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+            event.preventDefault();
+            setError(event.reason);
+        };
+        window.addEventListener("unhandledrejection", handleUnhandledRejection);
+        return () => {
+            window.removeEventListener("unhandledrejection", handleUnhandledRejection);
+        };
+    }, [setError]);
+
     const router = createBrowserRouter([
         {
             path: HOME_ROUTE,

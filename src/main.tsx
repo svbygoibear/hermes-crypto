@@ -12,6 +12,18 @@ import { FallbackComponent } from "./components/FallbackComponent/FallbackCompon
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
+// window.addEventListener("unhandledrejection", event => {
+//     // Prevent the default handling (logging to console)
+//     event.preventDefault();
+
+//     // Handle the error
+//     const error = event.reason;
+//     console.error("Unhandled promise rejection:", error);
+
+//     // You could potentially call a method on your ErrorBoundary here to set the error state
+//     // This would require modifying your ErrorBoundary to expose such a method
+// });
+
 (() => {
     root.render(
         <React.StrictMode>

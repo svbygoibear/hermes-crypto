@@ -10,12 +10,13 @@ import { VOTE_TIME_IN_SECONDS } from "../../constants";
 import { getCurrentBtcPrice, getUserById, getUserVotesById } from "../../data/user.data";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 import { CoinResult } from "../../types/coin-result";
+import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
 
 export interface HomeProps {
     isLoggedIn: boolean;
 }
 
-export const Home: React.FunctionComponent<HomeProps> = () => {
+export const Home: React.FunctionComponent<HomeProps> = (props: HomeProps) => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
     const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
@@ -58,15 +59,25 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
         setIsVoting(false);
     };
 
+    const onSignIn = async (): Promise<void> => {
+        // TODO: Add sign in logic
+    };
+
     return (
         <div className="home-wrapper">
             <div>
                 <CustomIcon svg={HermesLogo} className="logo spin" />
             </div>
             <h1>Hermes-Crypto</h1>
-            <h2>
+            {/* <h2>
                 Welcome back, <code>[your-name-here]</code>
-            </h2>
+            </h2> */}
+            <WelcomeSignNote
+                isLoggedIn={props.isLoggedIn}
+                userEmail=""
+                userName=""
+                onSignIn={onSignIn}
+            />
             <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
             <div className="card">
                 <VoteButtons onVote={onVoteClicked} isVoting={isVoting} />
