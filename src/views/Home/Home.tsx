@@ -7,6 +7,7 @@ import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
 import { VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
 import { getUserById, getUserVotesById } from "../../data/user.data";
+import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
 
 export interface HomeProps {
     isLoggedIn: boolean;
@@ -58,6 +59,7 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
             <h2>
                 Welcome back, <code>[your-name-here]</code>
             </h2>
+            <HowToWorkText isFetchingBtc={true} currentCoinResult={null} />
             <div className="card">
                 <VoteButtons onVote={onVoteClicked} isVoting={isVoting} />
                 <CountdownTimer
