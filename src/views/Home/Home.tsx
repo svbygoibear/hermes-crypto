@@ -293,13 +293,13 @@ export const Home: React.FunctionComponent = () => {
                 <div className="contact-info-repo-cards-wrapper">
                     <a href="https://github.com/svbygoibear/hermes-crypto">
                         <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=dawsonbooth&repo=react-repo-card&show_owner=true"
+                            src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto"
                             alt="hermes-crypto GitHub Stats"
                         />
                     </a>
                     <a href="https://github.com/svbygoibear/hermes-crypto-core">
                         <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=dawsonbooth&repo=react-repo-card&show_owner=true"
+                            src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto-core"
                             alt="hermes-crypto-core GitHub Stats"
                         />
                     </a>
