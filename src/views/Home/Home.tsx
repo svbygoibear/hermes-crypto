@@ -18,7 +18,7 @@ import {
 
 import { CoinResult } from "../../types/coinResult";
 import { User, UserCreate } from "../../types/user";
-import { VoteCreate } from "../../types/vote";
+import { Vote, VoteCreate } from "../../types/vote";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoggedIn, setUser } from "../../store/userSlice";
@@ -107,17 +107,42 @@ export const Home: React.FunctionComponent = () => {
         setIsCheckingVote(false);
     };
 
-    const getBTC = async () => {
+    const getBTC = async (): Promise<void> => {
         // TODO: add call to the API back
         const currentBtcPrice = null; //await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
 
+    const getDelayedVoteResult = async (userId: string): Promise<Vote | null> => {
+        return new Promise((resolve, reject) => {
+            setTimeout(async () => {
+                try {
+                    const voteResult = await getUserVoteResultById(userId);
+                    resolve(voteResult);
+                } catch (error) {
+                    reject(error);
+                }
+            }, 5000); // 5000 milliseconds = 5 seconds
+        });
+    };
+
+    const setNewBtcPriceFromVoteResult = async (vote: Vote | null): Promise<void> => {
+        const newBtc: CoinResult = {
+            coin_value: vote?.coin_value ?? 0,
+            coin_value_currency: Currency.USD,
+            vote_coin: CoinType.Bitcoin,
+            query_time: new Date().toISOString()
+        };
+        if (newBtc.coin_value !== 0) {
+            setLatestBtc(newBtc);
+        }
+    };
+
     const onVoteClicked = async (currVoteDirection: VoteDirection): Promise<void> => {
         setIsCheckingVote(true);
         let currUser = user.currentUser;
-        // FIrst, determine if we need to make a "dummy" user for someone who is not logged in.
+        // First, determine if we need to make a "dummy" user for someone who is not logged in.
         if (user.isLoggedIn === false) {
             setIsCreatingUser(true);
             // if user is not logged in, create a user
@@ -136,9 +161,10 @@ export const Home: React.FunctionComponent = () => {
             console.log("NEW VOTE=", newVote);
             const vote = await addUserVote(newVote, currUser?.id ?? "");
             if (vote === null) {
-                const voteResult = await getUserVoteResultById(currUser?.id ?? "");
+                const voteResult = await getDelayedVoteResult(currUser?.id ?? "");
 
                 if (voteResult?.coin_value !== 0) {
+                    setNewBtcPriceFromVoteResult(voteResult);
                     const updatedUser = await getUserById(currUser?.id ?? "");
                     // Update the user in the store
                     if (updatedUser !== null) {
@@ -158,10 +184,18 @@ export const Home: React.FunctionComponent = () => {
         }
     };
 
-    const onVoteDone = (): void => {
-        // Add a small delay here > and then fetch the vote results
+    const onVoteDone = async (): Promise<void> => {
         // TODO: add a pop-up or something to show the user the result of their vote
         const previousScore = user.currentUser?.score ?? 0;
+        const newResult = await getDelayedVoteResult(user.currentUser?.id ?? "");
+        if (newResult !== null) {
+            setNewBtcPriceFromVoteResult(newResult);
+            const updatedUser = await getUserById(user.currentUser?.id ?? "");
+            // Update the user in the store
+            if (updatedUser !== null) {
+                dispatch(setUser(updatedUser));
+            }
+        }
         setIsVoting(false);
     };
 
