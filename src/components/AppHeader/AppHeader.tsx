@@ -34,6 +34,23 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
         setAnchorElNav(null);
     };
 
+    const handleCloseNavMenuButtonClick = (item: PageMenuItem) => {
+        handleCloseNavMenu();
+        // The scroll will happen after navigation
+        if (window.location.pathname !== "/") {
+            return;
+        }
+
+        // If on the home page, scroll immediately
+        setTimeout(() => {
+            const element = document.getElementById(item.targetId);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }, 100);
+        item.onClick();
+    };
+
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
@@ -44,9 +61,9 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     ];
 
     const pages: PageMenuItem[] = [
-        { id: "page-mygame", displayName: "My Game", onClick: () => {} },
-        { id: "page-about", displayName: "About", onClick: () => {} },
-        { id: "page-contact", displayName: "Contact", onClick: () => {} }
+        { id: "page-mygame", displayName: "My Game", onClick: () => {}, targetId: "my-game" },
+        { id: "page-about", displayName: "About", onClick: () => {}, targetId: "about" },
+        { id: "page-contact", displayName: "Contact", onClick: () => {}, targetId: "contact" }
     ];
 
     return (
@@ -58,7 +75,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href=""
                         sx={{
                             mr: 2,
                             display: { xs: "none", md: "flex" },
@@ -87,7 +104,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         variant="h5"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href=""
                         sx={{
                             mr: 2,
                             display: { xs: "flex", md: "none" },
@@ -104,7 +121,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         {pages.map(page => (
                             <Button
                                 key={page.id}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => handleCloseNavMenuButtonClick(page)}
                                 sx={{ my: 2, color: "white", display: "block" }}>
                                 {page.displayName}
                             </Button>

@@ -34,3 +34,25 @@
 .read-the-docs {
     color: #888;
 }
+
+.contact-info-header {
+    margin-bottom: 0;
+}
+.contact-info-text {
+    color: #888;
+    width: 700px;
+    padding-bottom: 10px;
+}
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-info-repo-cards-wrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+}
+.contact-info-repo-cards-item {
+    width: 405px;
+}

@@ -28,12 +28,12 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
     };
 
     const onSignInClick = async (): Promise<void> => {
-        throw new Error("Not implemented");
         setIsSigningIn(true);
         try {
             await props.onSignIn();
         } catch (error) {
-            // TODO: Handle error
+            console.log(error);
+            throw new Error("Failed to sign in");
         } finally {
             setIsSigningIn(false);
         }

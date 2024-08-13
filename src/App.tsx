@@ -22,6 +22,8 @@ export const App: React.FunctionComponent = () => {
         };
     }, [setError]);
 
+    // TODO: check if logged in here - check redux
+
     const router = createBrowserRouter([
         {
             path: HOME_ROUTE,
