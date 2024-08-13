@@ -7,8 +7,14 @@ import { LayoutBox } from "./layouts/LayoutBox/LayoutBox";
 import { GenericError } from "./views/GenericError/GenericError";
 import { HOME_ROUTE } from "./routes";
 import { useSetError } from "./components/ErrorBoundary/ErrorBoundary";
+import { useAppSelector } from "./hooks/useAppSelector";
+import { useAppDispatch } from "./hooks/useAppDispatch";
+import { setLoggedOut } from "./store/userSlice";
 
 export const App: React.FunctionComponent = () => {
+    const user = useAppSelector(state => state.user);
+    const dispatch = useAppDispatch();
+
     const setError = useSetError();
     // Global error handling for unhandled promise rejections
     React.useEffect(() => {
@@ -22,8 +28,14 @@ export const App: React.FunctionComponent = () => {
         };
     }, [setError]);
 
-    // TODO: check if logged in here - check redux
+    // Check if user is logged in
+    const isUserLoggedIn = user !== null && user?.currentUser !== null && user.isLoggedIn;
 
+    const handleLogout = () => {
+        dispatch(setLoggedOut());
+    };
+
+    // Define the routes
     const router = createBrowserRouter([
         {
             path: HOME_ROUTE,
@@ -35,7 +47,11 @@ export const App: React.FunctionComponent = () => {
     return (
         <React.Fragment>
             <LayoutBox>
-                <AppHeader isLoggedIn={false} />
+                <AppHeader
+                    userName={user?.currentUser?.name ?? ""}
+                    isLoggedIn={isUserLoggedIn}
+                    onLogout={handleLogout}
+                />
                 <RouterProvider router={router} />
             </LayoutBox>
         </React.Fragment>

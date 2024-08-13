@@ -15,8 +15,12 @@ import { PageMenu, PageMenuItem } from "./components/PageMenu/PageMenu";
 import { AppLogoIcon } from "../../assets/AppLogoIcon";
 import { APP_NAME } from "../../constants";
 
+import AvatarImage from "../../assets/default-user-avatar.jpg";
+
 export interface AppHeaderProps {
     isLoggedIn: boolean;
+    userName?: string;
+    onLogout?: () => void;
 }
 
 export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHeaderProps) => {
@@ -56,8 +60,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     };
 
     const settings: UserMenuSetting[] = [
-        { id: "user-profile", displayName: "Profile", icon: null, onClick: () => {} },
-        { id: "user-logout", displayName: "Logout", icon: null, onClick: () => {} }
+        { id: "user-logout", displayName: "Logout", icon: null, onClick: () => props.onLogout }
     ];
 
     const pages: PageMenuItem[] = [
@@ -131,8 +134,11 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="View settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    {/* TODO: replace this avatar with something else */}
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    <Avatar
+                                        alt={props.userName}
+                                        src={AvatarImage}
+                                        title={`Welcome back, ${props.userName}`}
+                                    />
                                 </IconButton>
                             </Tooltip>
                             <UserMenu
