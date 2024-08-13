@@ -12,6 +12,43 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
 ) => {
     const loadingString = "loading...";
 
+    const getTextElement = (value: string | null): JSX.Element => {
+        if (props.isFetchingBtc) {
+            return <code>{loadingString}</code>;
+        }
+        if (value === null) {
+            return <code>COULD NOT LOAD</code>;
+        }
+
+        return <code>{value}</code>;
+    };
+
+    const getPriceText = (currency: string | null, value: number | null): JSX.Element => {
+        if (props.isFetchingBtc) {
+            return <code>{loadingString}</code>;
+        }
+        if (value === null || currency === null) {
+            return <code>COULD NOT LOAD</code>;
+        }
+
+        return (
+            <code>
+                {currency} {value}
+            </code>
+        );
+    };
+
+    const getFormattedDateTime = (value: Date | null): JSX.Element => {
+        if (props.isFetchingBtc) {
+            return <code>{loadingString}</code>;
+        }
+        if (value === null) {
+            return <code>COULD NOT LOAD</code>;
+        }
+
+        return <code>{`${value}`}</code>;
+    };
+
     return (
         <div className="how-to-work-text-wrapper">
             <p className="read-the-docs">
@@ -22,23 +59,15 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
                 correctly - you will get +1 point! Guess wrong... That will be -1 on your total.
             </p>
             <p className="read-the-docs">
-                The current price of{" "}
-                <code>{props.isFetchingBtc ? loadingString : props.currentCoinResult?.coin}</code>{" "}
-                is{" "}
-                <code>
-                    {props.isFetchingBtc
-                        ? loadingString
-                        : props.currentCoinResult?.coin_value_currency}{" "}
-                    {props.isFetchingBtc ? "" : props.currentCoinResult?.coin_value}
-                </code>
+                The current price of {getTextElement(props.currentCoinResult?.coin ?? null)} is{" "}
+                {getPriceText(
+                    props.currentCoinResult?.coin_value_currency ?? null,
+                    props.currentCoinResult?.coin_value ?? null
+                )}
             </p>
             <p className="read-the-docs">
                 Price was last queries on:{" "}
-                <code>
-                    {props.isFetchingBtc
-                        ? loadingString
-                        : props.currentCoinResult?.query_time.toDateString()}
-                </code>
+                <code>{getFormattedDateTime(props.currentCoinResult?.query_time ?? null)}</code>
             </p>
         </div>
     );

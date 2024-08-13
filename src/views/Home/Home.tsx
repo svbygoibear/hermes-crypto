@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import HermesLogo from "./../../assets/svg/hermes-crypto-logo.svg";
@@ -6,8 +7,9 @@ import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
 import { VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
-import { getUserById, getUserVotesById } from "../../data/user.data";
+import { getCurrentBtcPrice, getUserById, getUserVotesById } from "../../data/user.data";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
+import { CoinResult } from "../../types/coin-result";
 
 export interface HomeProps {
     isLoggedIn: boolean;
@@ -15,14 +17,20 @@ export interface HomeProps {
 
 export const Home: React.FunctionComponent<HomeProps> = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
+    const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
+    const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
 
+    // On mount > setup the home page
     useEffect(() => {
         void testGetUser();
-        void setupHomePage();
-    });
+        void getBTC();
+    }, []);
 
-    const setupHomePage = async () => {
-        // TODO: code here
+    const getBTC = async () => {
+        // TODO: add call to the API back
+        const currentBtcPrice = null; // await getCurrentBtcPrice();
+        setLatestBtc(currentBtcPrice);
+        setIsFetchingBtc(false);
     };
 
     const testGetUser = async () => {
@@ -59,7 +67,7 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
             <h2>
                 Welcome back, <code>[your-name-here]</code>
             </h2>
-            <HowToWorkText isFetchingBtc={true} currentCoinResult={null} />
+            <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
             <div className="card">
                 <VoteButtons onVote={onVoteClicked} isVoting={isVoting} />
                 <CountdownTimer

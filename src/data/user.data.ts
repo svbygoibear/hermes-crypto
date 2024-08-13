@@ -16,7 +16,7 @@ const axiosInstance = axios.create({
 // Create the API service
 const apiService = createUsersApiService(axiosInstance, API_BASE_URL);
 
-export const getUserByIdCurrentBtcPrice = async (): Promise<CoinResult | null> => {
+export const getCurrentBtcPrice = async (): Promise<CoinResult | null> => {
     try {
         const response = await apiService.fetchCurrentBtcPrice();
         return response.data;
