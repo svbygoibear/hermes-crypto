@@ -12,54 +12,65 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
 ) => {
     const loadingString = "loading...";
 
+    const loadingElement = <code className="how-to-work-text-loading-text">{loadingString}</code>;
+    const couldNotLoadElement = <code className="how-to-work-text-error-text">COULD NOT LOAD</code>;
+    const loadedElement = (value: string) => (
+        <code className="how-to-work-text-loaded-text">{value}</code>
+    );
+
     const getTextElement = (value: string | null): JSX.Element => {
+        console.log("VALUE=", value);
         if (props.isFetchingBtc) {
-            return <code>{loadingString}</code>;
+            return loadingElement;
         }
         if (value === null) {
-            return <code>COULD NOT LOAD</code>;
+            return couldNotLoadElement;
         }
-
-        return <code>{value}</code>;
+        return loadedElement(value);
     };
 
     const getPriceText = (currency: string | null, value: number | null): JSX.Element => {
         if (props.isFetchingBtc) {
-            return <code>{loadingString}</code>;
+            return loadingElement;
         }
         if (value === null || currency === null) {
-            return <code>COULD NOT LOAD</code>;
+            return couldNotLoadElement;
         }
-
-        return (
-            <code>
-                {currency} {value}
-            </code>
-        );
+        return loadedElement(`${currency} ${value}`);
     };
 
-    const getFormattedDateTime = (value: Date | null): JSX.Element => {
+    const getFormattedDateTime = (value: string | null): JSX.Element => {
+        let date = new Date("");
+        try {
+            date = new Date(Date.parse(value ?? ""));
+        } catch (error) {
+            return couldNotLoadElement;
+        }
         if (props.isFetchingBtc) {
-            return <code>{loadingString}</code>;
+            return loadingElement;
         }
         if (value === null) {
-            return <code>COULD NOT LOAD</code>;
+            return couldNotLoadElement;
         }
 
-        return <code>{`${value}`}</code>;
+        return loadedElement(`${date?.toLocaleTimeString()}`);
     };
 
     return (
         <div className="how-to-work-text-wrapper">
             <p className="read-the-docs">
-                So how does this work? <code>Hermes-Crypto</code> is a fun site to pass the time
-                while you wait for your code to build, a deployment to finish or just want to kill
-                some time while your &rsquo;spro is brewing. Vote up if you think the price is going
-                to go up, or vote down if you think the price is going to go down. If you guess
-                correctly - you will get +1 point! Guess wrong... That will be -1 on your total.
+                So how does this work?{" "}
+                <b>
+                    <code>Hermes-Crypto</code>
+                </b>{" "}
+                is a fun site to pass the time while you wait for your code to build, a deployment
+                to finish or just want to kill some time while your &rsquo;spro is brewing. Vote up
+                if you think the price is going to go up, or vote down if you think the price is
+                going to go down. If you guess correctly - you will get <b>+1</b> point! Guess
+                wrong... That will be <b>-1</b> on your total.
             </p>
             <p className="read-the-docs">
-                The current price of {getTextElement(props.currentCoinResult?.coin ?? null)} is{" "}
+                The current price of {getTextElement(props.currentCoinResult?.vote_coin ?? null)} is{" "}
                 {getPriceText(
                     props.currentCoinResult?.coin_value_currency ?? null,
                     props.currentCoinResult?.coin_value ?? null

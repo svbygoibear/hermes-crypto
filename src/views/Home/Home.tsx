@@ -28,7 +28,7 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
 
     const getBTC = async () => {
         // TODO: add call to the API back
-        const currentBtcPrice = null; // await getCurrentBtcPrice();
+        const currentBtcPrice = null; //await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
