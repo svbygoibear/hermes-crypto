@@ -119,7 +119,7 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const getBTC = async (): Promise<void> => {
-        const currentBtcPrice = await getCurrentBtcPrice();
+        const currentBtcPrice = null; // await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
@@ -287,16 +287,17 @@ export const Home: React.FunctionComponent = () => {
             <div id="about" className="about-game-wrapper">
                 <h2 className="about-game-header">About This Game</h2>
                 <p className="about-game-text">
-                    Once you&apos;ve thrown down your speculation in your vote; you won&apos;t be
-                    able to vote for 60 seconds. Those are the rules. I don&apos;t make them, I just
-                    enforce them.
+                    Once you&apos;ve thrown down your speculation, you won&apos;t be able to vote for 
+                    another <b>60</b> seconds. Those are the rules. I don&apos;t make them, I only 
+                    enforce them. When the timer is up, <code className="code-info-style">Hermes</code> will 
+                    determine your fate. May the gods be ever in your favour!
                 </p>
                 <p className="about-game-text">
-                    You don&apos;t have to sign up to play, but that limits how we can keep track of
-                    your score. If you feel worried about entering your email, don&apos;t worry, you
-                    can make up any information you like. Do not that we do store it, however we are
-                    working on functionality where you can delete your profile if you so wish to do
-                    so.
+                    You don&apos;t have to sign up to play, but that limits how we can keep track of 
+                    your score. If you feel worried about entering your email, don&apos;t stress, you 
+                    can enter any unique identifier into the email field. Just so you know, we store 
+                    this information, but we are working on functionality where you can delete your 
+                    profile if you want to do so.
                 </p>
                 <p className="about-game-text">
                     However, if you do not feel like dealing with the hassle of signing up, you can
@@ -308,11 +309,10 @@ export const Home: React.FunctionComponent = () => {
             <div id="contact" className="contact-info-wrapper">
                 <h2 className="contact-info-header">Contact</h2>
                 <p className="contact-info-text">
-                    This is an open-source project, with 2 key repositories. One being what you see
-                    in front of you, powered by <code>React</code>, and then of course the back-end
-                    running behind the scenes on <code>Go</code>. Take the time to check out either
-                    repositories and report any issues if you find them! Feel free to contact me on
-                    Github if you have any suggestions.
+                    This is an open-source project with 2 key repositories: <code className="code-info-style">React</code> on 
+                    the front-end and <code className="code-info-style">Go</code> on the back-end. Take the time to check 
+                    out either repository and report any issues if you find them! Feel free to contact me 
+                    on <a href="https://github.com/svbygoibear">Github</a> if you have any suggestions.
                 </p>
                 <div className="contact-info-repo-cards-wrapper">
                     <a href="https://github.com/svbygoibear/hermes-crypto">
