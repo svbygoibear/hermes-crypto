@@ -1,0 +1,33 @@
+.how-to-work-text-wrapper {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 50px;
+    padding-left: 50px;
+    color: #888;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+}
+
+.how-to-work-text-loading-text {
+    color: #f2b4bf;
+    font-size: 1.1em;
+}
+
+.how-to-work-text-error-text {
+    color: #dc323f;
+    font-size: 1.1em;
+}
+
+.how-to-work-text-loaded-text {
+    color: #0075cc;
+    font-size: 1.1em;
+}
+
+.how-to-work-text-general-text {
+    color: #888;
+}

@@ -2,8 +2,10 @@ import type { AxiosInstance } from "axios";
 import { User, UserCreate } from "../../types/user";
 import { Vote, VoteCreate } from "../../types/vote";
 import { ApiResponse } from "../../types/apiResponse";
+import { CoinResult } from "../../types/coinResult";
 
 type UsersApiService = {
+    fetchCurrentBtcPrice: () => Promise<ApiResponse<CoinResult>>;
     fetchUserById: (id: string) => Promise<ApiResponse<User>>;
     fetchUserVotesById: (id: string) => Promise<ApiResponse<Vote[]>>;
     fetchUserVoteResultById: (id: string) => Promise<ApiResponse<Vote>>;
@@ -17,6 +19,17 @@ export const createUsersApiService = (
     baseUrl: string
 ): UsersApiService => {
     return {
+        // Fetch a user by ID
+        fetchCurrentBtcPrice: async (): Promise<ApiResponse<CoinResult>> => {
+            try {
+                const response = await axiosInstance.get<CoinResult>(`${baseUrl}/coins/btc`);
+                return response;
+            } catch (error) {
+                console.error("Error fetching user:", error);
+                throw error;
+            }
+        },
+
         // Fetch a user by ID
         fetchUserById: async (id: string): Promise<ApiResponse<User>> => {
             try {
@@ -67,7 +80,7 @@ export const createUsersApiService = (
         createVote: async (vote: VoteCreate, id: string): Promise<ApiResponse<Vote>> => {
             try {
                 const response = await axiosInstance.post<Vote>(
-                    `${baseUrl}/users/${id}/vote`,
+                    `${baseUrl}/users/${id}/votes`,
                     vote
                 );
                 return response;

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
@@ -20,7 +19,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
 
     useEffect(() => {
         if (error) {
-            console.log(error.message);
+            console.error(error.message);
         }
     }, [error]);
 

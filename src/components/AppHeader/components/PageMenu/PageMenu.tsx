@@ -7,6 +7,7 @@ export interface PageMenuItem {
     id: string;
     displayName: string;
     onClick: () => void;
+    targetId: string;
 }
 
 export interface PageMenuProps {
@@ -17,8 +18,21 @@ export interface PageMenuProps {
 
 export const PageMenu: React.FunctionComponent<PageMenuProps> = (props: PageMenuProps) => {
     const handleOnItemClick = (item: PageMenuItem) => {
-        item.onClick();
         props.onClose();
+        // The scroll will happen after navigation
+        if (window.location.pathname !== "/") {
+            return;
+        }
+
+        // If on the home page, scroll immediately
+        setTimeout(() => {
+            const element = document.getElementById(item.targetId);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }, 100);
+
+        item.onClick();
     };
 
     return (

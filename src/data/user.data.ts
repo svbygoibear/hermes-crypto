@@ -1,7 +1,9 @@
 import axios from "axios";
+import { AxiosError } from "axios";
 import { User, UserCreate } from "../types/user";
 import { Vote, VoteCreate } from "../types/vote";
 import { createUsersApiService } from "./services/users.service";
+import { CoinResult } from "../types/coinResult";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
@@ -14,6 +16,16 @@ const axiosInstance = axios.create({
 
 // Create the API service
 const apiService = createUsersApiService(axiosInstance, API_BASE_URL);
+
+export const getCurrentBtcPrice = async (): Promise<CoinResult | null> => {
+    try {
+        const response = await apiService.fetchCurrentBtcPrice();
+        return response.data;
+    } catch (error) {
+        // Handle error...
+        return null;
+    }
+};
 
 export const getUserById = async (id: string): Promise<User | null> => {
     try {
@@ -60,7 +72,12 @@ export const addUserVote = async (vote: VoteCreate, userId: string): Promise<Vot
         const response = await apiService.createVote(vote, userId);
         return response.data;
     } catch (error) {
-        // Handle error...
-        return null;
+        // We can expect a 409 error if the user has already voted and the
+        // result has not yet been calculated. We can return null in this case.
+        if ((error as AxiosError).response?.status === 409) {
+            return null;
+        }
+
+        throw error;
     }
 };

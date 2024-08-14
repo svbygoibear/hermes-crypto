@@ -20,7 +20,7 @@ export const CustomIcon: React.FunctionComponent<CustomIconProps> = ({
     svg: SvgComponent,
     ...props
 }) => (
-    <StyledSvgIcon {...props}>
+    <StyledSvgIcon sx={{ padding: "5px" }} {...props}>
         <SvgComponent />
     </StyledSvgIcon>
 );
