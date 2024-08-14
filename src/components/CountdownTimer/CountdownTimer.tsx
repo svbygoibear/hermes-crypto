@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import "./CountdownTimer.css";
 import { FlipClock } from "./components/FlipClock/FlipClock";

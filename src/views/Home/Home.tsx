@@ -72,8 +72,8 @@ export const Home: React.FunctionComponent = () => {
 
     const setupPageData = async (): Promise<void> => {
         // We have a user in redux, so we need to fetch their latest data
-        if (user.currentUser !== null) {
-            const latestVotes = await getUserVotesById(user.currentUser?.id ?? "");
+        if (user?.currentUser !== null) {
+            const latestVotes = await getUserVotesById(user?.currentUser?.id ?? "");
             const unResolvedVote = latestVotes?.find(vote => vote.coin_value === 0);
             if (unResolvedVote) {
                 setIsVoting(true);
@@ -83,13 +83,13 @@ export const Home: React.FunctionComponent = () => {
                     currentTime - voteCastTime >= VOTE_TIME_IN_SECONDS * 1000;
                 // if the vote was cast more than 60 seconds ago, we need to get the results
                 if (isMoreThanSixtySecondsAgo) {
-                    const voteResult = await getUserVoteResultById(user.currentUser?.id ?? "");
+                    const voteResult = await getUserVoteResultById(user?.currentUser?.id ?? "");
                     if (voteResult?.coin_value !== 0) {
-                        const updatedUser = await getUserById(user.currentUser?.id ?? "");
+                        const updatedUser = await getUserById(user?.currentUser?.id ?? "");
                         // Update the user in the store
                         if (updatedUser !== null) {
                             // First, set an alert for the user
-                            const previousScore = user.currentUser?.score ?? 0;
+                            const previousScore = user?.currentUser?.score ?? 0;
                             const newResultMessage = calculateResultString(
                                 previousScore,
                                 updatedUser.score
@@ -108,7 +108,7 @@ export const Home: React.FunctionComponent = () => {
                     timerStartTime.current = timeLeft;
                 }
             } else {
-                const latestUserData = await getUserById(user.currentUser?.id ?? "");
+                const latestUserData = await getUserById(user?.currentUser?.id ?? "");
                 if (latestUserData !== null) {
                     dispatch(setUser(latestUserData));
                 }
@@ -151,9 +151,9 @@ export const Home: React.FunctionComponent = () => {
 
     const onVoteClicked = async (currVoteDirection: VoteDirection): Promise<void> => {
         setIsCheckingVote(true);
-        let currUser = user.currentUser;
+        let currUser = user?.currentUser;
         // First, determine if we need to make a "dummy" user for someone who is not logged in.
-        if (user.isLoggedIn === false) {
+        if (user?.isLoggedIn === false) {
             setIsCreatingUser(true);
             // if user is not logged in, create a user
             const userToCreate = createFakeUser();
@@ -191,11 +191,11 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const onVoteDone = async (): Promise<void> => {
-        const previousScore = user.currentUser?.score ?? 0;
-        const newResult = await getDelayedVoteResult(user.currentUser?.id ?? "");
+        const previousScore = user?.currentUser?.score ?? 0;
+        const newResult = await getDelayedVoteResult(user?.currentUser?.id ?? "");
         if (newResult !== null) {
             setNewBtcPriceFromVoteResult(newResult);
-            const updatedUser = await getUserById(user.currentUser?.id ?? "");
+            const updatedUser = await getUserById(user?.currentUser?.id ?? "");
             // Update the user in the store
             if (updatedUser !== null) {
                 const newResultMessage = calculateResultString(previousScore, updatedUser.score);
@@ -234,7 +234,7 @@ export const Home: React.FunctionComponent = () => {
     const onSignInOrOn = async (name: string, email: string): Promise<void> => {
         // No user should be logged in & we should not be actively checking the current user vote
         // before allowing a user to sign in/sign up
-        if (user.isLoggedIn === false && isCheckingVote === false) {
+        if (user?.isLoggedIn === false && isCheckingVote === false) {
             setIsCreatingUser(true);
             const userToCreate: UserCreate = {
                 email: email.toLocaleLowerCase(),
@@ -254,9 +254,9 @@ export const Home: React.FunctionComponent = () => {
             <div id="my-game">
                 <AppNameAndLogo />
                 <WelcomeSignNote
-                    doesUserExist={user.currentUser !== null}
-                    userEmail={user.currentUser?.email ?? ""}
-                    userName={user.currentUser?.name ?? ""}
+                    doesUserExist={user?.currentUser !== null}
+                    userEmail={user?.currentUser?.email ?? ""}
+                    userName={user?.currentUser?.name ?? ""}
                     onSignIn={onSignInOrOn}
                 />
                 <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />

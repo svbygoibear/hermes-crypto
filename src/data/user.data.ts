@@ -1,5 +1,4 @@
-import axios from "axios";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { User, UserCreate } from "../types/user";
 import { Vote, VoteCreate } from "../types/vote";
 import { createUsersApiService } from "./services/users.service";

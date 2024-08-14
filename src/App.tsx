@@ -29,7 +29,7 @@ export const App: React.FunctionComponent = () => {
     }, [setError]);
 
     // Check if user is logged in
-    const isUserLoggedIn = user !== null && user?.currentUser !== null && user.isLoggedIn;
+    const isUserLoggedIn = user !== null && user?.currentUser !== null && user?.isLoggedIn;
 
     const handleLogout = (): void => {
         dispatch(clearUser());
@@ -50,7 +50,7 @@ export const App: React.FunctionComponent = () => {
             <LayoutBox>
                 <AppHeader
                     userName={user?.currentUser?.name ?? ""}
-                    isLoggedIn={isUserLoggedIn}
+                    isLoggedIn={isUserLoggedIn ?? false}
                     onLogout={handleLogout}
                 />
                 <RouterProvider router={router} />
