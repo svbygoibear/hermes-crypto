@@ -25,6 +25,7 @@ import { setLoggedIn, setUser } from "../../store/userSlice";
 import { createFakeUser } from "../../utils/fake.utils";
 import { CoinType, Currency, VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
+import { ResultsAlert } from "../../components/ResultsAlert/ResultsAlert";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -32,6 +33,8 @@ export const Home: React.FunctionComponent = () => {
     const [isCreatingUser, setIsCreatingUser] = useState<boolean>(false);
     const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
+    const [showResultsAlert, setShowResultsAlert] = useState<boolean>(false);
+    const [resultString, setResultString] = useState<string>("");
 
     // We start off with a default of 60 seconds for the countdown timer
     const timerStartTime = React.useRef<number>(VOTE_TIME_IN_SECONDS);
@@ -62,6 +65,10 @@ export const Home: React.FunctionComponent = () => {
         void setupPageData();
     }, []);
 
+    const calculateResultString = (previousScore: number, currenScore: number): string => {
+        return `Your score has ${currenScore > previousScore ? "increased" : "decreased"} by ${Math.abs(currenScore - previousScore)} points!`;
+    };
+
     const setupPageData = async (): Promise<void> => {
         // We have a user in redux, so we need to fetch their latest data
         if (user.currentUser !== null) {
@@ -77,12 +84,18 @@ export const Home: React.FunctionComponent = () => {
                 if (isMoreThanSixtySecondsAgo) {
                     const voteResult = await getUserVoteResultById(user.currentUser?.id ?? "");
                     if (voteResult?.coin_value !== 0) {
-                        // TODO: add a pop-up or something to show the user the result of their vote
-                        const previousScore = user.currentUser?.score ?? 0;
-
                         const updatedUser = await getUserById(user.currentUser?.id ?? "");
                         // Update the user in the store
                         if (updatedUser !== null) {
+                            // First, set an alert for the user
+                            const previousScore = user.currentUser?.score ?? 0;
+                            const newResultMessage = calculateResultString(
+                                previousScore,
+                                updatedUser.score
+                            );
+                            setResultString(newResultMessage);
+                            setShowResultsAlert(true);
+                            // Update the user in the store
                             dispatch(setUser(updatedUser));
                         }
                     }
@@ -105,8 +118,7 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const getBTC = async (): Promise<void> => {
-        // TODO: add call to the API back
-        const currentBtcPrice = null; //await getCurrentBtcPrice();
+        const currentBtcPrice = await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
@@ -186,6 +198,9 @@ export const Home: React.FunctionComponent = () => {
             const updatedUser = await getUserById(user.currentUser?.id ?? "");
             // Update the user in the store
             if (updatedUser !== null) {
+                const newResultMessage = calculateResultString(previousScore, updatedUser.score);
+                setResultString(newResultMessage);
+                setShowResultsAlert(true);
                 dispatch(setUser(updatedUser));
             }
         }
@@ -206,7 +221,6 @@ export const Home: React.FunctionComponent = () => {
                 if (shouldSetLoggedIn) {
                     dispatch(setLoggedIn(true));
                 }
-
                 return newUser;
             }
             return null;
@@ -228,6 +242,11 @@ export const Home: React.FunctionComponent = () => {
             };
             createNewUser(userToCreate, true);
         }
+    };
+
+    const onCloseResultsAlert = (): void => {
+        setShowResultsAlert(false);
+        setResultString("");
     };
 
     return (
@@ -258,6 +277,11 @@ export const Home: React.FunctionComponent = () => {
                             </b>
                         </p>
                     </div>
+                    <ResultsAlert
+                        isOpen={showResultsAlert}
+                        alertText={resultString}
+                        onClose={onCloseResultsAlert}
+                    />
                 </div>
             </div>
             <div id="about" className="about-game-wrapper">
