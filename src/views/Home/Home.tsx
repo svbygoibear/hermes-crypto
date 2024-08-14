@@ -119,6 +119,7 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const getBTC = async (): Promise<void> => {
+        // TODO: add this back in
         const currentBtcPrice = null; // await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
@@ -287,12 +288,6 @@ export const Home: React.FunctionComponent = () => {
             <div id="about" className="about-game-wrapper">
                 <h2 className="about-game-header">About This Game</h2>
                 <p className="about-game-text">
-                    Once you&apos;ve thrown down your speculation, you won&apos;t be able to vote for 
-                    another <b>60</b> seconds. Those are the rules. I don&apos;t make them, I only 
-                    enforce them. When the timer is up, <code className="code-info-style">Hermes</code> will 
-                    determine your fate. May the gods be ever in your favour!
-                </p>
-                <p className="about-game-text">
                     You don&apos;t have to sign up to play, but that limits how we can keep track of 
                     your score. If you feel worried about entering your email, don&apos;t stress, you 
                     can enter any unique identifier into the email field. Just so you know, we store 
@@ -300,10 +295,14 @@ export const Home: React.FunctionComponent = () => {
                     profile if you want to do so.
                 </p>
                 <p className="about-game-text">
-                    However, if you do not feel like dealing with the hassle of signing up, you can
-                    just vote and we will create a &quot;fake&quot; profile for you. This will allow
-                    you to vote, and it will allow us to keep track of your score; albeit only for
-                    the current session.
+                    However, if you do not feel like dealing with the hassle of signing up, you can simply 
+                    vote and we will create a temporary profile for you. This will allow you to vote, and 
+                    it will enable us to keep track of your score; albeit only for the current session.
+                </p>
+                <p className="about-game-text">
+                    <code className="code-info-style">Hermes-Crypto</code> is a fun site to pass the time 
+                    while you wait for your code to build, a deployment to finish, or just want to kill 
+                    some time while your ’spro is brewing.
                 </p>
             </div>
             <div id="contact" className="contact-info-wrapper">
