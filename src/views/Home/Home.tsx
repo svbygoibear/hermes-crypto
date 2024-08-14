@@ -26,6 +26,7 @@ import { createFakeUser } from "../../utils/fake.utils";
 import { CoinType, Currency, VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
 import { ResultsAlert } from "../../components/ResultsAlert/ResultsAlert";
+import { CalculatedResult } from "../../types/calculatedResult";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -34,7 +35,7 @@ export const Home: React.FunctionComponent = () => {
     const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
     const [showResultsAlert, setShowResultsAlert] = useState<boolean>(false);
-    const [resultString, setResultString] = useState<string>("");
+    const [calculatedResult, setCalculatedResult] = useState<CalculatedResult | null>(null);
 
     // We start off with a default of 60 seconds for the countdown timer
     const timerStartTime = React.useRef<number>(VOTE_TIME_IN_SECONDS);
@@ -66,8 +67,11 @@ export const Home: React.FunctionComponent = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const calculateResultString = (previousScore: number, currenScore: number): string => {
-        return `Your score has ${currenScore > previousScore ? "increased" : "decreased"} by ${Math.abs(currenScore - previousScore)} points!`;
+    const calculateResult = (previousScore: number, currenScore: number): CalculatedResult => {
+        const changeAmount = Math.abs(currenScore - previousScore);
+        const message = `Your score has ${currenScore > previousScore ? "increased" : "decreased"} by ${changeAmount} point${changeAmount > 1 ? "s" : ""}!`;
+
+        return { message: message, isPositive: currenScore > previousScore };
     };
 
     const setupPageData = async (): Promise<void> => {
@@ -90,11 +94,11 @@ export const Home: React.FunctionComponent = () => {
                         if (updatedUser !== null) {
                             // First, set an alert for the user
                             const previousScore = user?.currentUser?.score ?? 0;
-                            const newResultMessage = calculateResultString(
+                            const newCalculatedResult = calculateResult(
                                 previousScore,
                                 updatedUser.score
                             );
-                            setResultString(newResultMessage);
+                            setCalculatedResult(newCalculatedResult);
                             setShowResultsAlert(true);
                             // Update the user in the store
                             dispatch(setUser(updatedUser));
@@ -199,8 +203,8 @@ export const Home: React.FunctionComponent = () => {
             const updatedUser = await getUserById(user?.currentUser?.id ?? "");
             // Update the user in the store
             if (updatedUser !== null) {
-                const newResultMessage = calculateResultString(previousScore, updatedUser.score);
-                setResultString(newResultMessage);
+                const newCalculatedResult = calculateResult(previousScore, updatedUser.score);
+                setCalculatedResult(newCalculatedResult);
                 setShowResultsAlert(true);
                 dispatch(setUser(updatedUser));
             }
@@ -247,7 +251,7 @@ export const Home: React.FunctionComponent = () => {
 
     const onCloseResultsAlert = (): void => {
         setShowResultsAlert(false);
-        setResultString("");
+        setCalculatedResult(null);
     };
 
     return (
@@ -280,7 +284,8 @@ export const Home: React.FunctionComponent = () => {
                     </div>
                     <ResultsAlert
                         isOpen={showResultsAlert}
-                        alertText={resultString}
+                        alertText={calculatedResult?.message ?? ""}
+                        isPositive={calculatedResult?.isPositive ?? false}
                         onClose={onCloseResultsAlert}
                     />
                 </div>
