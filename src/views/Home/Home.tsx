@@ -63,6 +63,7 @@ export const Home: React.FunctionComponent = () => {
         void getBTC();
         // Perform page setup based on the user
         void setupPageData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const calculateResultString = (previousScore: number, currenScore: number): string => {
@@ -190,7 +191,6 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const onVoteDone = async (): Promise<void> => {
-        // TODO: add a pop-up or something to show the user the result of their vote
         const previousScore = user.currentUser?.score ?? 0;
         const newResult = await getDelayedVoteResult(user.currentUser?.id ?? "");
         if (newResult !== null) {

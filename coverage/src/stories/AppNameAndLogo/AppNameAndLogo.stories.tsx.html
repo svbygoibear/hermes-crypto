@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/stories/WelcomeSignNote/WelcomeSignNote.stories.ts</title>
+    <title>Code coverage report for src/stories/AppNameAndLogo/AppNameAndLogo.stories.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/stories/WelcomeSignNote</a> WelcomeSignNote.stories.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/stories/AppNameAndLogo</a> AppNameAndLogo.stories.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -83,23 +83,7 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -116,27 +100,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import type { Meta, StoryObj } from "@storybook/react";<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
-import {
-    WelcomeSignNote,
-    WelcomeSignNoteProps
-<span class="cstat-no" title="statement not covered" >} from "../../components/WelcomeSignNote/WelcomeSignNote";</span>
-<span class="cstat-no" title="statement not covered" >import { delay } from "../../utils/general.utils";</span>
+<span class="cstat-no" title="statement not covered" >import { AppNameAndLogo } from "../../components/AppNameAndLogo/AppNameAndLogo";</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const meta: Meta&lt;WelcomeSignNoteProps&gt; = {</span>
-<span class="cstat-no" title="statement not covered" >    title: "Core/WelcomeSignNote",</span>
-<span class="cstat-no" title="statement not covered" >    component: WelcomeSignNote,</span>
+<span class="cstat-no" title="statement not covered" >const meta: Meta = {</span>
+<span class="cstat-no" title="statement not covered" >    title: "Core/AppNameAndLogo",</span>
+<span class="cstat-no" title="statement not covered" >    component: AppNameAndLogo,</span>
 <span class="cstat-no" title="statement not covered" >    parameters: {</span>
 <span class="cstat-no" title="statement not covered" >        layout: "centered"</span>
 <span class="cstat-no" title="statement not covered" >    },</span>
@@ -148,16 +120,8 @@ import {
 <span class="cstat-no" title="statement not covered" >export default meta;</span>
 type Story = StoryObj&lt;typeof meta&gt;;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const SignedIn: Story = {</span>
-<span class="cstat-no" title="statement not covered" >    args: {</span>
-<span class="cstat-no" title="statement not covered" >        doesUserExist: true,</span>
-<span class="cstat-no" title="statement not covered" >        userName: "John Doe",</span>
-<span class="cstat-no" title="statement not covered" >        userEmail: "john@doe.com",</span>
-<span class="cstat-no" title="statement not covered" >        onSignIn: async () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            alert("Sign in clicked");</span>
-<span class="cstat-no" title="statement not covered" >            await delay(1000);</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >export const PlainHeader: Story = {</span>
+<span class="cstat-no" title="statement not covered" >    args: {}</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;</pre></td></tr></table></pre>
 

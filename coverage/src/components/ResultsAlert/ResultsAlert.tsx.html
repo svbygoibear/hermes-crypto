@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/stories/WelcomeSignNote/WelcomeSignNote.stories.ts</title>
+    <title>Code coverage report for src/components/ResultsAlert/ResultsAlert.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/stories/WelcomeSignNote</a> WelcomeSignNote.stories.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/ResultsAlert</a> ResultsAlert.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/27</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>0/27</span>
             </div>
         
             
@@ -95,25 +95,21 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -127,37 +123,53 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import type { Meta, StoryObj } from "@storybook/react";<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
-import {
-    WelcomeSignNote,
-    WelcomeSignNoteProps
-<span class="cstat-no" title="statement not covered" >} from "../../components/WelcomeSignNote/WelcomeSignNote";</span>
-<span class="cstat-no" title="statement not covered" >import { delay } from "../../utils/general.utils";</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import * as React from "react";</span></span></span>
+<span class="cstat-no" title="statement not covered" >import Box from "@mui/material/Box";</span>
+<span class="cstat-no" title="statement not covered" >import Alert from "@mui/material/Alert";</span>
+<span class="cstat-no" title="statement not covered" >import IconButton from "@mui/material/IconButton";</span>
+<span class="cstat-no" title="statement not covered" >import Collapse from "@mui/material/Collapse";</span>
+<span class="cstat-no" title="statement not covered" >import CloseIcon from "@mui/icons-material/Close";</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const meta: Meta&lt;WelcomeSignNoteProps&gt; = {</span>
-<span class="cstat-no" title="statement not covered" >    title: "Core/WelcomeSignNote",</span>
-<span class="cstat-no" title="statement not covered" >    component: WelcomeSignNote,</span>
-<span class="cstat-no" title="statement not covered" >    parameters: {</span>
-<span class="cstat-no" title="statement not covered" >        layout: "centered"</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-<span class="cstat-no" title="statement not covered" >    tags: ["autodocs"],</span>
-<span class="cstat-no" title="statement not covered" >    argTypes: {},</span>
-<span class="cstat-no" title="statement not covered" >    args: {}</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+export interface ResultsAlertProps {
+    isOpen: boolean;
+    alertText: string;
+    onClose: () =&gt; void;
+}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default meta;</span>
-type Story = StoryObj&lt;typeof meta&gt;;
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export const SignedIn: Story = {</span>
-<span class="cstat-no" title="statement not covered" >    args: {</span>
-<span class="cstat-no" title="statement not covered" >        doesUserExist: true,</span>
-<span class="cstat-no" title="statement not covered" >        userName: "John Doe",</span>
-<span class="cstat-no" title="statement not covered" >        userEmail: "john@doe.com",</span>
-<span class="cstat-no" title="statement not covered" >        onSignIn: async () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            alert("Sign in clicked");</span>
-<span class="cstat-no" title="statement not covered" >            await delay(1000);</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >export const ResultsAlert: React.FunctionComponent&lt;ResultsAlertProps&gt; = (</span>
+<span class="cstat-no" title="statement not covered" >    props: ResultsAlertProps</span>
+<span class="cstat-no" title="statement not covered" >) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return (</span>
+<span class="cstat-no" title="statement not covered" >        &lt;Box sx={{ width: "100%" }}&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;Collapse in={props.isOpen}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;Alert</span>
+<span class="cstat-no" title="statement not covered" >                    action={</span>
+<span class="cstat-no" title="statement not covered" >                        &lt;IconButton</span>
+<span class="cstat-no" title="statement not covered" >                            aria-label="close"</span>
+<span class="cstat-no" title="statement not covered" >                            color="inherit"</span>
+<span class="cstat-no" title="statement not covered" >                            size="small"</span>
+<span class="cstat-no" title="statement not covered" >                            onClick={props.onClose}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                            &lt;CloseIcon fontSize="inherit" /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                        &lt;/IconButton&gt;</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    sx={{ mb: 2 }}&gt;</span>
+<span class="cstat-no" title="statement not covered" >                    {props.alertText}</span>
+<span class="cstat-no" title="statement not covered" >                &lt;/Alert&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/Collapse&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/Box&gt;</span>
+    );
 <span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;</pre></td></tr></table></pre>
 
