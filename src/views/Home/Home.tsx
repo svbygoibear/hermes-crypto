@@ -123,8 +123,7 @@ export const Home: React.FunctionComponent = () => {
     };
 
     const getBTC = async (): Promise<void> => {
-        // TODO: add this back in
-        const currentBtcPrice = null; // await getCurrentBtcPrice();
+        const currentBtcPrice = await getCurrentBtcPrice();
         setLatestBtc(currentBtcPrice);
         setIsFetchingBtc(false);
     };
@@ -138,7 +137,7 @@ export const Home: React.FunctionComponent = () => {
                 } catch (error) {
                     reject(error);
                 }
-            }, 5000); // 5000 milliseconds = 5 seconds
+            }, 5000); 
         });
     };
 
