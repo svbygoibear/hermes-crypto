@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 export interface ResultsAlertProps {
     isOpen: boolean;
+    isPositive: boolean;
     alertText: string;
     onClose: () => void;
 }
@@ -15,9 +16,10 @@ export const ResultsAlert: React.FunctionComponent<ResultsAlertProps> = (
     props: ResultsAlertProps
 ) => {
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "40%", position: "absolute", top: "80px", right: 0, zIndex: 99 }}>
             <Collapse in={props.isOpen}>
-                <Alert
+                <Alert  
+                    severity={props.isPositive ? "success" : "warning"}
                     action={
                         <IconButton
                             aria-label="close"

@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/267</span>
+                <span class='fraction'>0/272</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/267</span>
+                <span class='fraction'>0/272</span>
             </div>
         
             
@@ -397,7 +397,10 @@
 <a name='L332'></a><a href='#L332'>332</a>
 <a name='L333'></a><a href='#L333'>333</a>
 <a name='L334'></a><a href='#L334'>334</a>
-<a name='L335'></a><a href='#L335'>335</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L335'></a><a href='#L335'>335</a>
+<a name='L336'></a><a href='#L336'>336</a>
+<a name='L337'></a><a href='#L337'>337</a>
+<a name='L338'></a><a href='#L338'>338</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -426,6 +429,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -465,7 +469,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -648,7 +655,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -686,9 +692,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -698,8 +701,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -707,11 +714,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -759,6 +765,7 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >import { CoinType, Currency, VoteDirection } from "../../enums";</span>
 <span class="cstat-no" title="statement not covered" >import { VOTE_TIME_IN_SECONDS } from "../../constants";</span>
 <span class="cstat-no" title="statement not covered" >import { ResultsAlert } from "../../components/ResultsAlert/ResultsAlert";</span>
+import { CalculatedResult } from "../../types/calculatedResult";
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export const Home: React.FunctionComponent = () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const [isVoting, setIsVoting] = useState&lt;boolean&gt;(false);</span>
@@ -767,7 +774,7 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >    const [latestBtc, setLatestBtc] = useState&lt;CoinResult | null&gt;(null);</span>
 <span class="cstat-no" title="statement not covered" >    const [isFetchingBtc, setIsFetchingBtc] = useState&lt;boolean&gt;(false);</span>
 <span class="cstat-no" title="statement not covered" >    const [showResultsAlert, setShowResultsAlert] = useState&lt;boolean&gt;(false);</span>
-<span class="cstat-no" title="statement not covered" >    const [resultString, setResultString] = useState&lt;string&gt;("");</span>
+<span class="cstat-no" title="statement not covered" >    const [calculatedResult, setCalculatedResult] = useState&lt;CalculatedResult | null&gt;(null);</span>
 &nbsp;
     // We start off with a default of 60 seconds for the countdown timer
 <span class="cstat-no" title="statement not covered" >    const timerStartTime = React.useRef&lt;number&gt;(VOTE_TIME_IN_SECONDS);</span>
@@ -799,14 +806,17 @@ import { Vote, VoteCreate } from "../../types/vote";
         // eslint-disable-next-line react-hooks/exhaustive-deps
 <span class="cstat-no" title="statement not covered" >    }, []);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    const calculateResultString = (previousScore: number, currenScore: number): string =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        return `Your score has ${currenScore &gt; previousScore ? "increased" : "decreased"} by ${Math.abs(currenScore - previousScore)} points!`;</span>
+<span class="cstat-no" title="statement not covered" >    const calculateResult = (previousScore: number, currenScore: number): CalculatedResult =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        const changeAmount = Math.abs(currenScore - previousScore);</span>
+<span class="cstat-no" title="statement not covered" >        const message = `Your score has ${currenScore &gt; previousScore ? "increased" : "decreased"} by ${changeAmount} point${changeAmount &gt; 1 ? "s" : ""}!`;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return { message: message, isPositive: currenScore &gt; previousScore };</span>
 <span class="cstat-no" title="statement not covered" >    };</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const setupPageData = async (): Promise&lt;void&gt; =&gt; {</span>
         // We have a user in redux, so we need to fetch their latest data
-<span class="cstat-no" title="statement not covered" >        if (user.currentUser !== null) {</span>
-<span class="cstat-no" title="statement not covered" >            const latestVotes = await getUserVotesById(user.currentUser?.id ?? "");</span>
+<span class="cstat-no" title="statement not covered" >        if (user?.currentUser !== null) {</span>
+<span class="cstat-no" title="statement not covered" >            const latestVotes = await getUserVotesById(user?.currentUser?.id ?? "");</span>
 <span class="cstat-no" title="statement not covered" >            const unResolvedVote = latestVotes?.find(vote =&gt; vote.coin_value === 0);</span>
 <span class="cstat-no" title="statement not covered" >            if (unResolvedVote) {</span>
 <span class="cstat-no" title="statement not covered" >                setIsVoting(true);</span>
@@ -816,18 +826,18 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >                    currentTime - voteCastTime &gt;= VOTE_TIME_IN_SECONDS * 1000;</span>
                 // if the vote was cast more than 60 seconds ago, we need to get the results
 <span class="cstat-no" title="statement not covered" >                if (isMoreThanSixtySecondsAgo) {</span>
-<span class="cstat-no" title="statement not covered" >                    const voteResult = await getUserVoteResultById(user.currentUser?.id ?? "");</span>
+<span class="cstat-no" title="statement not covered" >                    const voteResult = await getUserVoteResultById(user?.currentUser?.id ?? "");</span>
 <span class="cstat-no" title="statement not covered" >                    if (voteResult?.coin_value !== 0) {</span>
-<span class="cstat-no" title="statement not covered" >                        const updatedUser = await getUserById(user.currentUser?.id ?? "");</span>
+<span class="cstat-no" title="statement not covered" >                        const updatedUser = await getUserById(user?.currentUser?.id ?? "");</span>
                         // Update the user in the store
 <span class="cstat-no" title="statement not covered" >                        if (updatedUser !== null) {</span>
                             // First, set an alert for the user
-<span class="cstat-no" title="statement not covered" >                            const previousScore = user.currentUser?.score ?? 0;</span>
-<span class="cstat-no" title="statement not covered" >                            const newResultMessage = calculateResultString(</span>
+<span class="cstat-no" title="statement not covered" >                            const previousScore = user?.currentUser?.score ?? 0;</span>
+<span class="cstat-no" title="statement not covered" >                            const newCalculatedResult = calculateResult(</span>
 <span class="cstat-no" title="statement not covered" >                                previousScore,</span>
 <span class="cstat-no" title="statement not covered" >                                updatedUser.score</span>
 <span class="cstat-no" title="statement not covered" >                            );</span>
-<span class="cstat-no" title="statement not covered" >                            setResultString(newResultMessage);</span>
+<span class="cstat-no" title="statement not covered" >                            setCalculatedResult(newCalculatedResult);</span>
 <span class="cstat-no" title="statement not covered" >                            setShowResultsAlert(true);</span>
                             // Update the user in the store
 <span class="cstat-no" title="statement not covered" >                            dispatch(setUser(updatedUser));</span>
@@ -841,7 +851,7 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >                    timerStartTime.current = timeLeft;</span>
 <span class="cstat-no" title="statement not covered" >                }</span>
 <span class="cstat-no" title="statement not covered" >            } else {</span>
-<span class="cstat-no" title="statement not covered" >                const latestUserData = await getUserById(user.currentUser?.id ?? "");</span>
+<span class="cstat-no" title="statement not covered" >                const latestUserData = await getUserById(user?.currentUser?.id ?? "");</span>
 <span class="cstat-no" title="statement not covered" >                if (latestUserData !== null) {</span>
 <span class="cstat-no" title="statement not covered" >                    dispatch(setUser(latestUserData));</span>
 <span class="cstat-no" title="statement not covered" >                }</span>
@@ -866,7 +876,7 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >                } catch (error) {</span>
 <span class="cstat-no" title="statement not covered" >                    reject(error);</span>
 <span class="cstat-no" title="statement not covered" >                }</span>
-<span class="cstat-no" title="statement not covered" >            }, 5000); // 5000 milliseconds = 5 seconds</span>
+<span class="cstat-no" title="statement not covered" >            }, 5000); </span>
 <span class="cstat-no" title="statement not covered" >        });</span>
 <span class="cstat-no" title="statement not covered" >    };</span>
 &nbsp;
@@ -884,9 +894,9 @@ import { Vote, VoteCreate } from "../../types/vote";
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const onVoteClicked = async (currVoteDirection: VoteDirection): Promise&lt;void&gt; =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        setIsCheckingVote(true);</span>
-<span class="cstat-no" title="statement not covered" >        let currUser = user.currentUser;</span>
+<span class="cstat-no" title="statement not covered" >        let currUser = user?.currentUser;</span>
         // First, determine if we need to make a "dummy" user for someone who is not logged in.
-<span class="cstat-no" title="statement not covered" >        if (user.isLoggedIn === false) {</span>
+<span class="cstat-no" title="statement not covered" >        if (user?.isLoggedIn === false) {</span>
 <span class="cstat-no" title="statement not covered" >            setIsCreatingUser(true);</span>
             // if user is not logged in, create a user
 <span class="cstat-no" title="statement not covered" >            const userToCreate = createFakeUser();</span>
@@ -924,15 +934,15 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >    };</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const onVoteDone = async (): Promise&lt;void&gt; =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        const previousScore = user.currentUser?.score ?? 0;</span>
-<span class="cstat-no" title="statement not covered" >        const newResult = await getDelayedVoteResult(user.currentUser?.id ?? "");</span>
+<span class="cstat-no" title="statement not covered" >        const previousScore = user?.currentUser?.score ?? 0;</span>
+<span class="cstat-no" title="statement not covered" >        const newResult = await getDelayedVoteResult(user?.currentUser?.id ?? "");</span>
 <span class="cstat-no" title="statement not covered" >        if (newResult !== null) {</span>
 <span class="cstat-no" title="statement not covered" >            setNewBtcPriceFromVoteResult(newResult);</span>
-<span class="cstat-no" title="statement not covered" >            const updatedUser = await getUserById(user.currentUser?.id ?? "");</span>
+<span class="cstat-no" title="statement not covered" >            const updatedUser = await getUserById(user?.currentUser?.id ?? "");</span>
             // Update the user in the store
 <span class="cstat-no" title="statement not covered" >            if (updatedUser !== null) {</span>
-<span class="cstat-no" title="statement not covered" >                const newResultMessage = calculateResultString(previousScore, updatedUser.score);</span>
-<span class="cstat-no" title="statement not covered" >                setResultString(newResultMessage);</span>
+<span class="cstat-no" title="statement not covered" >                const newCalculatedResult = calculateResult(previousScore, updatedUser.score);</span>
+<span class="cstat-no" title="statement not covered" >                setCalculatedResult(newCalculatedResult);</span>
 <span class="cstat-no" title="statement not covered" >                setShowResultsAlert(true);</span>
 <span class="cstat-no" title="statement not covered" >                dispatch(setUser(updatedUser));</span>
 <span class="cstat-no" title="statement not covered" >            }</span>
@@ -967,7 +977,7 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >    const onSignInOrOn = async (name: string, email: string): Promise&lt;void&gt; =&gt; {</span>
         // No user should be logged in &amp; we should not be actively checking the current user vote
         // before allowing a user to sign in/sign up
-<span class="cstat-no" title="statement not covered" >        if (user.isLoggedIn === false &amp;&amp; isCheckingVote === false) {</span>
+<span class="cstat-no" title="statement not covered" >        if (user?.isLoggedIn === false &amp;&amp; isCheckingVote === false) {</span>
 <span class="cstat-no" title="statement not covered" >            setIsCreatingUser(true);</span>
 <span class="cstat-no" title="statement not covered" >            const userToCreate: UserCreate = {</span>
 <span class="cstat-no" title="statement not covered" >                email: email.toLocaleLowerCase(),</span>
@@ -979,7 +989,7 @@ import { Vote, VoteCreate } from "../../types/vote";
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const onCloseResultsAlert = (): void =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        setShowResultsAlert(false);</span>
-<span class="cstat-no" title="statement not covered" >        setResultString("");</span>
+<span class="cstat-no" title="statement not covered" >        setCalculatedResult(null);</span>
 <span class="cstat-no" title="statement not covered" >    };</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
@@ -987,9 +997,9 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >            &lt;div id="my-game"&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;AppNameAndLogo /&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;WelcomeSignNote</span>
-<span class="cstat-no" title="statement not covered" >                    doesUserExist={user.currentUser !== null}</span>
-<span class="cstat-no" title="statement not covered" >                    userEmail={user.currentUser?.email ?? ""}</span>
-<span class="cstat-no" title="statement not covered" >                    userName={user.currentUser?.name ?? ""}</span>
+<span class="cstat-no" title="statement not covered" >                    doesUserExist={user?.currentUser !== null}</span>
+<span class="cstat-no" title="statement not covered" >                    userEmail={user?.currentUser?.email ?? ""}</span>
+<span class="cstat-no" title="statement not covered" >                    userName={user?.currentUser?.name ?? ""}</span>
 <span class="cstat-no" title="statement not covered" >                    onSignIn={onSignInOrOn}</span>
 <span class="cstat-no" title="statement not covered" >                /&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} /&gt;</span>
@@ -1012,7 +1022,8 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >                    &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;ResultsAlert</span>
 <span class="cstat-no" title="statement not covered" >                        isOpen={showResultsAlert}</span>
-<span class="cstat-no" title="statement not covered" >                        alertText={resultString}</span>
+<span class="cstat-no" title="statement not covered" >                        alertText={calculatedResult?.message ?? ""}</span>
+<span class="cstat-no" title="statement not covered" >                        isPositive={calculatedResult?.isPositive ?? false}</span>
 <span class="cstat-no" title="statement not covered" >                        onClose={onCloseResultsAlert}</span>
 <span class="cstat-no" title="statement not covered" >                    /&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;/div&gt;</span>
@@ -1020,32 +1031,30 @@ import { Vote, VoteCreate } from "../../types/vote";
 <span class="cstat-no" title="statement not covered" >            &lt;div id="about" className="about-game-wrapper"&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;h2 className="about-game-header"&gt;About This Game&lt;/h2&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;p className="about-game-text"&gt;</span>
-                    Once you&amp;apos;ve thrown down your speculation in your vote; you won&amp;apos;t be
-                    able to vote for 60 seconds. Those are the rules. I don&amp;apos;t make them, I just
-                    enforce them.
+                    You don&amp;apos;t have to sign up to play, but that limits how we can keep track of 
+                    your score. If you feel worried about entering your email, don&amp;apos;t stress, you 
+                    can enter any unique identifier into the email field. Just so you know, we store 
+                    this information, but we are working on functionality where you can delete your 
+                    profile if you want to do so.
 <span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;p className="about-game-text"&gt;</span>
-                    You don&amp;apos;t have to sign up to play, but that limits how we can keep track of
-                    your score. If you feel worried about entering your email, don&amp;apos;t worry, you
-                    can make up any information you like. Do not that we do store it, however we are
-                    working on functionality where you can delete your profile if you so wish to do
-                    so.
+                    However, if you do not feel like dealing with the hassle of signing up, you can simply 
+                    vote and we will create a temporary profile for you. This will allow you to vote, and 
+                    it will enable us to keep track of your score; albeit only for the current session.
 <span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;p className="about-game-text"&gt;</span>
-                    However, if you do not feel like dealing with the hassle of signing up, you can
-                    just vote and we will create a &amp;quot;fake&amp;quot; profile for you. This will allow
-                    you to vote, and it will allow us to keep track of your score; albeit only for
-                    the current session.
+<span class="cstat-no" title="statement not covered" >                    &lt;code className="code-info-style"&gt;Hermes-Crypto&lt;/code&gt; is a fun site to pass the time </span>
+                    while you wait for your code to build, a deployment to finish, or just want to kill 
+                    some time while your ’spro is brewing.
 <span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;div id="contact" className="contact-info-wrapper"&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;h2 className="contact-info-header"&gt;Contact&lt;/h2&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;p className="contact-info-text"&gt;</span>
-                    This is an open-source project, with 2 key repositories. One being what you see
-<span class="cstat-no" title="statement not covered" >                    in front of you, powered by &lt;code&gt;React&lt;/code&gt;, and then of course the back-end</span>
-<span class="cstat-no" title="statement not covered" >                    running behind the scenes on &lt;code&gt;Go&lt;/code&gt;. Take the time to check out either</span>
-                    repositories and report any issues if you find them! Feel free to contact me on
-                    Github if you have any suggestions.
+<span class="cstat-no" title="statement not covered" >                    This is an open-source project with 2 key repositories: &lt;code className="code-info-style"&gt;React&lt;/code&gt; on </span>
+<span class="cstat-no" title="statement not covered" >                    the front-end and &lt;code className="code-info-style"&gt;Go&lt;/code&gt; on the back-end. Take the time to check </span>
+                    out either repository and report any issues if you find them! Feel free to contact me 
+<span class="cstat-no" title="statement not covered" >                    on &lt;a href="https://github.com/svbygoibear"&gt;Github&lt;/a&gt; if you have any suggestions.</span>
 <span class="cstat-no" title="statement not covered" >                &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;div className="contact-info-repo-cards-wrapper"&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    &lt;a href="https://github.com/svbygoibear/hermes-crypto"&gt;</span>
@@ -1072,7 +1081,7 @@ import { Vote, VoteCreate } from "../../types/vote";
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-14T00:08:08.160Z
+                at 2024-08-14T12:24:11.108Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -26,6 +26,7 @@ import { createFakeUser } from "../../utils/fake.utils";
 import { CoinType, Currency, VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
 import { ResultsAlert } from "../../components/ResultsAlert/ResultsAlert";
+import { CalculatedResult } from "../../types/calculatedResult";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -34,7 +35,7 @@ export const Home: React.FunctionComponent = () => {
     const [latestBtc, setLatestBtc] = useState<CoinResult | null>(null);
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
     const [showResultsAlert, setShowResultsAlert] = useState<boolean>(false);
-    const [resultString, setResultString] = useState<string>("");
+    const [calculatedResult, setCalculatedResult] = useState<CalculatedResult | null>(null);
 
     // We start off with a default of 60 seconds for the countdown timer
     const timerStartTime = React.useRef<number>(VOTE_TIME_IN_SECONDS);
@@ -66,8 +67,11 @@ export const Home: React.FunctionComponent = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const calculateResultString = (previousScore: number, currenScore: number): string => {
-        return `Your score has ${currenScore > previousScore ? "increased" : "decreased"} by ${Math.abs(currenScore - previousScore)} points!`;
+    const calculateResult = (previousScore: number, currenScore: number): CalculatedResult => {
+        const changeAmount = Math.abs(currenScore - previousScore);
+        const message = `Your score has ${currenScore > previousScore ? "increased" : "decreased"} by ${changeAmount} point${changeAmount > 1 ? "s" : ""}!`;
+
+        return { message: message, isPositive: currenScore > previousScore };
     };
 
     const setupPageData = async (): Promise<void> => {
@@ -90,11 +94,11 @@ export const Home: React.FunctionComponent = () => {
                         if (updatedUser !== null) {
                             // First, set an alert for the user
                             const previousScore = user?.currentUser?.score ?? 0;
-                            const newResultMessage = calculateResultString(
+                            const newCalculatedResult = calculateResult(
                                 previousScore,
                                 updatedUser.score
                             );
-                            setResultString(newResultMessage);
+                            setCalculatedResult(newCalculatedResult);
                             setShowResultsAlert(true);
                             // Update the user in the store
                             dispatch(setUser(updatedUser));
@@ -133,7 +137,7 @@ export const Home: React.FunctionComponent = () => {
                 } catch (error) {
                     reject(error);
                 }
-            }, 5000); // 5000 milliseconds = 5 seconds
+            }, 5000); 
         });
     };
 
@@ -198,8 +202,8 @@ export const Home: React.FunctionComponent = () => {
             const updatedUser = await getUserById(user?.currentUser?.id ?? "");
             // Update the user in the store
             if (updatedUser !== null) {
-                const newResultMessage = calculateResultString(previousScore, updatedUser.score);
-                setResultString(newResultMessage);
+                const newCalculatedResult = calculateResult(previousScore, updatedUser.score);
+                setCalculatedResult(newCalculatedResult);
                 setShowResultsAlert(true);
                 dispatch(setUser(updatedUser));
             }
@@ -246,7 +250,7 @@ export const Home: React.FunctionComponent = () => {
 
     const onCloseResultsAlert = (): void => {
         setShowResultsAlert(false);
-        setResultString("");
+        setCalculatedResult(null);
     };
 
     return (
@@ -279,7 +283,8 @@ export const Home: React.FunctionComponent = () => {
                     </div>
                     <ResultsAlert
                         isOpen={showResultsAlert}
-                        alertText={resultString}
+                        alertText={calculatedResult?.message ?? ""}
+                        isPositive={calculatedResult?.isPositive ?? false}
                         onClose={onCloseResultsAlert}
                     />
                 </div>
@@ -287,32 +292,30 @@ export const Home: React.FunctionComponent = () => {
             <div id="about" className="about-game-wrapper">
                 <h2 className="about-game-header">About This Game</h2>
                 <p className="about-game-text">
-                    Once you&apos;ve thrown down your speculation in your vote; you won&apos;t be
-                    able to vote for 60 seconds. Those are the rules. I don&apos;t make them, I just
-                    enforce them.
+                    You don&apos;t have to sign up to play, but that limits how we can keep track of 
+                    your score. If you feel worried about entering your email, don&apos;t stress, you 
+                    can enter any unique identifier into the email field. Just so you know, we store 
+                    this information, but we are working on functionality where you can delete your 
+                    profile if you want to do so.
                 </p>
                 <p className="about-game-text">
-                    You don&apos;t have to sign up to play, but that limits how we can keep track of
-                    your score. If you feel worried about entering your email, don&apos;t worry, you
-                    can make up any information you like. Do not that we do store it, however we are
-                    working on functionality where you can delete your profile if you so wish to do
-                    so.
+                    However, if you do not feel like dealing with the hassle of signing up, you can simply 
+                    vote and we will create a temporary profile for you. This will allow you to vote, and 
+                    it will enable us to keep track of your score; albeit only for the current session.
                 </p>
                 <p className="about-game-text">
-                    However, if you do not feel like dealing with the hassle of signing up, you can
-                    just vote and we will create a &quot;fake&quot; profile for you. This will allow
-                    you to vote, and it will allow us to keep track of your score; albeit only for
-                    the current session.
+                    <code className="code-info-style">Hermes-Crypto</code> is a fun site to pass the time 
+                    while you wait for your code to build, a deployment to finish, or just want to kill 
+                    some time while your ’spro is brewing.
                 </p>
             </div>
             <div id="contact" className="contact-info-wrapper">
                 <h2 className="contact-info-header">Contact</h2>
                 <p className="contact-info-text">
-                    This is an open-source project, with 2 key repositories. One being what you see
-                    in front of you, powered by <code>React</code>, and then of course the back-end
-                    running behind the scenes on <code>Go</code>. Take the time to check out either
-                    repositories and report any issues if you find them! Feel free to contact me on
-                    Github if you have any suggestions.
+                    This is an open-source project with 2 key repositories: <code className="code-info-style">React</code> on 
+                    the front-end and <code className="code-info-style">Go</code> on the back-end. Take the time to check 
+                    out either repository and report any issues if you find them! Feel free to contact me 
+                    on <a href="https://github.com/svbygoibear">Github</a> if you have any suggestions.
                 </p>
                 <div className="contact-info-repo-cards-wrapper">
                     <a href="https://github.com/svbygoibear/hermes-crypto">

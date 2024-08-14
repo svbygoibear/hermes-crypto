@@ -6,6 +6,11 @@
     padding: 2em;
 }
 
+.code-info-style {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
 .score-text-wrapper {
     display: flex;
     flex-direction: column;

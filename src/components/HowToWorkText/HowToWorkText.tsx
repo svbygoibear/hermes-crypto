@@ -58,15 +58,16 @@ export const HowToWorkText: React.FunctionComponent<HowToWorkTextProps> = (
     return (
         <div className="how-to-work-text-wrapper">
             <p className="how-to-work-text-general-text">
-                So how does this work?{" "}
-                <b>
-                    <code>Hermes-Crypto</code>
-                </b>{" "}
-                is a fun site to pass the time while you wait for your code to build, a deployment
-                to finish or just want to kill some time while your &rsquo;spro is brewing. Vote up
-                if you think the price is going to go up, or vote down if you think the price is
-                going to go down. If you guess correctly - you will get <b>+1</b> point! Guess
-                wrong... That will be <b>-1</b> on your total.
+                How good are you at predicting whether the price of Bitcoin will go up or down in a given 
+                minute? <code>Hermes-Crypto</code> makes it possible for you to place your bet. It&apos;s 
+                simple: vote up if you think the price will increase within the next minute or vote down if 
+                you think the price will decrease within the next minute. If you guess correctly, you will 
+                get <b>+1</b> point! Guess wrong... that&apos;ll be <b>-1</b> on your total.
+            </p>
+            <p className="how-to-work-text-general-text">
+                Once you&apos;ve thrown down your speculation, you won&apos;t be able to vote for another <b>60</b> seconds. 
+                Those are the rules. I don&apos;t make them, I only enforce them. When the timer is up, 
+                Hermes will determine your fate. May the gods be ever in your favour!
             </p>
             <p className="how-to-work-text-general-text">
                 The current price of {getTextElement(props.currentCoinResult?.vote_coin ?? null)} is{" "}
