@@ -15,9 +15,9 @@ export const ResultsAlert: React.FunctionComponent<ResultsAlertProps> = (
     props: ResultsAlertProps
 ) => {
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "40%", position: "absolute", top: "80px", right: 0, zIndex: 99 }}>
             <Collapse in={props.isOpen}>
-                <Alert
+                <Alert  
                     action={
                         <IconButton
                             aria-label="close"
