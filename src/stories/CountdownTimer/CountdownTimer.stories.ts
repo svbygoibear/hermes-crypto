@@ -23,7 +23,7 @@ export const StaticDefault: Story = {
         shouldCountDown: false,
         countdownTimeInSeconds: 10,
         originalCountdownTimeInSeconds: 10,
-        onCountdownComplete: () => {
+        onCountdownComplete: async() => {
             alert("Countdown Complete");
         }
     }
@@ -34,7 +34,7 @@ export const BusyCounting: Story = {
         shouldCountDown: true,
         countdownTimeInSeconds: 10,
         originalCountdownTimeInSeconds: 25,
-        onCountdownComplete: () => {
+        onCountdownComplete: async() => {
             alert("Countdown Complete");
         }
     }
