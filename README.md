@@ -9,13 +9,6 @@ Hermes (called Mercury in Roman mythology) was considered the messenger of the O
 
 This repo contains the F/E for `hermes-crypto` as a whole. This includes all components, visual library and actual web-app itself.
 
-### Design Principles & Objectives
-Before engaging discussions on what the design principles and objectives are, it is important to also consider what does `hermes-crypto` attempt to achieve & who it is aimed at. For more in-depth philosophy around this, have a look here:
--   [Design Core](./docs/design.md): All about design objectives, theory, target and implementation.
-
-For general colours used throughout the system (there are exceptions, but this is the main set), we use:
-![Colour Palette](./public/hermes-crypto-color-palette.png)
-
 ## Status
 
 [![Build Status](https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml/badge.svg?branch=main)](https://github.com/svbygoibear/hermes-crypto/actions/workflows/s3-pipeline.yml) [![Code Coverage](https://github.com/svbygoibear/hermes-crypto/actions/workflows/test-suite.yml/badge.svg?branch=main)](https://github.com/svbygoibear/hermes-crypto/actions/workflows/test-suite.yml) [![Storybook Deploy](https://github.com/svbygoibear/hermes-crypto/actions/workflows/storybook-deploy.yml/badge.svg)](https://main--66b7998d30a1b8b8fa5d2380.chromatic.com/)
@@ -68,6 +61,13 @@ This only causes an output display warning but does not impact functionality.
 ## Architecture
 In this repo you are simply looking at the code and the underlying architecture that fuels it, but for the deployed solution, we have the following configured:
 ![General Architecture](./public/hermes-crypto-arch.png)
+
+### Design Principles & Objectives
+Before engaging discussions on what the design principles and objectives are, it is important to also consider what does `hermes-crypto` attempt to achieve & who it is aimed at. For more in-depth philosophy around this, have a look here:
+-   [Design Core](./docs/design.md): All about design objectives, theory, target and implementation.
+
+For general colours used throughout the system (there are exceptions, but this is the main set), we use:
+![Colour Palette](./public/hermes-crypto-color-palette.png)
 
 ## A Deep Dive
 

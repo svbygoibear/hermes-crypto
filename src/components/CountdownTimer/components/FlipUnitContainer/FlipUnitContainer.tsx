@@ -14,7 +14,7 @@ export const FlipUnitContainer: React.FunctionComponent<FlipUnitContainerProps> 
     props: FlipUnitContainerProps
 ) => {
     let currentDigit: number | string = props.digit;
-    let previousDigit: number | string = parseInt(props.digit as string) + 1;
+    let previousDigit: number | string = props.digit === 60 && props.unit === "seconds" ? 60 : parseInt(props.digit as string) + 1;
 
     if (typeof currentDigit === "number" && currentDigit < 10 && (props.unit === "minutes" || props.unit === "seconds")) {
         currentDigit = `0${currentDigit}`;

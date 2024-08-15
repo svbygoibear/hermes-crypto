@@ -50,7 +50,7 @@ export const ResultsAlert: React.FunctionComponent<ResultsAlertProps> = (
                         {!props.isPositive && (
                             <img className="results-alert-player-image" alt="Player has LOST." src={PlayerLostIcon}/>
                         )}
-                        <div>{props.isPositive ? `You have won! Clearly the GODS favour you` : `Whelp! You lost, and Hermes frowns upon you`}</div>
+                        <div>{props.isPositive ? `You have won! Clearly the GODS favour you.` : `Whelp! You lost, and Hermes frowns upon you.`}</div>
                     </Alert>
                 )}
             </Collapse>
