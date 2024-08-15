@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/138</span>
+                <span class='fraction'>0/134</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/138</span>
+                <span class='fraction'>0/134</span>
             </div>
         
             
@@ -291,35 +291,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -342,6 +320,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -376,6 +355,27 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -400,7 +400,7 @@
 <span class="cstat-no" title="statement not covered" >import { AppLogoIcon } from "../../assets/AppLogoIcon";</span>
 <span class="cstat-no" title="statement not covered" >import { APP_NAME } from "../../constants";</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import AvatarImage from "../../assets/default-user-avatar.jpg";</span>
+<span class="cstat-no" title="statement not covered" >import AvatarImage from "../../assets/user-avatar-default.png";</span>
 &nbsp;
 export interface AppHeaderProps {
     isLoggedIn: boolean;
@@ -451,13 +451,13 @@ export interface AppHeaderProps {
 <span class="cstat-no" title="statement not covered" >            icon: null,</span>
 <span class="cstat-no" title="statement not covered" >            onClick: props.onLogout ? props.onLogout : () =&gt; {}</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
-<span class="cstat-no" title="statement not covered" >    ];</span>
+    ];
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    const pages: PageMenuItem[] = [</span>
 <span class="cstat-no" title="statement not covered" >        { id: "page-mygame", displayName: "My Game", onClick: () =&gt; {}, targetId: "my-game" },</span>
 <span class="cstat-no" title="statement not covered" >        { id: "page-about", displayName: "About", onClick: () =&gt; {}, targetId: "about" },</span>
 <span class="cstat-no" title="statement not covered" >        { id: "page-contact", displayName: "Contact", onClick: () =&gt; {}, targetId: "contact" }</span>
-<span class="cstat-no" title="statement not covered" >    ];</span>
+    ];
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;AppBar position="static" sx={{ backgroundColor: "#f2b5c0" }}&gt;</span>
@@ -522,20 +522,20 @@ export interface AppHeaderProps {
 <span class="cstat-no" title="statement not covered" >                    &lt;/Box&gt;</span>
 <span class="cstat-no" title="statement not covered" >                    {props.isLoggedIn &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >                        &lt;Box sx={{ flexGrow: 0 }}&gt;</span>
-<span class="cstat-no" title="statement not covered" >                            &lt;Tooltip title="View settings"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                            &lt;Tooltip title={`Welcome back, ${props.userName}`}&gt;</span>
 <span class="cstat-no" title="statement not covered" >                                &lt;IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}&gt;</span>
 <span class="cstat-no" title="statement not covered" >                                    &lt;Avatar</span>
 <span class="cstat-no" title="statement not covered" >                                        alt={props.userName}</span>
 <span class="cstat-no" title="statement not covered" >                                        src={AvatarImage}</span>
-<span class="cstat-no" title="statement not covered" >                                        title={`Welcome back, ${props.userName}`}</span>
-<span class="cstat-no" title="statement not covered" >                                    /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                                        sx={{ backgroundColor: "#f1c3cc" }}</span>
+                                    /&gt;
 <span class="cstat-no" title="statement not covered" >                                &lt;/IconButton&gt;</span>
 <span class="cstat-no" title="statement not covered" >                            &lt;/Tooltip&gt;</span>
 <span class="cstat-no" title="statement not covered" >                            &lt;UserMenu</span>
 <span class="cstat-no" title="statement not covered" >                                settings={settings}</span>
 <span class="cstat-no" title="statement not covered" >                                anchor={anchorElUser}</span>
 <span class="cstat-no" title="statement not covered" >                                onClose={handleCloseUserMenu}</span>
-<span class="cstat-no" title="statement not covered" >                            /&gt;</span>
+                            /&gt;
 <span class="cstat-no" title="statement not covered" >                        &lt;/Box&gt;</span>
                     )}
 <span class="cstat-no" title="statement not covered" >                &lt;/Toolbar&gt;</span>
@@ -550,7 +550,7 @@ export interface AppHeaderProps {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-14T12:24:11.108Z
+                at 2024-08-15T14:12:07.382Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
