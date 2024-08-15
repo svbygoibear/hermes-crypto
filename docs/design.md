@@ -5,6 +5,7 @@
 This app is designed for those who feel nostalgic for the days when mini-games dominated the internet, hackers hastily built apps in Adobe Flash, and the aroma of drip coffee was the only thing keeping you awake.
 
 But today, we have powerful computers, bean-to-cup coffee machines, and mobile pay-to-play games. In contrast to the "more is better" mindset, `hermes-crypto` offers a playful, light-hearted experience. It's a page you open, cast a quick vote, and then take 60 seconds to pause—while your code compiles or your coffee machine heats up—to reflect, meditate, and appreciate the simpler moments in life.
+![Webpage Example](../public/hermes-crypto-example.png)
 
 # Design Pillars
 
