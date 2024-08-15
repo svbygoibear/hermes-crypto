@@ -31,3 +31,14 @@
     -webkit-transform: translateY(50%);
     transform: translateY(50%);
 }
+
+.lowercard {
+    align-items: flex-start;
+    border-top: 0.5px solid whitesmoke;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.lowercard span {
+    transform: translateY(-50%);
+}
