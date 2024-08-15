@@ -1,70 +1,57 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useRef } from "react";
-import "./CountdownTimer.css";
-import { FlipClock } from "./components/FlipClock/FlipClock";
+import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
+import { FlipClock } from "./components/FlipClock/FlipClock";
+import "./CountdownTimer.css";
 
 export interface CountdownTimerProps {
     shouldCountDown: boolean;
     countdownTimeInSeconds: number;
-    onCountdownComplete: () => void;
+    originalCountdownTimeInSeconds: number;
+    onCountdownComplete: () => Promise<void>;
 }
 
-export const CountdownTimer: React.FunctionComponent<CountdownTimerProps> = (
-    props: CountdownTimerProps
-) => {
-    const [timerStart, setTimerStart] = useState<number>(0);
-    const [timerTime, setTimerTime] = useState<number>(props.countdownTimeInSeconds * 1000);
-
-    const timerRef = useRef<NodeJS.Timeout | null>(null);
+export const CountdownTimer: React.FunctionComponent<CountdownTimerProps> = (props: CountdownTimerProps) => {
+    const [remainingSeconds, setRemainingSeconds] = useState(props.countdownTimeInSeconds);
 
     useEffect(() => {
-        if (props.shouldCountDown) {
-            setTimerTime(props.countdownTimeInSeconds * 1000);
-            countDownStart();
-        }
+        setRemainingSeconds(props.countdownTimeInSeconds);
+    }, [props.countdownTimeInSeconds]);
 
-        // Clean up the interval on component unmount
-        return () => {
-            if (timerRef.current) {
-                clearInterval(timerRef.current);
-            }
-        };
-    }, [props.shouldCountDown]);
+    useEffect(() => {
+        let intervalId: NodeJS.Timeout | null = null;
 
-    const countDownStart = (): void => {
-        if (timerRef.current) {
-            clearInterval(timerRef.current);
-        }
-        setTimerStart(timerTime);
-
-        timerRef.current = setInterval(() => {
-            setTimerTime(prevTime => {
-                const newTime = prevTime - 10;
-                if (newTime >= 0) {
-                    return newTime;
-                } else {
-                    if (timerRef.current) {
-                        clearInterval(timerRef.current);
+        if (props.shouldCountDown && remainingSeconds > 0) {
+            intervalId = setInterval(() => {
+                setRemainingSeconds((prevSeconds) => {
+                    if (prevSeconds > 1) {
+                        return prevSeconds - 1;
+                    } else {
+                        if (intervalId) {
+                            clearInterval(intervalId);
+                        }
+                        props.onCountdownComplete();
+                        return 0;
                     }
-                    // Alert the parent component that the countdown is complete
-                    props.onCountdownComplete();
-                    setTimerStart(0);
-                    return props.countdownTimeInSeconds * 1000;
-                }
-            });
-        }, 10);
-    };
+                });
+            }, 1000);
+        }
+        if(!props.shouldCountDown && remainingSeconds === 0) {
+            setRemainingSeconds(props.originalCountdownTimeInSeconds);
+        }
 
-    const totalSeconds = Math.floor(timerTime / 1000);
-    const minutes = totalSeconds === 60 ? 0 : Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds === 60 ? totalSeconds : totalSeconds % 60;
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [props.shouldCountDown, remainingSeconds, props.onCountdownComplete]);
+
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
+    const pastHalfway = remainingSeconds < Math.floor(props.originalCountdownTimeInSeconds / 2) && remainingSeconds > 0;
+    const isTimesUp = remainingSeconds === 0;
 
     const currentTimerMessage = (): JSX.Element => {
-        const isHalfway = timerTime <= props.countdownTimeInSeconds * 500 && timerTime > 1000;
-        const isTimesUp = timerStart !== 0 && timerTime <= 1000;
-
-        if (isHalfway) {
+        if (pastHalfway) {
             return (
                 <h3 className="status-message countdowntimer-countdown-alert">
                     PAST HALFWAY THERE!
@@ -83,9 +70,11 @@ export const CountdownTimer: React.FunctionComponent<CountdownTimerProps> = (
         <Container maxWidth="sm">
             <div className="countdowntimer-time">
                 {currentTimerMessage()}
-
                 <div className="countdowntimer-clock-sim">
-                    <FlipClock countMinutes={minutes} countSeconds={seconds} />
+                    <FlipClock 
+                        countMinutes={minutes === 1 && seconds === 0 ? 0 : minutes}
+                        countSeconds={minutes === 1 && seconds === 0 ? 60 : seconds}
+                    />
                 </div>
             </div>
         </Container>

@@ -4,6 +4,7 @@ import "./Home.css";
 import { AppNameAndLogo } from "../../components/AppNameAndLogo/AppNameAndLogo";
 import { CountdownTimer } from "../../components/CountdownTimer/CountdownTimer";
 import { HowToWorkText } from "../../components/HowToWorkText/HowToWorkText";
+import { ResultsAlert } from "../../components/ResultsAlert/ResultsAlert";
 import { VoteButtons } from "../../components/VoteButtons/VoteButtons";
 import { WelcomeSignNote } from "../../components/WelcomeSignNote/WelcomeSignNote";
 import {
@@ -18,14 +19,13 @@ import {
 import { CoinResult } from "../../types/coinResult";
 import { User, UserCreate } from "../../types/user";
 import { Vote, VoteCreate } from "../../types/vote";
+import { CalculatedResult } from "../../types/calculatedResult";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoggedIn, setUser } from "../../store/userSlice";
 import { createFakeUser } from "../../utils/fake.utils";
 import { CoinType, Currency, VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
-import { ResultsAlert } from "../../components/ResultsAlert/ResultsAlert";
-import { CalculatedResult } from "../../types/calculatedResult";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -35,9 +35,7 @@ export const Home: React.FunctionComponent = () => {
     const [isFetchingBtc, setIsFetchingBtc] = useState<boolean>(false);
     const [showResultsAlert, setShowResultsAlert] = useState<boolean>(false);
     const [calculatedResult, setCalculatedResult] = useState<CalculatedResult | null>(null);
-
-    // We start off with a default of 60 seconds for the countdown timer
-    const timerStartTime = React.useRef<number>(VOTE_TIME_IN_SECONDS);
+    const [timerStartTime, setTimerStartTime] = useState<number>(VOTE_TIME_IN_SECONDS);
 
     const user = useAppSelector(state => state.user);
     const dispatch = useAppDispatch();
@@ -108,7 +106,7 @@ export const Home: React.FunctionComponent = () => {
                     const timeLeft = Math.floor(
                         (VOTE_TIME_IN_SECONDS * 1000 - (currentTime - voteCastTime)) / 1000
                     );
-                    timerStartTime.current = timeLeft;
+                    setTimerStartTime(timeLeft)
                 }
             } else {
                 const latestUserData = await getUserById(user?.currentUser?.id ?? "");
@@ -132,6 +130,9 @@ export const Home: React.FunctionComponent = () => {
             setTimeout(async () => {
                 try {
                     const voteResult = await getUserVoteResultById(userId);
+                    if(voteResult?.coin_value !== 0) {
+                        setTimerStartTime(VOTE_TIME_IN_SECONDS);
+                    }
                     resolve(voteResult);
                 } catch (error) {
                     reject(error);
@@ -197,6 +198,7 @@ export const Home: React.FunctionComponent = () => {
         const previousScore = user?.currentUser?.score ?? 0;
         const newResult = await getDelayedVoteResult(user?.currentUser?.id ?? "");
         if (newResult !== null) {
+            setTimerStartTime(VOTE_TIME_IN_SECONDS);
             setNewBtcPriceFromVoteResult(newResult);
             const updatedUser = await getUserById(user?.currentUser?.id ?? "");
             // Update the user in the store
@@ -270,8 +272,9 @@ export const Home: React.FunctionComponent = () => {
                     />
                     <CountdownTimer
                         shouldCountDown={isVoting}
-                        countdownTimeInSeconds={timerStartTime.current}
+                        countdownTimeInSeconds={timerStartTime}
                         onCountdownComplete={onVoteDone}
+                        originalCountdownTimeInSeconds={VOTE_TIME_IN_SECONDS}
                     />
                     <div className="score-text-wrapper">
                         <p className="score-text">

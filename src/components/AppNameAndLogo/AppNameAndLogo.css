@@ -16,7 +16,6 @@
     will-change: filter;
     transition: filter 300ms;
     margin-right: 1em;
-    margin-left: 1em;
 }
 .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
