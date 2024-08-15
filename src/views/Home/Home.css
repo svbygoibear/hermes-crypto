@@ -41,7 +41,7 @@
     width: 90%;
     max-width: 500px;
     margin-bottom: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     box-sizing: border-box;
 }
 /* Large screens (default) */
@@ -57,6 +57,10 @@
         font-size: 1rem;
         width: 80%;
     }
+
+    .home-my-game-card {
+        width: 650px;
+    }
 }
 /* Small screens */
 @media screen and (max-width: 767px) {
@@ -64,6 +68,10 @@
         font-size: 0.9rem;
         width: 95%;
         padding: 8px;
+    }
+
+    .home-my-game-card {
+        width: 600px;
     }
 }
 /* Extra small screens */
@@ -74,6 +82,10 @@
         padding: 6px;
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .home-my-game-card {
+        width: 400px;
     }
 }
 
