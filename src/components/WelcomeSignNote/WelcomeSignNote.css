@@ -31,3 +31,8 @@
 .welcome-sign-note-text-header {
     margin: 0;
 }
+
+.welcome-sign-note-text-header-new-user {
+    margin: 0;
+    padding-right: 30px;
+}

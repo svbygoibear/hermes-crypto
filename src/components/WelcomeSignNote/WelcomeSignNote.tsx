@@ -54,7 +54,7 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
             {!props.doesUserExist && (
                 <React.Fragment>
                     <div className="welcome-sign-note-text-wrapper">
-                        <h2 className="welcome-sign-note-text-header">
+                        <h2 className="welcome-sign-note-text-header-new-user">
                             Welcome, sign in/up to play!{" "}
                         </h2>
                     </div>
