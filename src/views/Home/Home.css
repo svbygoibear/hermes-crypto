@@ -79,8 +79,18 @@
 
 .about-game-wrapper {
     display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 30px;
+}
+.about-game-wrapper-content {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    max-width: 700px;
+    width: 100%;
 }
 .about-game-header {
     margin-bottom: 0;
@@ -89,7 +99,7 @@
 }
 .about-game-text {
     color: #888;
-    width: 700px;
+    /* width: 700px; */
     padding-bottom: 10px;
 }
 

@@ -290,24 +290,26 @@ export const Home: React.FunctionComponent = () => {
                 </div>
             </div>
             <div id="about" className="about-game-wrapper">
-                <h2 className="about-game-header">About This Game</h2>
-                <p className="about-game-text">
-                    You don&apos;t have to sign up to play, but that limits how we can keep track of 
-                    your score. If you feel worried about entering your email, don&apos;t stress, you 
-                    can enter any unique identifier into the email field. Just so you know, we store 
-                    this information, but we are working on functionality where you can delete your 
-                    profile if you want to do so.
-                </p>
-                <p className="about-game-text">
-                    However, if you do not feel like dealing with the hassle of signing up, you can simply 
-                    vote and we will create a temporary profile for you. This will allow you to vote, and 
-                    it will enable us to keep track of your score; albeit only for the current session.
-                </p>
-                <p className="about-game-text">
-                    <code className="code-info-style">Hermes-Crypto</code> is a fun site to pass the time 
-                    while you wait for your code to build, a deployment to finish, or just want to kill 
-                    some time while your ’spro is brewing.
-                </p>
+                <div className="about-game-wrapper-content">
+                    <h2 className="about-game-header">About This Game</h2>
+                    <p className="about-game-text">
+                        You don&apos;t have to sign up to play, but that limits how we can keep track of 
+                        your score. If you feel worried about entering your email, don&apos;t stress, you 
+                        can enter any unique identifier into the email field. Just so you know, we store 
+                        this information, but we are working on functionality where you can delete your 
+                        profile if you want to do so.
+                    </p>
+                    <p className="about-game-text">
+                        However, if you do not feel like dealing with the hassle of signing up, you can simply 
+                        vote and we will create a temporary profile for you. This will allow you to vote, and 
+                        it will enable us to keep track of your score; albeit only for the current session.
+                    </p>
+                    <p className="about-game-text">
+                        <code className="code-info-style">Hermes-Crypto</code> is a fun site to pass the time 
+                        while you wait for your code to build, a deployment to finish, or just want to kill 
+                        some time while your ’spro is brewing.
+                    </p>
+                </div>
             </div>
             <div id="contact" className="contact-info-wrapper">
                 <h2 className="contact-info-header">Contact</h2>
