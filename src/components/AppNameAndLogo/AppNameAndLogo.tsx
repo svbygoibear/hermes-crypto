@@ -6,10 +6,10 @@ import { CustomIcon } from "./../../components/CustomIcon/CustomIcon";
 export const AppNameAndLogo: React.FunctionComponent = () => {
     return (
         <React.Fragment>
-            <div>
+            <div className="app-name-and-logo-wrapper">
                 <CustomIcon svg={HermesLogo} className="logo spin" />
-            </div>
-            <h1>Hermes-Crypto</h1>
+                <span className="app-name-and-log-text">Hermes-Crypto</span>
+            </div>      
         </React.Fragment>
     );
 };

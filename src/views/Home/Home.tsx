@@ -255,7 +255,7 @@ export const Home: React.FunctionComponent = () => {
 
     return (
         <div className="home-wrapper">
-            <div id="my-game">
+            <div id="my-game" className="home-my-game-wrapper">
                 <AppNameAndLogo />
                 <WelcomeSignNote
                     doesUserExist={user?.currentUser !== null}

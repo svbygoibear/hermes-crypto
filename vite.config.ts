@@ -12,8 +12,20 @@ export default defineConfig({
             reportOnFailure: true
         }
     },
+    optimizeDeps: {
+        include: [
+          '@emotion/react', 
+          '@emotion/styled', 
+          '@mui/material/Tooltip'
+        ],
+      },
     plugins: [
-        react(),
+        react({
+            jsxImportSource: '@emotion/react',
+            babel: {
+              plugins: ['@emotion/babel-plugin'],
+            },
+          }),
         eslint({
             cache: false,
             include: ["./src/**/*.ts", "./src/**/*.tsx"],
