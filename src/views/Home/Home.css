@@ -84,6 +84,8 @@
 }
 .about-game-header {
     margin-bottom: 0;
+    color: #213545;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 .about-game-text {
     color: #888;
@@ -97,6 +99,8 @@
     align-items: center;
 }
 .contact-info-header {
+    color: #213545;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     margin-bottom: 0;
 }
 .contact-info-text {

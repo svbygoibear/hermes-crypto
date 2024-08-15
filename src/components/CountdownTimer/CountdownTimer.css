@@ -1,14 +1,15 @@
 .countdowntimer-time > h3.status-message {
+    color: #213545;
     text-align: center;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .countdowntimer-countdown-alert {
-    color: green;
+    color: #4a7849  !important;
 }
 
 .countdowntimer-times-up {
-    color: red;
+    color: #fc7a7a !important;
 }
 
 .countdowntimer-clock-sim {

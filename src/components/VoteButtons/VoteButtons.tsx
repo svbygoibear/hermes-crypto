@@ -59,7 +59,7 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
                     variant="outlined"
                     onClick={onVoteUp}
                     color="success"
-                    sx={{ backgroundColor: "honeydew" }}>
+                    sx={{ backgroundColor: "#edf7ee" }}>
                     <div className="vote-button-text">Vote UP</div>
                 </LoadingButton>
                 <LoadingButton
