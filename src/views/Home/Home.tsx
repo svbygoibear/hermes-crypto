@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Home.css";
@@ -312,26 +311,28 @@ export const Home: React.FunctionComponent = () => {
                 </div>
             </div>
             <div id="contact" className="contact-info-wrapper">
-                <h2 className="contact-info-header">Contact</h2>
-                <p className="contact-info-text">
-                    This is an open-source project with 2 key repositories: <code className="code-info-style">React</code> on 
-                    the front-end and <code className="code-info-style">Go</code> on the back-end. Take the time to check 
-                    out either repository and report any issues if you find them! Feel free to contact me 
-                    on <a href="https://github.com/svbygoibear">Github</a> if you have any suggestions.
-                </p>
-                <div className="contact-info-repo-cards-wrapper">
-                    <a href="https://github.com/svbygoibear/hermes-crypto">
-                        <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto"
-                            alt="hermes-crypto GitHub Stats"
-                        />
-                    </a>
-                    <a href="https://github.com/svbygoibear/hermes-crypto-core">
-                        <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto-core"
-                            alt="hermes-crypto-core GitHub Stats"
-                        />
-                    </a>
+                <div className="contact-info-wrapper-content">
+                    <h2 className="contact-info-header">Contact</h2>
+                    <p className="contact-info-text">
+                        This is an open-source project with 2 key repositories: <code className="code-info-style">React</code> on 
+                        the front-end and <code className="code-info-style">Go</code> on the back-end. Take the time to check 
+                        out either repository and report any issues if you find them! Feel free to contact me 
+                        on <a href="https://github.com/svbygoibear">Github</a> if you have any suggestions.
+                    </p>
+                    <div className="contact-info-repo-cards-wrapper">
+                        <a href="https://github.com/svbygoibear/hermes-crypto">
+                            <img
+                                src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto"
+                                alt="hermes-crypto GitHub Stats"
+                            />
+                        </a>
+                        <a href="https://github.com/svbygoibear/hermes-crypto-core">
+                            <img
+                                src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto-core"
+                                alt="hermes-crypto-core GitHub Stats"
+                            />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
