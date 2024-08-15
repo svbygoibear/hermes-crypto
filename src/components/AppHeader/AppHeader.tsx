@@ -15,7 +15,7 @@ import { PageMenu, PageMenuItem } from "./components/PageMenu/PageMenu";
 import { AppLogoIcon } from "../../assets/AppLogoIcon";
 import { APP_NAME } from "../../constants";
 
-import AvatarImage from "../../assets/default-user-avatar.jpg";
+import AvatarImage from "../../assets/user-avatar-default.png";
 
 export interface AppHeaderProps {
     isLoggedIn: boolean;
@@ -137,12 +137,12 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                     </Box>
                     {props.isLoggedIn && (
                         <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="View settings">
+                            <Tooltip title={`Welcome back, ${props.userName}`}>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <Avatar
                                         alt={props.userName}
                                         src={AvatarImage}
-                                        title={`Welcome back, ${props.userName}`}
+                                        sx={{ backgroundColor: "#f1c3cc" }}
                                     />
                                 </IconButton>
                             </Tooltip>

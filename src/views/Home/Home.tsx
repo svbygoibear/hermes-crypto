@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Home.css";
@@ -255,7 +254,7 @@ export const Home: React.FunctionComponent = () => {
 
     return (
         <div className="home-wrapper">
-            <div id="my-game">
+            <div id="my-game" className="home-my-game-wrapper">
                 <AppNameAndLogo />
                 <WelcomeSignNote
                     doesUserExist={user?.currentUser !== null}
@@ -264,7 +263,7 @@ export const Home: React.FunctionComponent = () => {
                     onSignIn={onSignInOrOn}
                 />
                 <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
-                <div className="card">
+                <div className="home-my-game-card">
                     <VoteButtons
                         onVote={onVoteClicked}
                         isVoting={isVoting || isCreatingUser || isCheckingVote}
@@ -290,46 +289,50 @@ export const Home: React.FunctionComponent = () => {
                 </div>
             </div>
             <div id="about" className="about-game-wrapper">
-                <h2 className="about-game-header">About This Game</h2>
-                <p className="about-game-text">
-                    You don&apos;t have to sign up to play, but that limits how we can keep track of 
-                    your score. If you feel worried about entering your email, don&apos;t stress, you 
-                    can enter any unique identifier into the email field. Just so you know, we store 
-                    this information, but we are working on functionality where you can delete your 
-                    profile if you want to do so.
-                </p>
-                <p className="about-game-text">
-                    However, if you do not feel like dealing with the hassle of signing up, you can simply 
-                    vote and we will create a temporary profile for you. This will allow you to vote, and 
-                    it will enable us to keep track of your score; albeit only for the current session.
-                </p>
-                <p className="about-game-text">
-                    <code className="code-info-style">Hermes-Crypto</code> is a fun site to pass the time 
-                    while you wait for your code to build, a deployment to finish, or just want to kill 
-                    some time while your ’spro is brewing.
-                </p>
+                <div className="about-game-wrapper-content">
+                    <h2 className="about-game-header">About This Game</h2>
+                    <p className="about-game-text">
+                        You don&apos;t have to sign up to play, but that limits how we can keep track of 
+                        your score. If you feel worried about entering your email, don&apos;t stress, you 
+                        can enter any unique identifier into the email field. Just so you know, we store 
+                        this information, but we are working on functionality where you can delete your 
+                        profile if you want to do so.
+                    </p>
+                    <p className="about-game-text">
+                        However, if you do not feel like dealing with the hassle of signing up, you can simply 
+                        vote and we will create a temporary profile for you. This will allow you to vote, and 
+                        it will enable us to keep track of your score; albeit only for the current session.
+                    </p>
+                    <p className="about-game-text">
+                        <code className="code-info-style">Hermes-Crypto</code> is a fun site to pass the time 
+                        while you wait for your code to build, a deployment to finish, or just want to kill 
+                        some time while your ’spro is brewing.
+                    </p>
+                </div>
             </div>
             <div id="contact" className="contact-info-wrapper">
-                <h2 className="contact-info-header">Contact</h2>
-                <p className="contact-info-text">
-                    This is an open-source project with 2 key repositories: <code className="code-info-style">React</code> on 
-                    the front-end and <code className="code-info-style">Go</code> on the back-end. Take the time to check 
-                    out either repository and report any issues if you find them! Feel free to contact me 
-                    on <a href="https://github.com/svbygoibear">Github</a> if you have any suggestions.
-                </p>
-                <div className="contact-info-repo-cards-wrapper">
-                    <a href="https://github.com/svbygoibear/hermes-crypto">
-                        <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto"
-                            alt="hermes-crypto GitHub Stats"
-                        />
-                    </a>
-                    <a href="https://github.com/svbygoibear/hermes-crypto-core">
-                        <img
-                            src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto-core"
-                            alt="hermes-crypto-core GitHub Stats"
-                        />
-                    </a>
+                <div className="contact-info-wrapper-content">
+                    <h2 className="contact-info-header">Contact</h2>
+                    <p className="contact-info-text">
+                        This is an open-source project with 2 key repositories: <code className="code-info-style">React</code> on 
+                        the front-end and <code className="code-info-style">Go</code> on the back-end. Take the time to check 
+                        out either repository and report any issues if you find them! Feel free to contact me 
+                        on <a href="https://github.com/svbygoibear">Github</a> if you have any suggestions.
+                    </p>
+                    <div className="contact-info-repo-cards-wrapper">
+                        <a href="https://github.com/svbygoibear/hermes-crypto">
+                            <img
+                                src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto"
+                                alt="hermes-crypto GitHub Stats"
+                            />
+                        </a>
+                        <a href="https://github.com/svbygoibear/hermes-crypto-core">
+                            <img
+                                src="https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto-core"
+                                alt="hermes-crypto-core GitHub Stats"
+                            />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

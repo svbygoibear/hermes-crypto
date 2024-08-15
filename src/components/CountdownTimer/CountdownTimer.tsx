@@ -66,12 +66,12 @@ export const CountdownTimer: React.FunctionComponent<CountdownTimerProps> = (
 
         if (isHalfway) {
             return (
-                <h3 className="countdowntimer-countdown-alert status-message">
+                <h3 className="status-message countdowntimer-countdown-alert">
                     PAST HALFWAY THERE!
                 </h3>
             );
         } else if (isTimesUp) {
-            return <h3 className="countdowntimer-times-up status-message">TIME&apos;S UP!</h3>;
+            return <h3 className=" status-message countdowntimer-times-up">TIME&apos;S UP!</h3>;
         } else if (!props.shouldCountDown) {
             return <h3 className="status-message">Ready to get started? Vote!</h3>;
         } else {

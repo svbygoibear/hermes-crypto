@@ -1,13 +1,13 @@
 import React from "react";
 import "./StaticCard.css";
 
-export interface AnimatedCardProps {
+export interface StaticCardProps {
     position: string;
     digit: number | string;
 }
 
-export const StaticCard: React.FunctionComponent<AnimatedCardProps> = (
-    props: AnimatedCardProps
+export const StaticCard: React.FunctionComponent<StaticCardProps> = (
+    props: StaticCardProps
 ) => {
     return (
         <div className={props.position}>

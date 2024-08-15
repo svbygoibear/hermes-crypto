@@ -47,14 +47,14 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
     return (
         <div className="welcome-sign-note-wrapper">
             {props.doesUserExist && (
-                <h2 className="welcome-sign-note-text">
+                <h2 className="welcome-sign-note-text-header">
                     Welcome back, <code title={props.userEmail}>[{props.userName}]</code>
                 </h2>
             )}
             {!props.doesUserExist && (
                 <React.Fragment>
                     <div className="welcome-sign-note-text-wrapper">
-                        <h2 className="welcome-sign-note-text-header">
+                        <h2 className="welcome-sign-note-text-header-new-user">
                             Welcome, sign in/up to play!{" "}
                         </h2>
                     </div>
@@ -66,12 +66,13 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                         value={userName}
                         onChange={onNameChange}
                         disabled={isSigningIn}
+                        sx={{ maxWidth: "300px", minWidth: "200px", marginTop: "20px" }}
                     />
                     <TextField
                         id="outlined-basic"
                         label="email"
                         variant="outlined"
-                        sx={{ marginLeft: "10px" }}
+                        sx={{ marginLeft: "10px", maxWidth: "300px", minWidth: "200px", marginTop: "20px" }}
                         size="small"
                         onChange={onEmailChange}
                         value={userEmail}
@@ -89,7 +90,8 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                             ":hover": {
                                 bgcolor: "#f2b4bf",
                                 color: "#ffffff"
-                            }
+                            },
+                            marginTop: "20px",
                         }}>
                         Log In/ Signup
                     </LoadingButton>

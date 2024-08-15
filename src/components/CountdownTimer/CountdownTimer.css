@@ -1,19 +1,57 @@
+.countdowntimer-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
 .countdowntimer-time > h3.status-message {
+    color: #213545;
     text-align: center;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
 }
 
 .countdowntimer-countdown-alert {
-    color: green;
+    color: #4a7849 !important;
 }
 
 .countdowntimer-times-up {
-    color: red;
+    color: #fc7a7a !important;
 }
 
 .countdowntimer-clock-sim {
     position: relative;
     border-radius: 2em;
-    padding: 4%;
+    padding: 7%;
     background: #f2b5c0;
+    width: 100%;
+    width: 500px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .countdowntimer-time > h3.status-message {
+        font-size: 1rem;
+    }
+
+    .countdowntimer-clock-sim {
+        padding: 3%;
+        width: 300px;
+    }
+}
+
+@media (max-width: 400px) {
+    .countdowntimer-time > h3.status-message {
+        font-size: 0.9rem;
+    }
+
+    .countdowntimer-clock-sim {
+        padding: 2%;
+        width: 200px;
+    }
 }

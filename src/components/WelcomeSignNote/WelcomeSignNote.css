@@ -1,5 +1,14 @@
 .welcome-sign-note-wrapper {
-    display: inline-flex;
+    display: flex;
+    color: #213547;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 70px;
+    align-items: center;
 }
 
 .welcome-sign-note-text-wrapper {
@@ -16,9 +25,14 @@
     margin: 0;
     border: 0;
     vertical-align: top;
+    margin-top: 20px;
 }
 
 .welcome-sign-note-text-header {
     margin: 0;
-    padding-right: 10px;
+}
+
+.welcome-sign-note-text-header-new-user {
+    margin: 0;
+    padding-right: 30px;
 }
