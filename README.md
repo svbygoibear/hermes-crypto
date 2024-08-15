@@ -69,6 +69,11 @@ This readme is to get you started, up and running and give some light background
 -   [What am I doing here?](./docs/goal.md): Want more background on the objectives of this app? This is the place.
 -   [Technical Decisions](./docs/choices.md): This is a demo, and therefore some decisions were made to accommodate the scope of this project. This includes considerations, assumptions, etc.
 
+### Corresponding B/E
+This project has a corresponding B/E application. Go here to check it out:
+[![hermes-crypto-core](https://github-readme-stats.vercel.app/api/pin/?username=svbygoibear&repo=hermes-crypto-core)](https://github.com/svbygoibear/hermes-crypto-core)
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
