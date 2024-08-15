@@ -264,7 +264,7 @@ export const Home: React.FunctionComponent = () => {
                     onSignIn={onSignInOrOn}
                 />
                 <HowToWorkText isFetchingBtc={isFetchingBtc} currentCoinResult={latestBtc} />
-                <div className="card">
+                <div className="home-my-game-card">
                     <VoteButtons
                         onVote={onVoteClicked}
                         isVoting={isVoting || isCreatingUser || isCheckingVote}
