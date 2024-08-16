@@ -59,7 +59,7 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                         </h2>
                     </div>
                     <TextField
-                        id="outlined-basic"
+                        id="hermes-crypto-name-signup"
                         label="name"
                         variant="outlined"
                         size="small"
@@ -69,7 +69,7 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                         sx={{ maxWidth: "300px", minWidth: "200px", marginTop: "20px" }}
                     />
                     <TextField
-                        id="outlined-basic"
+                        id="hermes-crypto-email-signup"
                         label="email"
                         variant="outlined"
                         sx={{ marginLeft: "10px", maxWidth: "300px", minWidth: "200px", marginTop: "20px" }}

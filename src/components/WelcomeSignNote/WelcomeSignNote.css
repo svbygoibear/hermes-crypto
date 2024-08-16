@@ -7,8 +7,9 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     justify-content: center;
     flex-wrap: wrap;
-    height: 70px;
+    min-height: 70px;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 .welcome-sign-note-text-wrapper {
