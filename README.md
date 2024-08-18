@@ -7,7 +7,7 @@ Hermes (called Mercury in Roman mythology) was considered the messenger of the O
 
 ## This REPO
 
-This repo contains the F/E for `hermes-crypto` as a whole. This includes all components, visual library and actual web-app itself.
+This repo contains the F/E for `hermes-crypto` as a whole. This includes all components, the visual library, and the actual web app itself.
 
 ## Status
 
@@ -17,7 +17,7 @@ This repo contains the F/E for `hermes-crypto` as a whole. This includes all com
 
 Under the hood, I am powered by;
 
--   [Vite](https://vitejs.dev/): Why Vite? It is lightweight, fast and has a ton of plugins. There are many good options available, but Vite made sense to get a project up and running quickly without applying the constraints of a framework.
+-   [Vite](https://vitejs.dev/): Why Vite? It is lightweight, fast, and has a ton of plugins. There are many good options available, but Vite made sense to get a project up and running quickly without applying the constraints of a framework.
 -   [React](https://react.dev/): In 2024 it would be crazy to start up a new project and not use something like React/Vue/Angular when working in the JS ecosystem - unless you had a specific requirement to go that route.
 -   [Typescript](https://www.typescriptlang.org/): A typed language is a powerful language. Not because it makes you fast, but because it helps you define a contract in your code. This leads to better tooling, less type-related errors and overall more confidence in your work.
 -   [Storybook](https://storybook.js.org/): This is the perfect addition to any frontend to develop components in isolation, as well as testing and documentation.
@@ -31,12 +31,12 @@ Under the hood, I am powered by;
 To properly run this project, assuming you already have git installed, you will also need to ensure that you have the following installed on your machine:
 
 -   [`node.js`](https://nodejs.org/en): Lowest possible version compatible with this project is `v18.14.0`. The current LTS is however recommended.
--   [`npm`](https://www.npmjs.com/): For info on installation, go [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Minimum version required is `9.3.1`.
+-   [`npm`](https://www.npmjs.com/): For info on installation, go [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). The minimum version required is `9.3.1`.
 -   [`playwright`](https://playwright.dev/): If you want to run tests via storybook - you will have to install playwright. Simply run `npx install playwright` in the project terminal.
 
 ### Running
 
-First to get things started, you have to install all the dependencies for this project by running the following in terminal on this project root:
+First, to get things started, you have to install all the dependencies for this project by running the following in the terminal on this project root:
 
 ```bash
 npm install
@@ -48,7 +48,7 @@ Next, start up the project! If you are running this locally, fire it off in dev 
 npm run dev
 ```
 
-Finally, you will need to create an `.env.local` file at the root of this repo. Follow the example at the base of this repo for which variables to configure.
+Finally, you will need to create a `.env.local` file at the root of this repo. Follow the example at the base of this repo for which variables to configure.
 
 And that is it!
 
@@ -63,18 +63,19 @@ In this repo you are simply looking at the code and the underlying architecture 
 ![General Architecture](./public/hermes-crypto-arch.png)
 
 ### Design Principles & Objectives
-Before engaging discussions on what the design principles and objectives are, it is important to also consider what does `hermes-crypto` attempt to achieve & who it is aimed at. For more in-depth philosophy around this, have a look here:
--   [Design Core](./docs/design.md): All about design objectives, theory, target and implementation.
+Before engaging in discussions on what the design principles and objectives are, it is important to also consider what does `hermes-crypto` attempts to achieve & who it is aimed at. For more in-depth philosophy around this, have a look here:
+-   [Design Core](./docs/design.md): All about design objectives, theory, target, and implementation.
 
 For general colours used throughout the system (there are exceptions, but this is the main set), we use:
 ![Colour Palette](./public/hermes-crypto-color-palette.png)
 
 ## A Deep Dive
 
-This readme is to get you started, up and running and give some light background context. If you want a little more information, feel free to check out:
+This readme is to get you started, up and running, and give some light background context. If you want a little more information, feel free to check out:
 
 -   [What am I doing here?](./docs/goal.md): Want more background on the objectives of this app? This is the place.
 -   [Technical Decisions](./docs/choices.md): This is a demo, and therefore some decisions were made to accommodate the scope of this project. This includes considerations, assumptions, etc.
+-   [Limitations](https://github.com/svbygoibear/hermes-crypto-core/blob/main/docs/limitations.md): Here I go through the logic limitations, why they exist, some pros and cons as well as what I would improve.
 
 ### Corresponding B/E
 This project has a corresponding B/E application. Go here to check it out:
