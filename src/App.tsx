@@ -10,6 +10,7 @@ import { useSetError } from "./components/ErrorBoundary/ErrorBoundary";
 import { useAppSelector } from "./hooks/useAppSelector";
 import { useAppDispatch } from "./hooks/useAppDispatch";
 import { clearUser, setLoggedOut } from "./store/userSlice";
+import { setTheme } from "./store/appSlice";
 
 export const App: React.FunctionComponent = () => {
     const user = useAppSelector(state => state.user);
@@ -36,6 +37,10 @@ export const App: React.FunctionComponent = () => {
         dispatch(setLoggedOut());
     };
 
+    const handleThemeChange = (themeName: string): void => {
+        dispatch(setTheme(themeName));
+    };
+
     // Define the routes
     const router = createBrowserRouter([
         {
@@ -52,6 +57,7 @@ export const App: React.FunctionComponent = () => {
                     userName={user?.currentUser?.name ?? ""}
                     isLoggedIn={isUserLoggedIn ?? false}
                     onLogout={handleLogout}
+                    onThemeToggle={handleThemeChange}
                 />
                 <RouterProvider router={router} />
             </LayoutBox>

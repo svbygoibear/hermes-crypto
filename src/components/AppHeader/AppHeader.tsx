@@ -16,11 +16,13 @@ import { AppLogoIcon } from "../../assets/AppLogoIcon";
 import { APP_NAME } from "../../constants";
 
 import AvatarImage from "../../assets/user-avatar-default.png";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export interface AppHeaderProps {
     isLoggedIn: boolean;
     userName?: string;
     onLogout?: () => void;
+    onThemeToggle: (name: string) => void;
 }
 
 export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHeaderProps) => {
@@ -134,6 +136,9 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                                 {page.displayName}
                             </Button>
                         ))}
+                    </Box>
+                    <Box sx={{ flexGrow: 0 }}>
+                        <ThemeToggle onThemeToggle={props.onThemeToggle} />
                     </Box>
                     {props.isLoggedIn && (
                         <Box sx={{ flexGrow: 0 }}>

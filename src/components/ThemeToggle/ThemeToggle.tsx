@@ -1,11 +1,9 @@
 import React from "react";
-// import { Button, ButtonGroup } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Switch from "@mui/material/Switch";
 import { useTheme } from "../../contexts/ThemeContext";
 import { ThemeName } from "../../themes";
 import { THEME_DARK, THEME_LIGHT } from "../../themes/constants";
-import { styled } from "@mui/material/styles";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 export interface ThemeToggleProps {
     onThemeToggle: (name: string) => void;
@@ -67,22 +65,11 @@ export const ThemeToggle: React.FunctionComponent<ThemeToggleProps> = (props: Th
     }));
 
     return (
-        <FormControlLabel
-            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+        <MaterialUISwitch
+            sx={{ m: 1 }}
+            defaultChecked
+            checked={themeName === THEME_LIGHT}
             onClick={() => handleThemeChange(themeName === THEME_LIGHT ? THEME_DARK : THEME_LIGHT)}
-            label="Change Me"
         />
-        // <ButtonGroup>
-        //     <Button
-        //         variant={themeName === THEME_LIGHT ? "contained" : "outlined"}
-        //         onClick={() => handleThemeChange(THEME_LIGHT)}>
-        //         Light
-        //     </Button>
-        //     <Button
-        //         variant={themeName === THEME_DARK ? "contained" : "outlined"}
-        //         onClick={() => handleThemeChange(THEME_DARK)}>
-        //         Dark
-        //     </Button>
-        // </ButtonGroup>
     );
 };
