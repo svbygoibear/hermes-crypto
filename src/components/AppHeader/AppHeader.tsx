@@ -77,11 +77,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     ];
 
     return (
-        <AppBar
-            position="static"
-            sx={{ backgroundColor: "#f2b5c0" }}
-            color="transparent"
-            elevation={0}>
+        <AppBar position="static" elevation={0}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AppLogoIcon />
@@ -136,7 +132,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             <Button
                                 key={page.id}
                                 onClick={() => handleCloseNavMenuButtonClick(page)}
-                                sx={{ my: 2, color: "white", display: "block" }}>
+                                sx={{ my: 2, display: "block" }}>
                                 {page.displayName}
                             </Button>
                         ))}
@@ -146,11 +142,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title={`Welcome back, ${props.userName}`}>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar
-                                        alt={props.userName}
-                                        src={AvatarImage}
-                                        sx={{ backgroundColor: "#f1c3cc" }}
-                                    />
+                                    <Avatar alt={props.userName} src={AvatarImage} />
                                 </IconButton>
                             </Tooltip>
                             <UserMenu

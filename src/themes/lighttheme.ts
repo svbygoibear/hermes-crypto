@@ -5,10 +5,10 @@ export const lightTheme: ThemeOptions = {
     palette: {
         mode: THEME_LIGHT,
         primary: {
-            main: "#1976d2"
+            main: "#f2b4bf"
         },
         secondary: {
-            main: "#dc004e"
+            main: "#b4f2e7"
         },
         background: {
             default: "#f5f5f5",
