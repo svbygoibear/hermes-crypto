@@ -3,7 +3,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { AppState } from "../types/appState";
 
 const initialState: AppState = {
-    theme: ""
+    theme: "",
+    instructionsCollapsed: false
 };
 
 const appSlice = createSlice({
@@ -12,9 +13,12 @@ const appSlice = createSlice({
     reducers: {
         setTheme: (state, action: PayloadAction<string>) => {
             state.theme = action.payload;
+        },
+        toggleInstructions: state => {
+            state.instructionsCollapsed = !state.instructionsCollapsed;
         }
     }
 });
 
-export const { setTheme } = appSlice.actions;
+export const { setTheme, toggleInstructions } = appSlice.actions;
 export default appSlice.reducer;

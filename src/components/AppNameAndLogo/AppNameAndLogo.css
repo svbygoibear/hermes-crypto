@@ -4,7 +4,6 @@
     unicode-bidi: isolate;
     align-items: center;
     justify-content: center;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-size: 3.3em;
     padding-top: 20px;
 }

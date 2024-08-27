@@ -1,7 +1,9 @@
 import { ThemeOptions } from "@mui/material/styles";
 import { THEME_LIGHT } from "./constants";
+import { baseTheme } from "./basetheme";
 
 export const lightTheme: ThemeOptions = {
+    ...baseTheme,
     palette: {
         mode: THEME_LIGHT,
         primary: {

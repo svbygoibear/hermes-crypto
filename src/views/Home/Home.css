@@ -110,7 +110,6 @@
 }
 .about-game-header {
     margin-bottom: 0;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 .about-game-text {
     padding-bottom: 10px;
@@ -131,7 +130,6 @@
     width: 100%;
 }
 .contact-info-header {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     margin-bottom: 0;
 }
 .contact-info-text {
