@@ -141,9 +141,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <ThemeToggle onThemeToggle={props.onThemeToggle} />
-                    </Box>
+                    <ThemeToggle onThemeToggle={props.onThemeToggle} />
                     {props.isLoggedIn && (
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title={`Welcome back, ${props.userName}`}>

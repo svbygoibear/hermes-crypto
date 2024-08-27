@@ -8,7 +8,7 @@ import appReducer from "./appSlice";
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["user"] // reducers to persist to domain specific storage
+    whitelist: ["user", "app"] // reducers to persist to domain specific storage
 };
 
 const rootReducer = combineReducers({
