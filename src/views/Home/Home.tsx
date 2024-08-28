@@ -40,7 +40,8 @@ export const Home: React.FunctionComponent = () => {
     const [timerStartTime, setTimerStartTime] = useState<number>(VOTE_TIME_IN_SECONDS);
 
     const user = useAppSelector(state => state.user);
-    const instructionsCollapsed = useAppSelector(state => state.app.instructionsCollapsed);
+    const instructionsCollapsed =
+        useAppSelector(state => state.app?.instructionsCollapsed) ?? false;
     const dispatch = useAppDispatch();
 
     // Used for navigation scrolling of the global app header
