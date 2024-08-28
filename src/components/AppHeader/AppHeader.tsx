@@ -79,8 +79,7 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     return (
         <AppBar
             position="sticky"
-            color="transparent"
-            sx={{ backdropFilter: "blur(20px)" }}
+            sx={{ backdropFilter: "blur(20px)", background: "rgb(181, 241, 231, .2)" }}
             elevation={0}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -101,7 +100,6 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                         }}>
                         {APP_NAME}
                     </Typography>
-                    |&nbsp;&nbsp;
                     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                         <IconButton
                             size="large"

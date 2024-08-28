@@ -22,7 +22,7 @@ export const ThemeToggle: React.FunctionComponent<ThemeToggleProps> = (props: Th
         <Around
             className="theme-toggle-within"
             duration={750}
-            style={{ color: themeName === THEME_LIGHT ? "#ffdfe5" : "#be4259" }}
+            style={{ color: themeName === THEME_LIGHT ? "#cb0038" : "#f2b4bf" }}
             toggled={themeName === THEME_DARK}
             title={themeName === THEME_LIGHT ? "Switch to dark theme" : "Switch to light theme"}
             toggle={handleThemeChange}

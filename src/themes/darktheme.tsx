@@ -7,10 +7,10 @@ export const darkTheme: ThemeOptions = {
     palette: {
         mode: THEME_DARK,
         primary: {
-            main: "#be4259"
+            main: "#f2b4bf"
         },
         secondary: {
-            main: "#23775e"
+            main: "#44d2b8"
         },
         background: {
             default: "#303030",
