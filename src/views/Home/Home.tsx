@@ -27,6 +27,7 @@ import { createFakeUser } from "../../utils/fake.utils";
 import { CoinType, Currency, VoteDirection } from "../../enums";
 import { VOTE_TIME_IN_SECONDS } from "../../constants";
 import { toggleInstructions } from "../../store/appSlice";
+import { Link } from "@mui/material";
 
 export const Home: React.FunctionComponent = () => {
     const [isVoting, setIsVoting] = useState<boolean>(false);
@@ -333,8 +334,9 @@ export const Home: React.FunctionComponent = () => {
                         <code className="code-info-style">React</code> on the front-end and{" "}
                         <code className="code-info-style">Go</code> on the back-end. Take the time
                         to check out either repository and report any issues if you find them! Feel
-                        free to contact me on <a href="https://github.com/svbygoibear">Github</a> if
-                        you have any suggestions.
+                        free to contact me on{" "}
+                        <Link href="https://github.com/svbygoibear">Github</Link> if you have any
+                        suggestions.
                     </p>
                     <div className="contact-info-repo-cards-wrapper">
                         <a href="https://github.com/svbygoibear/hermes-crypto">

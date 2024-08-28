@@ -95,7 +95,6 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
-                            color: "inherit",
                             textDecoration: "none"
                         }}>
                         {APP_NAME}
@@ -124,7 +123,6 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
-                            color: "inherit",
                             textDecoration: "none"
                         }}>
                         {APP_NAME}

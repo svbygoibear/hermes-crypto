@@ -16,6 +16,14 @@ export const lightTheme: ThemeOptions = {
             default: "#f5f5f5",
             paper: "#ffffff"
         }
+    },
+    typography: {
+        h5: {
+            color: "#cb0038"
+        },
+        h6: {
+            color: "#303030"
+        }
     }
     // Add other customizations here
 };

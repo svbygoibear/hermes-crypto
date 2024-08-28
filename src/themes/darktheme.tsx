@@ -16,6 +16,14 @@ export const darkTheme: ThemeOptions = {
             default: "#303030",
             paper: "#424242"
         }
+    },
+    typography: {
+        h5: {
+            color: "#f2b4bf"
+        },
+        h6: {
+            color: "#f5f5f5"
+        }
     }
     // Add other customizations here
 };
