@@ -77,7 +77,11 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     ];
 
     return (
-        <AppBar position="static" elevation={0}>
+        <AppBar
+            position="sticky"
+            color="transparent"
+            sx={{ backdropFilter: "blur(20px)" }}
+            elevation={0}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AppLogoIcon />
