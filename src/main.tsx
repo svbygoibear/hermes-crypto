@@ -12,6 +12,7 @@ import "@fontsource/inter";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { FallbackComponent } from "./components/FallbackComponent/FallbackComponent";
 import { store, persistor } from "./store/redux";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
@@ -19,12 +20,14 @@ const root = ReactDOM.createRoot(document.getElementById("root")!);
     root.render(
         <React.StrictMode>
             <Provider store={store}>
-                <PersistGate loading={null} persistor={persistor}>
-                    <ErrorBoundary
-                        fallback={resetError => <FallbackComponent resetError={resetError} />}>
-                        <App />
-                    </ErrorBoundary>
-                </PersistGate>
+                <ThemeProvider>
+                    <PersistGate loading={null} persistor={persistor}>
+                        <ErrorBoundary
+                            fallback={resetError => <FallbackComponent resetError={resetError} />}>
+                            <App />
+                        </ErrorBoundary>
+                    </PersistGate>
+                </ThemeProvider>
             </Provider>
         </React.StrictMode>
     );

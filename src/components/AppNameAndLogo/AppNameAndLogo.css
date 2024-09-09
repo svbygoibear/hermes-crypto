@@ -1,11 +1,9 @@
 .app-name-and-logo-wrapper {
-    color: #213547;
     display: flex;
     font-weight: bold;
     unicode-bidi: isolate;
     align-items: center;
     justify-content: center;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     font-size: 3.3em;
     padding-top: 20px;
 }

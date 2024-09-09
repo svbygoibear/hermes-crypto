@@ -16,11 +16,13 @@ import { AppLogoIcon } from "../../assets/AppLogoIcon";
 import { APP_NAME } from "../../constants";
 
 import AvatarImage from "../../assets/user-avatar-default.png";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 
 export interface AppHeaderProps {
     isLoggedIn: boolean;
     userName?: string;
     onLogout?: () => void;
+    onThemeToggle: (name: string) => void;
 }
 
 export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHeaderProps) => {
@@ -75,7 +77,10 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
     ];
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#f2b5c0" }}>
+        <AppBar
+            position="sticky"
+            sx={{ backdropFilter: "blur(20px)", background: "rgb(181, 241, 231, .2)" }}
+            elevation={0}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AppLogoIcon />
@@ -90,12 +95,10 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
-                            color: "inherit",
                             textDecoration: "none"
                         }}>
                         {APP_NAME}
                     </Typography>
-                    |&nbsp;&nbsp;
                     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                         <IconButton
                             size="large"
@@ -120,7 +123,6 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
-                            color: "inherit",
                             textDecoration: "none"
                         }}>
                         {APP_NAME}
@@ -130,20 +132,17 @@ export const AppHeader: React.FunctionComponent<AppHeaderProps> = (props: AppHea
                             <Button
                                 key={page.id}
                                 onClick={() => handleCloseNavMenuButtonClick(page)}
-                                sx={{ my: 2, color: "white", display: "block" }}>
+                                sx={{ my: 2, display: "block" }}>
                                 {page.displayName}
                             </Button>
                         ))}
                     </Box>
+                    <ThemeToggle onThemeToggle={props.onThemeToggle} />
                     {props.isLoggedIn && (
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title={`Welcome back, ${props.userName}`}>
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar
-                                        alt={props.userName}
-                                        src={AvatarImage}
-                                        sx={{ backgroundColor: "#f1c3cc" }}
-                                    />
+                                    <Avatar alt={props.userName} src={AvatarImage} />
                                 </IconButton>
                             </Tooltip>
                             <UserMenu

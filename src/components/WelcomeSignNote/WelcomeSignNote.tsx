@@ -72,7 +72,12 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                         id="hermes-crypto-email-signup"
                         label="email"
                         variant="outlined"
-                        sx={{ marginLeft: "10px", maxWidth: "300px", minWidth: "200px", marginTop: "20px" }}
+                        sx={{
+                            marginLeft: "10px",
+                            maxWidth: "300px",
+                            minWidth: "200px",
+                            marginTop: "20px"
+                        }}
                         size="small"
                         onChange={onEmailChange}
                         value={userEmail}
@@ -85,13 +90,7 @@ export const WelcomeSignNote: React.FunctionComponent<WelcomeSignNoteProps> = (
                         onClick={onSignInClick}
                         sx={{
                             marginLeft: "10px",
-                            backgroundColor: "#ffffff",
-                            color: "#f2b4bf",
-                            ":hover": {
-                                bgcolor: "#f2b4bf",
-                                color: "#ffffff"
-                            },
-                            marginTop: "20px",
+                            marginTop: "20px"
                         }}>
                         Log In/ Signup
                     </LoadingButton>

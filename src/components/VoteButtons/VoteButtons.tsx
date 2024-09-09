@@ -56,20 +56,18 @@ export const VoteButtons: React.FunctionComponent<VoteButtonsProps> = (props: Vo
                     loading={props.isVoting}
                     loadingPosition="end"
                     endIcon={<ArrowCircleUpIcon />}
-                    variant="outlined"
+                    variant="contained"
                     onClick={onVoteUp}
-                    color="success"
-                    sx={{ backgroundColor: "#edf7ee" }}>
+                    color="primary">
                     <div className="vote-button-text">Vote UP</div>
                 </LoadingButton>
                 <LoadingButton
                     loading={props.isVoting}
                     loadingPosition="start"
                     startIcon={<ArrowCircleDownIcon />}
-                    variant="outlined"
+                    variant="contained"
                     onClick={onVoteDown}
-                    color="warning"
-                    sx={{ backgroundColor: "beige" }}>
+                    color="secondary">
                     <div className="vote-button-text">Vote DOWN</div>
                 </LoadingButton>
             </Stack>

@@ -1,10 +1,8 @@
 .how-to-work-text-wrapper {
     padding: 10px 50px;
-    color: #888;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    color-scheme: light dark;
     max-width: 900px;
     width: 100%;
     margin: auto;
@@ -27,15 +25,13 @@
 }
 
 .how-to-work-text-general-text {
-    color: #888;
 }
 
 .how-to-work-text-general-text:last-child {
     padding-top: 0px;
     margin-top: 0;
-  }
+}
 
 .how-to-work-text-general-text-first {
     margin-top: 0;
-    color: #888;
 }
