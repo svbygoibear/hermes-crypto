@@ -12,7 +12,9 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FunctionComponent<{ children: React.ReactNode }> = ({
+    children
+}) => {
     const appSettings = useAppSelector(state => state.app);
     const [themeName, setThemeName] = useState<ThemeName>(
         (appSettings?.theme as ThemeName) ?? THEME_LIGHT

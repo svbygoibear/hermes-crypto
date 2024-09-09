@@ -11,7 +11,7 @@ const persistConfig = {
     whitelist: ["user", "app"] // reducers to persist to domain specific storage
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     user: userReducer,
     app: appReducer
     // Add other reducers here if needed
