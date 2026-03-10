@@ -1,0 +1,66 @@
+name: Publish Release
+
+on:
+  workflow_run:
+    workflows:
+      - "AWS S3 Pipeline"
+      - "Test Suite"
+      - "Deploy Storybook"
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check all required pipelines passed for this commit
+        id: gate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          check_workflow() {
+            gh run list --workflow="$1" --branch=main \
+              --json headSha,conclusion \
+              --jq --arg sha "$COMMIT_SHA" \
+              '[.[] | select(.headSha == $sha)] | first | .conclusion' \
+              2>/dev/null || echo "none"
+          }
+
+          S3=$(check_workflow "s3-pipeline.yml")
+          TESTS=$(check_workflow "test-suite.yml")
+          STORYBOOK=$(check_workflow "storybook-deploy.yml")
+
+          echo "AWS S3 Pipeline: $S3"
+          echo "Test Suite: $TESTS"
+          echo "Deploy Storybook: $STORYBOOK"
+
+          if [[ "$S3" == "success" && "$TESTS" == "success" && "$STORYBOOK" == "success" ]]; then
+            echo "all_passed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "all_passed=false" >> "$GITHUB_OUTPUT"
+            echo "Not all pipelines have passed yet — skipping publish."
+          fi
+
+      - name: Publish draft release
+        if: steps.gate.outputs.all_passed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG=$(gh release list --limit 10 --json tagName,isDraft \
+            --jq '.[] | select(.isDraft) | .tagName' | head -1)
+
+          if [[ -n "$TAG" ]]; then
+            gh release edit "$TAG" --draft=false
+            echo "Published release: $TAG"
+          else
+            echo "No draft release found — nothing to publish."
+          fi
