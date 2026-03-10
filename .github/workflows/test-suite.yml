@@ -36,3 +36,12 @@ jobs:
             - name: "Report Coverage"
               if: always()
               uses: davelosert/vitest-coverage-report-action@v2
+
+    all-tests-passed:
+        needs: [build]
+        if: always()
+        runs-on: ubuntu-latest
+        steps:
+            - name: All matrix jobs passed
+              if: needs.build.result != 'success'
+              run: exit 1
