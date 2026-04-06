@@ -16,7 +16,9 @@
         "coverage": "npx vitest --coverage.enabled true --config ./test/vitest.config.ts"
     },
     "dependencies": {
-        "@emotion/react": "^11.13.0",
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.13.0",
+        "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.1",
         "@faker-js/faker": "^8.4.1",
         "@fontsource/inter": "^5.0.20",
