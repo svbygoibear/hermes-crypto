@@ -5,6 +5,16 @@ on:
         - cron: "0 3 * * *"
     workflow_dispatch:
 
+permissions:
+    contents: write
+    actions: read
+    checks: none
+    deployments: none
+    issues: none
+    packages: none
+    pull-requests: none
+    statuses: none
+
 jobs:
     build:
         runs-on: ubuntu-latest
